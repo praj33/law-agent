@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Law Agent - Legal AI Assistant</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #34495e; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
+        button { background: #3498db; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; width: 100%; }
+        button:hover { background: #2980b9; }
+        .features { margin-top: 30px; }
+        .feature { margin-bottom: 15px; padding: 15px; background: #ecf0f1; border-radius: 5px; }
+        .feature h3 { margin: 0 0 10px 0; color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏛️ Law Agent - Your AI Legal Assistant</h1>
+        
+        <form action="/create-session" method="post">
+            <div class="form-group">
+                <label for="user_id">Your Name or ID:</label>
+                <input type="text" id="user_id" name="user_id" required placeholder="Enter your name or unique ID">
+            </div>
+            
+            <div class="form-group">
+                <label for="user_type">I am a:</label>
+                <select id="user_type" name="user_type" required>
+                    <option value="">Select your role</option>
+                    <option value="common_person">Individual seeking legal help</option>
+                    <option value="law_firm">Law firm professional</option>
+                    <option value="legal_professional">Legal professional</option>
+                </select>
+            </div>
+            
+            <button type="submit">Start Legal Consultation</button>
+        </form>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>🤖 AI-Powered Legal Guidance</h3>
+                <p>Get intelligent legal advice powered by advanced AI that learns from your interactions.</p>
+            </div>
+            
+            <div class="feature">
+                <h3>📚 Comprehensive Legal Knowledge</h3>
+                <p>Access extensive legal glossary and domain-specific guidance across multiple areas of law.</p>
+            </div>
+            
+            <div class="feature">
+                <h3>🎯 Personalized Experience</h3>
+                <p>Adaptive interface that learns your preferences and provides tailored recommendations.</p>
+            </div>
+            
+            <div class="feature">
+                <h3>⚖️ Multiple Legal Domains</h3>
+                <p>Family Law, Criminal Law, Corporate Law, Property Law, Employment Law, and more.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

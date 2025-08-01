@@ -1,0 +1,804 @@
+2025-07-29 14:56:29 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 14:56:29 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 14:56:29 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 14:56:31 | WARNING  | __main__:start:259 | ⚠️ WARNING: High disk usage 92.0% - 35.6GB free
+2025-07-29 14:56:31 | INFO     | __main__:start:260 | 💡 Consider running: python cleanup_disk.py
+2025-07-29 14:56:31 | INFO     | __main__:start_monitoring:104 | 🔍 System health monitoring started
+2025-07-29 14:56:32 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 14:57:03 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 14:57:15 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/sessions
+2025-07-29 14:57:15 | INFO     | law_agent.core.agent:create_session:53 | Created session 8978c1ec-de22-433a-9c5e-670d69b0d00c for user terminal_user
+2025-07-29 14:57:15 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.016s Path: /api/api/v1/sessions
+2025-07-29 14:57:17 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 14:57:17 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 8978c1ec-de22-433a-9c5e-670d69b0d00c, domain: LegalDomain.FAMILY_LAW
+2025-07-29 14:57:17 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.038s Path: /api/api/v1/query
+2025-07-29 14:57:19 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 14:57:19 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('de96e2ee-67d2-4992-8dc4-590acd1fc6aa', 'terminal_user', '', '2025-07-29 09:27:17.210122', 'query', 'I need help with divorce proceedings', 'family_law', 0.5278236865997314, "This might be a family law matter. Guide through divorce process including asset division and custody arrangements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 14:57:19 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction de96e2ee-67d2-4992-8dc4-590acd1fc6aa
+2025-07-29 14:57:19 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.009s Path: /api/api/v1/feedback
+2025-07-29 14:57:21 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 14:57:21 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 8978c1ec-de22-433a-9c5e-670d69b0d00c, domain: LegalDomain.CRIMINAL_LAW
+2025-07-29 14:57:21 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.033s Path: /api/api/v1/query
+2025-07-29 14:57:23 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 14:57:23 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('de64e907-fe46-40a0-8ff8-a43f9a12970d', 'terminal_user', '', '2025-07-29 09:27:21.334271', 'query', 'I was arrested for DUI, what are my rights?', 'criminal_law', 0.4402950406074524, "This might be a criminal law matter. Navigate criminal charges from arrest through trial or plea. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 14:57:23 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction de64e907-fe46-40a0-8ff8-a43f9a12970d
+2025-07-29 14:57:23 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 14:57:25 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 14:57:25 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 8978c1ec-de22-433a-9c5e-670d69b0d00c, domain: LegalDomain.UNKNOWN
+2025-07-29 14:57:25 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.033s Path: /api/api/v1/query
+2025-07-29 14:57:27 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 14:57:27 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('ca108908-c1e1-47a7-a57c-ccfee3203ca6', 'terminal_user', '', '2025-07-29 09:27:25.489802', 'query', 'How do I start a business?', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 14:57:27 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction ca108908-c1e1-47a7-a57c-ccfee3203ca6
+2025-07-29 14:57:27 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.007s Path: /api/api/v1/feedback
+2025-07-29 14:57:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 14:57:29 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 8978c1ec-de22-433a-9c5e-670d69b0d00c, domain: LegalDomain.PROPERTY_LAW
+2025-07-29 14:57:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.033s Path: /api/api/v1/query
+2025-07-29 14:57:31 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 14:57:31 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('96b2b620-b00e-466b-ad13-6a321ee3270f', 'terminal_user', '', '2025-07-29 09:27:29.658960', 'query', 'My landlord is trying to evict me', 'property_law', 0.45597022771835327, "This might be a property law matter. Navigate the home buying process and legal requirements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 14:57:31 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 96b2b620-b00e-466b-ad13-6a321ee3270f
+2025-07-29 14:57:31 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.002s Path: /api/api/v1/feedback
+2025-07-29 14:57:33 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 14:57:33 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 8978c1ec-de22-433a-9c5e-670d69b0d00c, domain: LegalDomain.UNKNOWN
+2025-07-29 14:57:33 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.036s Path: /api/api/v1/query
+2025-07-29 14:57:34 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 14:57:35 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 14:57:35 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('306c4960-574e-46a7-9607-7a54e9d8ba16', 'terminal_user', '', '2025-07-29 09:27:33.793685', 'query', 'I was fired unfairly from my job', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 14:57:35 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 306c4960-574e-46a7-9607-7a54e9d8ba16
+2025-07-29 14:57:35 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.006s Path: /api/api/v1/feedback
+2025-07-29 14:57:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/api/api/v1/sessions/8978c1ec-de22-433a-9c5e-670d69b0d00c/summary
+2025-07-29 14:57:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/sessions/8978c1ec-de22-433a-9c5e-670d69b0d00c/summary
+2025-07-29 14:57:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/glossary/search
+2025-07-29 14:57:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.014s Path: /api/api/v1/glossary/search
+2025-07-29 14:58:05 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 14:58:36 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 14:59:07 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:04:09 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 15:04:09 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 15:04:09 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 15:04:11 | WARNING  | __main__:start:259 | ⚠️ WARNING: High disk usage 92.0% - 35.6GB free
+2025-07-29 15:04:11 | INFO     | __main__:start:260 | 💡 Consider running: python cleanup_disk.py
+2025-07-29 15:04:11 | INFO     | __main__:start_monitoring:104 | 🔍 System health monitoring started
+2025-07-29 15:04:12 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:04:43 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:04:58 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/sessions
+2025-07-29 15:04:58 | INFO     | law_agent.core.agent:create_session:53 | Created session 8bc89f87-149a-4738-9cb9-64dae230fa10 for user terminal_user
+2025-07-29 15:04:58 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.010s Path: /api/api/v1/sessions
+2025-07-29 15:05:00 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 15:05:00 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 8bc89f87-149a-4738-9cb9-64dae230fa10, domain: LegalDomain.FAMILY_LAW
+2025-07-29 15:05:00 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.041s Path: /api/api/v1/query
+2025-07-29 15:05:02 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 15:05:02 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('6d8156b2-ceee-4de1-86d7-1ea95adf44e5', 'terminal_user', '', '2025-07-29 09:35:00.178229', 'query', 'I need help with divorce proceedings', 'family_law', 0.5278236865997314, "This might be a family law matter. Guide through divorce process including asset division and custody arrangements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 15:05:02 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 6d8156b2-ceee-4de1-86d7-1ea95adf44e5
+2025-07-29 15:05:02 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 15:05:04 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 15:05:04 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 8bc89f87-149a-4738-9cb9-64dae230fa10, domain: LegalDomain.CRIMINAL_LAW
+2025-07-29 15:05:04 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.035s Path: /api/api/v1/query
+2025-07-29 15:05:06 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 15:05:06 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('163c80e1-fbd7-4221-96f9-ae9deaa8f0a8', 'terminal_user', '', '2025-07-29 09:35:04.318428', 'query', 'I was arrested for DUI, what are my rights?', 'criminal_law', 0.4402950406074524, "This might be a criminal law matter. Navigate criminal charges from arrest through trial or plea. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 15:05:06 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 163c80e1-fbd7-4221-96f9-ae9deaa8f0a8
+2025-07-29 15:05:06 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 15:05:08 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 15:05:08 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 8bc89f87-149a-4738-9cb9-64dae230fa10, domain: LegalDomain.UNKNOWN
+2025-07-29 15:05:08 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.034s Path: /api/api/v1/query
+2025-07-29 15:05:10 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 15:05:10 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('bcf4c8b8-6b48-4e73-86bc-d34d16510588', 'terminal_user', '', '2025-07-29 09:35:08.472612', 'query', 'How do I start a business?', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 15:05:10 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction bcf4c8b8-6b48-4e73-86bc-d34d16510588
+2025-07-29 15:05:10 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 15:05:12 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 15:05:12 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 8bc89f87-149a-4738-9cb9-64dae230fa10, domain: LegalDomain.PROPERTY_LAW
+2025-07-29 15:05:12 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.022s Path: /api/api/v1/query
+2025-07-29 15:05:14 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 15:05:14 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('08a9c968-a2ac-448f-8e9e-9113e74d0cf7', 'terminal_user', '', '2025-07-29 09:35:12.628299', 'query', 'My landlord is trying to evict me', 'property_law', 0.45597022771835327, "This might be a property law matter. Navigate the home buying process and legal requirements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 15:05:14 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 08a9c968-a2ac-448f-8e9e-9113e74d0cf7
+2025-07-29 15:05:14 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.006s Path: /api/api/v1/feedback
+2025-07-29 15:05:14 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:05:16 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 15:05:16 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 8bc89f87-149a-4738-9cb9-64dae230fa10, domain: LegalDomain.UNKNOWN
+2025-07-29 15:05:16 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.034s Path: /api/api/v1/query
+2025-07-29 15:05:18 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 15:05:18 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('47f855bc-7773-4355-84f8-899b3b088978', 'terminal_user', '', '2025-07-29 09:35:16.772791', 'query', 'I was fired unfairly from my job', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 15:05:18 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 47f855bc-7773-4355-84f8-899b3b088978
+2025-07-29 15:05:18 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.006s Path: /api/api/v1/feedback
+2025-07-29 15:05:20 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/api/api/v1/sessions/8bc89f87-149a-4738-9cb9-64dae230fa10/summary
+2025-07-29 15:05:20 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /api/api/v1/sessions/8bc89f87-149a-4738-9cb9-64dae230fa10/summary
+2025-07-29 15:05:22 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/glossary/search
+2025-07-29 15:05:22 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.013s Path: /api/api/v1/glossary/search
+2025-07-29 15:05:45 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:06:16 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:06:47 | INFO     | law_agent.core.agent:create_session:53 | Created session 7c1a3c30-c385-464d-9c6d-ee2c48e06e89 for user Raj Prajapati
+2025-07-29 15:06:47 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:06:55 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 15:06:55 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 7c1a3c30-c385-464d-9c6d-ee2c48e06e89, domain: LegalDomain.UNKNOWN
+2025-07-29 15:06:55 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.032s Path: /api/api/v1/query
+2025-07-29 15:07:09 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 15:07:09 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 7c1a3c30-c385-464d-9c6d-ee2c48e06e89, domain: LegalDomain.UNKNOWN
+2025-07-29 15:07:09 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.033s Path: /api/api/v1/query
+2025-07-29 15:07:18 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:07:49 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:08:17 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 15:08:17 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 15:08:17 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 15:08:20 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:08:51 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:09:22 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:09:53 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:10:24 | WARNING  | __main__:_monitor_loop:132 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:11:49 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 15:11:49 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 15:11:49 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 15:11:49 | WARNING  | run_law_agent_robust:start:273 | ⚠️ WARNING: High disk usage 92.0% - 35.6GB free
+2025-07-29 15:11:49 | INFO     | run_law_agent_robust:start:274 | 💡 Consider running: python cleanup_disk.py
+2025-07-29 15:11:49 | INFO     | run_law_agent_robust:start_monitoring:118 | 🔍 System health monitoring started
+2025-07-29 15:11:50 | WARNING  | run_law_agent_robust:_monitor_loop:146 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:12:21 | WARNING  | run_law_agent_robust:_monitor_loop:146 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:12:52 | WARNING  | run_law_agent_robust:_monitor_loop:146 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:13:23 | WARNING  | run_law_agent_robust:_monitor_loop:146 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:13:54 | WARNING  | run_law_agent_robust:_monitor_loop:146 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:14:25 | WARNING  | run_law_agent_robust:_monitor_loop:146 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:14:56 | WARNING  | run_law_agent_robust:_monitor_loop:146 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:15:27 | WARNING  | run_law_agent_robust:_monitor_loop:146 | ⚠️ High disk usage: 92.0% - Consider running cleanup_disk.py
+2025-07-29 15:24:22 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 15:24:22 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 15:24:22 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 15:24:24 | WARNING  | __main__:start:273 | ⚠️ WARNING: High disk usage 92.2% - 34.7GB free
+2025-07-29 15:24:24 | INFO     | __main__:start:274 | 💡 Consider running: python cleanup_disk.py
+2025-07-29 15:24:24 | INFO     | __main__:start_monitoring:118 | 🔍 System health monitoring started
+2025-07-29 15:24:25 | WARNING  | __main__:_monitor_loop:146 | ⚠️ High disk usage: 92.2% - Consider running cleanup_disk.py
+2025-07-29 15:24:56 | WARNING  | __main__:_monitor_loop:146 | ⚠️ High disk usage: 92.2% - Consider running cleanup_disk.py
+2025-07-29 15:25:27 | WARNING  | __main__:_monitor_loop:146 | ⚠️ High disk usage: 92.2% - Consider running cleanup_disk.py
+2025-07-29 15:25:34 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/sessions
+2025-07-29 15:25:34 | INFO     | law_agent.core.agent:create_session:53 | Created session d963360c-082c-4974-81e2-3fb9cf41c955 for user terminal_user
+2025-07-29 15:25:34 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/sessions
+2025-07-29 15:25:36 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 15:25:36 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session d963360c-082c-4974-81e2-3fb9cf41c955, domain: LegalDomain.FAMILY_LAW
+2025-07-29 15:25:36 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.042s Path: /api/api/v1/query
+2025-07-29 15:25:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 15:25:38 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('30238bf6-26cb-465e-9aa5-305ed48627b2', 'terminal_user', '', '2025-07-29 09:55:36.706170', 'query', 'I need help with divorce proceedings', 'family_law', 0.5278237233559291, "This might be a family law matter. Guide through divorce process including asset division and custody arrangements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 15:25:38 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 30238bf6-26cb-465e-9aa5-305ed48627b2
+2025-07-29 15:25:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /api/api/v1/feedback
+2025-07-29 15:25:40 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 15:25:40 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session d963360c-082c-4974-81e2-3fb9cf41c955, domain: LegalDomain.CRIMINAL_LAW
+2025-07-29 15:25:40 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.035s Path: /api/api/v1/query
+2025-07-29 15:25:42 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 15:25:42 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('4e53c7b1-98eb-4261-a4bf-86e1cc293027', 'terminal_user', '', '2025-07-29 09:55:40.848314', 'query', 'I was arrested for DUI, what are my rights?', 'criminal_law', 0.44029500633478164, "This might be a criminal law matter. Navigate criminal charges from arrest through trial or plea. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 15:25:42 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 4e53c7b1-98eb-4261-a4bf-86e1cc293027
+2025-07-29 15:25:42 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.007s Path: /api/api/v1/feedback
+2025-07-29 15:25:44 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 15:25:44 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session d963360c-082c-4974-81e2-3fb9cf41c955, domain: LegalDomain.UNKNOWN
+2025-07-29 15:25:44 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.030s Path: /api/api/v1/query
+2025-07-29 15:25:47 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 15:25:47 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('6e6f2d24-b2a2-4724-bf53-7a7d740b01fe', 'terminal_user', '', '2025-07-29 09:55:44.961646', 'query', 'How do I start a business?', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 15:25:47 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 6e6f2d24-b2a2-4724-bf53-7a7d740b01fe
+2025-07-29 15:25:47 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.007s Path: /api/api/v1/feedback
+2025-07-29 15:25:49 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 15:25:49 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session d963360c-082c-4974-81e2-3fb9cf41c955, domain: LegalDomain.PROPERTY_LAW
+2025-07-29 15:25:49 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.031s Path: /api/api/v1/query
+2025-07-29 15:25:51 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 15:25:51 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('aecf50db-5ba5-4e09-af67-d8c880a8be22', 'terminal_user', '', '2025-07-29 09:55:49.116780', 'query', 'My landlord is trying to evict me', 'property_law', 0.4559702098369598, "This might be a property law matter. Navigate the home buying process and legal requirements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 15:25:51 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction aecf50db-5ba5-4e09-af67-d8c880a8be22
+2025-07-29 15:25:51 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.007s Path: /api/api/v1/feedback
+2025-07-29 15:25:53 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 15:25:53 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session d963360c-082c-4974-81e2-3fb9cf41c955, domain: LegalDomain.UNKNOWN
+2025-07-29 15:25:53 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.031s Path: /api/api/v1/query
+2025-07-29 15:25:55 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 15:25:55 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('cf312502-487e-44d4-aea0-5213d1b135f3', 'terminal_user', '', '2025-07-29 09:55:53.219282', 'query', 'I was fired unfairly from my job', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 15:25:55 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction cf312502-487e-44d4-aea0-5213d1b135f3
+2025-07-29 15:25:55 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.007s Path: /api/api/v1/feedback
+2025-07-29 15:25:57 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/api/api/v1/sessions/d963360c-082c-4974-81e2-3fb9cf41c955/summary
+2025-07-29 15:25:57 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/sessions/d963360c-082c-4974-81e2-3fb9cf41c955/summary
+2025-07-29 15:25:58 | WARNING  | __main__:_monitor_loop:146 | ⚠️ High disk usage: 92.2% - Consider running cleanup_disk.py
+2025-07-29 15:25:59 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/glossary/search
+2025-07-29 15:25:59 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.013s Path: /api/api/v1/glossary/search
+2025-07-29 15:26:29 | WARNING  | __main__:_monitor_loop:146 | ⚠️ High disk usage: 92.2% - Consider running cleanup_disk.py
+2025-07-29 15:27:00 | WARNING  | __main__:_monitor_loop:146 | ⚠️ High disk usage: 92.2% - Consider running cleanup_disk.py
+2025-07-29 15:27:31 | WARNING  | __main__:_monitor_loop:146 | ⚠️ High disk usage: 92.2% - Consider running cleanup_disk.py
+2025-07-29 15:27:39 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 15:27:39 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 15:27:39 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 15:28:02 | WARNING  | __main__:_monitor_loop:146 | ⚠️ High disk usage: 92.2% - Consider running cleanup_disk.py
+2025-07-29 15:28:33 | WARNING  | __main__:_monitor_loop:146 | ⚠️ High disk usage: 92.2% - Consider running cleanup_disk.py
+2025-07-29 16:00:51 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:00:51 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:00:51 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:01:48 | INFO     | law_agent.core.agent:create_session:53 | Created session d5b934c8-ce75-4884-8c5d-0cfeda1e9650 for user Raj Prajapati
+2025-07-29 16:07:02 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:07:02 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:07:02 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:07:04 | WARNING  | __main__:start:293 | ⚠️ WARNING: High disk usage 92.4% - 33.5GB free
+2025-07-29 16:07:04 | INFO     | __main__:start:294 | 💡 Consider running: python cleanup_disk.py
+2025-07-29 16:07:04 | INFO     | __main__:start_monitoring:138 | 🔍 System health monitoring started
+2025-07-29 16:07:04 | INFO     | __main__:start:323 | 🚀 Starting server on 0.0.0.0:8000
+2025-07-29 16:07:05 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:07:36 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:08:07 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:08:38 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:08:59 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/sessions
+2025-07-29 16:08:59 | INFO     | law_agent.core.agent:create_session:53 | Created session 5da91e71-bc88-4d0e-b8f2-8cb5a636289e for user terminal_user
+2025-07-29 16:08:59 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.004s Path: /api/api/v1/sessions
+2025-07-29 16:09:02 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:09:02 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 5da91e71-bc88-4d0e-b8f2-8cb5a636289e, domain: LegalDomain.FAMILY_LAW
+2025-07-29 16:09:02 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.037s Path: /api/api/v1/query
+2025-07-29 16:09:04 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:09:04 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('1fb591e2-d17e-4e2d-9edf-dbb275f048b0', 'terminal_user', '', '2025-07-29 10:39:02.001642', 'query', 'I need help with divorce proceedings', 'family_law', 0.5278237233559291, "This might be a family law matter. Guide through divorce process including asset division and custody arrangements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:09:04 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 1fb591e2-d17e-4e2d-9edf-dbb275f048b0
+2025-07-29 16:09:04 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.008s Path: /api/api/v1/feedback
+2025-07-29 16:09:06 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:09:06 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 5da91e71-bc88-4d0e-b8f2-8cb5a636289e, domain: LegalDomain.CRIMINAL_LAW
+2025-07-29 16:09:06 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.030s Path: /api/api/v1/query
+2025-07-29 16:09:08 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:09:08 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('419e7e88-b90f-45e1-9665-2438805cda96', 'terminal_user', '', '2025-07-29 10:39:06.170417', 'query', 'I was arrested for DUI, what are my rights?', 'criminal_law', 0.44029500633478164, "This might be a criminal law matter. Navigate criminal charges from arrest through trial or plea. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:09:08 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 419e7e88-b90f-45e1-9665-2438805cda96
+2025-07-29 16:09:08 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:09:09 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:09:10 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:09:10 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 5da91e71-bc88-4d0e-b8f2-8cb5a636289e, domain: LegalDomain.UNKNOWN
+2025-07-29 16:09:10 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.033s Path: /api/api/v1/query
+2025-07-29 16:09:12 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:09:12 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('6f86fb36-2626-42c5-8cd4-3cdfda1841e4', 'terminal_user', '', '2025-07-29 10:39:10.281862', 'query', 'How do I start a business?', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:09:12 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 6f86fb36-2626-42c5-8cd4-3cdfda1841e4
+2025-07-29 16:09:12 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.006s Path: /api/api/v1/feedback
+2025-07-29 16:09:14 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:09:14 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 5da91e71-bc88-4d0e-b8f2-8cb5a636289e, domain: LegalDomain.PROPERTY_LAW
+2025-07-29 16:09:14 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.022s Path: /api/api/v1/query
+2025-07-29 16:09:16 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:09:16 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('981cbca4-0d19-4399-9eb9-997b6eec84bc', 'terminal_user', '', '2025-07-29 10:39:14.400074', 'query', 'My landlord is trying to evict me', 'property_law', 0.4559702098369598, "This might be a property law matter. Navigate the home buying process and legal requirements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:09:16 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 981cbca4-0d19-4399-9eb9-997b6eec84bc
+2025-07-29 16:09:16 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.006s Path: /api/api/v1/feedback
+2025-07-29 16:09:18 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:09:18 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 5da91e71-bc88-4d0e-b8f2-8cb5a636289e, domain: LegalDomain.UNKNOWN
+2025-07-29 16:09:18 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.033s Path: /api/api/v1/query
+2025-07-29 16:09:20 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:09:20 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('21089022-14a5-40ad-b2c2-112805477319', 'terminal_user', '', '2025-07-29 10:39:18.545036', 'query', 'I was fired unfairly from my job', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:09:20 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 21089022-14a5-40ad-b2c2-112805477319
+2025-07-29 16:09:20 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:09:22 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/api/api/v1/sessions/5da91e71-bc88-4d0e-b8f2-8cb5a636289e/summary
+2025-07-29 16:09:22 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /api/api/v1/sessions/5da91e71-bc88-4d0e-b8f2-8cb5a636289e/summary
+2025-07-29 16:09:24 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/glossary/search
+2025-07-29 16:09:24 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/glossary/search
+2025-07-29 16:09:40 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:10:11 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:10:42 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:11:13 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:11:44 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:12:15 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:12:46 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:13:17 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:13:48 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:14:19 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:14:30 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:14:30 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:14:30 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:14:50 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:17:04 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:17:04 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:17:04 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:17:06 | WARNING  | __main__:start:293 | ⚠️ WARNING: High disk usage 92.4% - 33.5GB free
+2025-07-29 16:17:06 | INFO     | __main__:start:294 | 💡 Consider running: python cleanup_disk.py
+2025-07-29 16:17:06 | INFO     | __main__:start_monitoring:138 | 🔍 System health monitoring started
+2025-07-29 16:17:06 | INFO     | __main__:start:323 | 🚀 Starting server on 0.0.0.0:8000
+2025-07-29 16:17:07 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:17:38 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:18:08 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/sessions
+2025-07-29 16:18:08 | INFO     | law_agent.core.agent:create_session:53 | Created session be569eb3-226c-42bf-be04-7f83333c37e3 for user terminal_user
+2025-07-29 16:18:08 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.004s Path: /api/api/v1/sessions
+2025-07-29 16:18:09 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:18:10 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:18:10 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session be569eb3-226c-42bf-be04-7f83333c37e3, domain: LegalDomain.FAMILY_LAW
+2025-07-29 16:18:10 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.038s Path: /api/api/v1/query
+2025-07-29 16:18:12 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:18:12 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('923d5355-8cb4-44c7-988d-f65ce3dad271', 'terminal_user', '', '2025-07-29 10:48:10.803548', 'query', 'I need help with divorce proceedings', 'family_law', 0.5278237233559291, "This might be a family law matter. Guide through divorce process including asset division and custody arrangements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:18:12 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 923d5355-8cb4-44c7-988d-f65ce3dad271
+2025-07-29 16:18:12 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.008s Path: /api/api/v1/feedback
+2025-07-29 16:18:14 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:18:14 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session be569eb3-226c-42bf-be04-7f83333c37e3, domain: LegalDomain.CRIMINAL_LAW
+2025-07-29 16:18:14 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.021s Path: /api/api/v1/query
+2025-07-29 16:18:17 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:18:17 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('c23cb0f0-aba6-44e2-b7bb-5d2a837c21b2', 'terminal_user', '', '2025-07-29 10:48:14.939008', 'query', 'I was arrested for DUI, what are my rights?', 'criminal_law', 0.44029500633478164, "This might be a criminal law matter. Navigate criminal charges from arrest through trial or plea. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:18:17 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction c23cb0f0-aba6-44e2-b7bb-5d2a837c21b2
+2025-07-29 16:18:17 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.008s Path: /api/api/v1/feedback
+2025-07-29 16:18:19 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:18:19 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session be569eb3-226c-42bf-be04-7f83333c37e3, domain: LegalDomain.UNKNOWN
+2025-07-29 16:18:19 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.021s Path: /api/api/v1/query
+2025-07-29 16:18:21 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:18:21 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('29ff03be-3c6d-4afe-b17c-700c2f877c8a', 'terminal_user', '', '2025-07-29 10:48:19.111601', 'query', 'How do I start a business?', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:18:21 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 29ff03be-3c6d-4afe-b17c-700c2f877c8a
+2025-07-29 16:18:21 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.007s Path: /api/api/v1/feedback
+2025-07-29 16:18:23 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:18:23 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session be569eb3-226c-42bf-be04-7f83333c37e3, domain: LegalDomain.PROPERTY_LAW
+2025-07-29 16:18:23 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.021s Path: /api/api/v1/query
+2025-07-29 16:18:25 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:18:25 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('e96c54e9-5a82-4dc2-b4f5-014c6070759e', 'terminal_user', '', '2025-07-29 10:48:23.240916', 'query', 'My landlord is trying to evict me', 'property_law', 0.4559702098369598, "This might be a property law matter. Navigate the home buying process and legal requirements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:18:25 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction e96c54e9-5a82-4dc2-b4f5-014c6070759e
+2025-07-29 16:18:25 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.007s Path: /api/api/v1/feedback
+2025-07-29 16:18:27 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:18:27 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session be569eb3-226c-42bf-be04-7f83333c37e3, domain: LegalDomain.UNKNOWN
+2025-07-29 16:18:27 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.024s Path: /api/api/v1/query
+2025-07-29 16:18:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:18:29 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('6a1df14a-01ad-4cf8-b869-a4834f30bc6f', 'terminal_user', '', '2025-07-29 10:48:27.355067', 'query', 'I was fired unfairly from my job', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:18:29 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 6a1df14a-01ad-4cf8-b869-a4834f30bc6f
+2025-07-29 16:18:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:18:31 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/api/api/v1/sessions/be569eb3-226c-42bf-be04-7f83333c37e3/summary
+2025-07-29 16:18:31 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /api/api/v1/sessions/be569eb3-226c-42bf-be04-7f83333c37e3/summary
+2025-07-29 16:18:33 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/glossary/search
+2025-07-29 16:18:33 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/glossary/search
+2025-07-29 16:18:40 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:19:11 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:19:42 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:20:13 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:20:43 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:20:43 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:20:43 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:20:44 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:21:15 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:21:46 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:22:17 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:22:48 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:23:19 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:23:50 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:24:11 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:24:11 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:24:11 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:24:21 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:24:52 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:26:21 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:26:21 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:26:21 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:26:21 | WARNING  | __main__:start:293 | ⚠️ WARNING: High disk usage 92.4% - 33.5GB free
+2025-07-29 16:26:21 | INFO     | __main__:start:294 | 💡 Consider running: python cleanup_disk.py
+2025-07-29 16:26:21 | INFO     | __main__:start_monitoring:138 | 🔍 System health monitoring started
+2025-07-29 16:26:21 | INFO     | __main__:start:323 | 🚀 Starting server on 0.0.0.0:8000
+2025-07-29 16:26:22 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:26:53 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:27:24 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:27:44 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/sessions
+2025-07-29 16:27:44 | INFO     | law_agent.core.agent:create_session:53 | Created session e686c834-3b00-4404-9d37-b76ab09cd258 for user terminal_user
+2025-07-29 16:27:44 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.004s Path: /api/api/v1/sessions
+2025-07-29 16:27:46 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:27:46 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session e686c834-3b00-4404-9d37-b76ab09cd258, domain: LegalDomain.FAMILY_LAW
+2025-07-29 16:27:46 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.040s Path: /api/api/v1/query
+2025-07-29 16:27:48 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:27:48 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('b1525998-abbc-43b4-a7c6-95471c313668', 'terminal_user', '', '2025-07-29 10:57:46.252000', 'query', 'I need help with divorce proceedings', 'family_law', 0.5278237233559291, "This might be a family law matter. Guide through divorce process including asset division and custody arrangements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:27:48 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction b1525998-abbc-43b4-a7c6-95471c313668
+2025-07-29 16:27:48 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.007s Path: /api/api/v1/feedback
+2025-07-29 16:27:50 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:27:50 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session e686c834-3b00-4404-9d37-b76ab09cd258, domain: LegalDomain.CRIMINAL_LAW
+2025-07-29 16:27:50 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.030s Path: /api/api/v1/query
+2025-07-29 16:27:52 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:27:52 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('070ef9be-e089-49df-b212-7ec901834533', 'terminal_user', '', '2025-07-29 10:57:50.382274', 'query', 'I was arrested for DUI, what are my rights?', 'criminal_law', 0.44029500633478164, "This might be a criminal law matter. Navigate criminal charges from arrest through trial or plea. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:27:52 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 070ef9be-e089-49df-b212-7ec901834533
+2025-07-29 16:27:52 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:27:54 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:27:54 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session e686c834-3b00-4404-9d37-b76ab09cd258, domain: LegalDomain.UNKNOWN
+2025-07-29 16:27:54 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.032s Path: /api/api/v1/query
+2025-07-29 16:27:55 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:27:56 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:27:56 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('ba11232c-d40d-466c-8a98-e902fc8c5463', 'terminal_user', '', '2025-07-29 10:57:54.523349', 'query', 'How do I start a business?', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:27:56 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction ba11232c-d40d-466c-8a98-e902fc8c5463
+2025-07-29 16:27:56 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:27:58 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:27:58 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session e686c834-3b00-4404-9d37-b76ab09cd258, domain: LegalDomain.PROPERTY_LAW
+2025-07-29 16:27:58 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.032s Path: /api/api/v1/query
+2025-07-29 16:28:00 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:28:00 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('1357a23f-f050-439b-a54d-593003d0b94d', 'terminal_user', '', '2025-07-29 10:57:58.648335', 'query', 'My landlord is trying to evict me', 'property_law', 0.4559702098369598, "This might be a property law matter. Navigate the home buying process and legal requirements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:28:00 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 1357a23f-f050-439b-a54d-593003d0b94d
+2025-07-29 16:28:00 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:28:02 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/query
+2025-07-29 16:28:02 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session e686c834-3b00-4404-9d37-b76ab09cd258, domain: LegalDomain.UNKNOWN
+2025-07-29 16:28:02 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.030s Path: /api/api/v1/query
+2025-07-29 16:28:04 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/feedback
+2025-07-29 16:28:04 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('6bfca468-bfe7-419d-bccb-7640ff797be7', 'terminal_user', '', '2025-07-29 10:58:02.783630', 'query', 'I was fired unfairly from my job', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:28:04 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 6bfca468-bfe7-419d-bccb-7640ff797be7
+2025-07-29 16:28:04 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:28:06 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/api/api/v1/sessions/e686c834-3b00-4404-9d37-b76ab09cd258/summary
+2025-07-29 16:28:06 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /api/api/v1/sessions/e686c834-3b00-4404-9d37-b76ab09cd258/summary
+2025-07-29 16:28:08 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/api/v1/glossary/search
+2025-07-29 16:28:08 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.016s Path: /api/api/v1/glossary/search
+2025-07-29 16:28:26 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:28:57 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:29:28 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:29:29 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:29:29 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:29:29 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:29:59 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:34:13 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:34:13 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:34:13 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:34:13 | WARNING  | __main__:start:293 | ⚠️ WARNING: High disk usage 92.4% - 33.5GB free
+2025-07-29 16:34:13 | INFO     | __main__:start:294 | 💡 Consider running: python cleanup_disk.py
+2025-07-29 16:34:13 | INFO     | __main__:start_monitoring:138 | 🔍 System health monitoring started
+2025-07-29 16:34:13 | INFO     | __main__:start:323 | 🚀 Starting server on 0.0.0.0:8001
+2025-07-29 16:34:14 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:34:45 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:35:16 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:35:47 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:35:58 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/sessions
+2025-07-29 16:35:58 | INFO     | law_agent.core.agent:create_session:53 | Created session 2ee7646c-24cf-4051-b749-ec74441a4466 for user terminal_user
+2025-07-29 16:35:58 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.004s Path: /api/api/v1/sessions
+2025-07-29 16:36:00 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/query
+2025-07-29 16:36:00 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 2ee7646c-24cf-4051-b749-ec74441a4466, domain: LegalDomain.FAMILY_LAW
+2025-07-29 16:36:00 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.042s Path: /api/api/v1/query
+2025-07-29 16:36:02 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/feedback
+2025-07-29 16:36:02 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('4699e0f4-58ab-44f6-88e6-661a400595b1', 'terminal_user', '', '2025-07-29 11:06:00.611000', 'query', 'I need help with divorce proceedings', 'family_law', 0.5278237233559291, "This might be a family law matter. Guide through divorce process including asset division and custody arrangements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:36:02 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 4699e0f4-58ab-44f6-88e6-661a400595b1
+2025-07-29 16:36:02 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:36:04 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/query
+2025-07-29 16:36:04 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 2ee7646c-24cf-4051-b749-ec74441a4466, domain: LegalDomain.CRIMINAL_LAW
+2025-07-29 16:36:04 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.033s Path: /api/api/v1/query
+2025-07-29 16:36:06 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/feedback
+2025-07-29 16:36:06 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('0e0acb9b-1a33-41b3-b2b1-bb8bf5a4e9cb', 'terminal_user', '', '2025-07-29 11:06:04.739132', 'query', 'I was arrested for DUI, what are my rights?', 'criminal_law', 0.44029500633478164, "This might be a criminal law matter. Navigate criminal charges from arrest through trial or plea. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:36:06 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 0e0acb9b-1a33-41b3-b2b1-bb8bf5a4e9cb
+2025-07-29 16:36:06 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:36:08 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/query
+2025-07-29 16:36:08 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 2ee7646c-24cf-4051-b749-ec74441a4466, domain: LegalDomain.UNKNOWN
+2025-07-29 16:36:08 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.030s Path: /api/api/v1/query
+2025-07-29 16:36:10 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/feedback
+2025-07-29 16:36:10 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('c97c7bfe-75ac-429a-bfa6-36eccf11a351', 'terminal_user', '', '2025-07-29 11:06:08.848676', 'query', 'How do I start a business?', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:36:10 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction c97c7bfe-75ac-429a-bfa6-36eccf11a351
+2025-07-29 16:36:10 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.007s Path: /api/api/v1/feedback
+2025-07-29 16:36:12 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/query
+2025-07-29 16:36:13 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 2ee7646c-24cf-4051-b749-ec74441a4466, domain: LegalDomain.PROPERTY_LAW
+2025-07-29 16:36:13 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.032s Path: /api/api/v1/query
+2025-07-29 16:36:15 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/feedback
+2025-07-29 16:36:15 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('ac0758fe-4a54-482c-9d22-97eecbbc88a6', 'terminal_user', '', '2025-07-29 11:06:12.994094', 'query', 'My landlord is trying to evict me', 'property_law', 0.4559702098369598, "This might be a property law matter. Navigate the home buying process and legal requirements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:36:15 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction ac0758fe-4a54-482c-9d22-97eecbbc88a6
+2025-07-29 16:36:15 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.006s Path: /api/api/v1/feedback
+2025-07-29 16:36:17 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/query
+2025-07-29 16:36:17 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 2ee7646c-24cf-4051-b749-ec74441a4466, domain: LegalDomain.UNKNOWN
+2025-07-29 16:36:17 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.032s Path: /api/api/v1/query
+2025-07-29 16:36:18 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:36:19 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/feedback
+2025-07-29 16:36:19 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('99620235-00db-4038-a7a6-261590e54855', 'terminal_user', '', '2025-07-29 11:06:17.119604', 'query', 'I was fired unfairly from my job', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:36:19 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 99620235-00db-4038-a7a6-261590e54855
+2025-07-29 16:36:19 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:36:21 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8001/api/api/v1/sessions/2ee7646c-24cf-4051-b749-ec74441a4466/summary
+2025-07-29 16:36:21 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.002s Path: /api/api/v1/sessions/2ee7646c-24cf-4051-b749-ec74441a4466/summary
+2025-07-29 16:36:23 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/glossary/search
+2025-07-29 16:36:23 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/glossary/search
+2025-07-29 16:36:49 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:37:20 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:37:24 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:37:24 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:37:24 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:37:51 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:38:22 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:38:53 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:39:24 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:39:55 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:40:26 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:40:57 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:41:13 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/sessions
+2025-07-29 16:41:13 | INFO     | law_agent.core.agent:create_session:53 | Created session dc8fbb6f-efe7-415f-91b9-28ff7730e2a8 for user terminal_user
+2025-07-29 16:41:13 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.002s Path: /api/api/v1/sessions
+2025-07-29 16:41:15 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/query
+2025-07-29 16:41:15 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session dc8fbb6f-efe7-415f-91b9-28ff7730e2a8, domain: LegalDomain.FAMILY_LAW
+2025-07-29 16:41:15 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.033s Path: /api/api/v1/query
+2025-07-29 16:41:17 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/feedback
+2025-07-29 16:41:17 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('129bca7d-617a-43e6-a35e-cf933987975e', 'terminal_user', '', '2025-07-29 11:11:15.118358', 'query', 'I need help with divorce proceedings', 'family_law', 0.5278237233559291, "This might be a family law matter. Guide through divorce process including asset division and custody arrangements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:41:17 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 129bca7d-617a-43e6-a35e-cf933987975e
+2025-07-29 16:41:17 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:41:19 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/query
+2025-07-29 16:41:19 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session dc8fbb6f-efe7-415f-91b9-28ff7730e2a8, domain: LegalDomain.CRIMINAL_LAW
+2025-07-29 16:41:19 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.031s Path: /api/api/v1/query
+2025-07-29 16:41:21 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/feedback
+2025-07-29 16:41:21 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('ff68dcc6-4a04-4f60-b623-c6806cf8a73a', 'terminal_user', '', '2025-07-29 11:11:19.271113', 'query', 'I was arrested for DUI, what are my rights?', 'criminal_law', 0.44029500633478164, "This might be a criminal law matter. Navigate criminal charges from arrest through trial or plea. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:41:21 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction ff68dcc6-4a04-4f60-b623-c6806cf8a73a
+2025-07-29 16:41:21 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.007s Path: /api/api/v1/feedback
+2025-07-29 16:41:23 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/query
+2025-07-29 16:41:23 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session dc8fbb6f-efe7-415f-91b9-28ff7730e2a8, domain: LegalDomain.UNKNOWN
+2025-07-29 16:41:23 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.021s Path: /api/api/v1/query
+2025-07-29 16:41:25 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/feedback
+2025-07-29 16:41:25 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('aa7c3309-8378-4a58-acfc-774a64ba51ff', 'terminal_user', '', '2025-07-29 11:11:23.418502', 'query', 'How do I start a business?', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:41:25 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction aa7c3309-8378-4a58-acfc-774a64ba51ff
+2025-07-29 16:41:25 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.007s Path: /api/api/v1/feedback
+2025-07-29 16:41:27 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/query
+2025-07-29 16:41:27 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session dc8fbb6f-efe7-415f-91b9-28ff7730e2a8, domain: LegalDomain.PROPERTY_LAW
+2025-07-29 16:41:27 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.022s Path: /api/api/v1/query
+2025-07-29 16:41:28 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:41:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/feedback
+2025-07-29 16:41:29 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('28ea50bf-39a5-4921-b1de-46fe442aea45', 'terminal_user', '', '2025-07-29 11:11:27.573360', 'query', 'My landlord is trying to evict me', 'property_law', 0.4559702098369598, "This might be a property law matter. Navigate the home buying process and legal requirements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:41:29 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 28ea50bf-39a5-4921-b1de-46fe442aea45
+2025-07-29 16:41:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:41:31 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/query
+2025-07-29 16:41:31 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session dc8fbb6f-efe7-415f-91b9-28ff7730e2a8, domain: LegalDomain.UNKNOWN
+2025-07-29 16:41:31 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.031s Path: /api/api/v1/query
+2025-07-29 16:41:33 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/feedback
+2025-07-29 16:41:33 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('0a6add88-b5da-4293-9a60-5648f3f52e27', 'terminal_user', '', '2025-07-29 11:11:31.717217', 'query', 'I was fired unfairly from my job', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:41:33 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 0a6add88-b5da-4293-9a60-5648f3f52e27
+2025-07-29 16:41:33 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/feedback
+2025-07-29 16:41:35 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8001/api/api/v1/sessions/dc8fbb6f-efe7-415f-91b9-28ff7730e2a8/summary
+2025-07-29 16:41:35 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/api/v1/sessions/dc8fbb6f-efe7-415f-91b9-28ff7730e2a8/summary
+2025-07-29 16:41:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8001/api/api/v1/glossary/search
+2025-07-29 16:41:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.012s Path: /api/api/v1/glossary/search
+2025-07-29 16:41:59 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:42:30 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:43:01 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:43:32 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:44:03 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:44:04 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8001/api/v1/system/info
+2025-07-29 16:44:04 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 404 Duration: 0.000s Path: /api/v1/system/info
+2025-07-29 16:44:06 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8001/api/v1/system/health
+2025-07-29 16:44:06 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 404 Duration: 0.001s Path: /api/v1/system/health
+2025-07-29 16:44:08 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8001/api/v1/analytics/domains
+2025-07-29 16:44:08 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 404 Duration: 0.001s Path: /api/v1/analytics/domains
+2025-07-29 16:44:34 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:45:05 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:45:46 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:45:46 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:45:46 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:45:48 | WARNING  | __main__:start:297 | ⚠️ WARNING: High disk usage 92.4% - 33.6GB free
+2025-07-29 16:45:48 | INFO     | __main__:start:298 | 💡 Consider running: python cleanup_disk.py
+2025-07-29 16:45:48 | INFO     | __main__:start_monitoring:138 | 🔍 System health monitoring started
+2025-07-29 16:45:48 | INFO     | __main__:start:327 | 🚀 Starting server on 0.0.0.0:8001
+2025-07-29 16:45:49 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:46:20 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:46:51 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:47:22 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:47:35 | INFO     | law_agent.core.agent:create_session:53 | Created session 568002bc-d9a8-4906-ab9b-08303383db60 for user terminal_user
+2025-07-29 16:47:37 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 568002bc-d9a8-4906-ab9b-08303383db60, domain: LegalDomain.FAMILY_LAW
+2025-07-29 16:47:39 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('d9504836-90e6-45c5-b13f-cca7a57400dd', 'terminal_user', '', '2025-07-29 11:17:37.683888', 'query', 'I need help with divorce proceedings', 'family_law', 0.5278237233559291, "This might be a family law matter. Guide through divorce process including asset division and custody arrangements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:47:39 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction d9504836-90e6-45c5-b13f-cca7a57400dd
+2025-07-29 16:47:41 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 568002bc-d9a8-4906-ab9b-08303383db60, domain: LegalDomain.CRIMINAL_LAW
+2025-07-29 16:47:43 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('424590c0-5dad-45eb-9fd4-a5908fd9fa11', 'terminal_user', '', '2025-07-29 11:17:41.881222', 'query', 'I was arrested for DUI, what are my rights?', 'criminal_law', 0.44029500633478164, "This might be a criminal law matter. Navigate criminal charges from arrest through trial or plea. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:47:43 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 424590c0-5dad-45eb-9fd4-a5908fd9fa11
+2025-07-29 16:47:45 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 568002bc-d9a8-4906-ab9b-08303383db60, domain: LegalDomain.UNKNOWN
+2025-07-29 16:47:48 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('258365ae-fc59-45b9-8b83-f94905d486f3', 'terminal_user', '', '2025-07-29 11:17:45.958343', 'query', 'How do I start a business?', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:47:48 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 258365ae-fc59-45b9-8b83-f94905d486f3
+2025-07-29 16:47:50 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 568002bc-d9a8-4906-ab9b-08303383db60, domain: LegalDomain.PROPERTY_LAW
+2025-07-29 16:47:52 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('0310ce64-e8d7-4dc7-8321-bd3695a26a48', 'terminal_user', '', '2025-07-29 11:17:50.135150', 'query', 'My landlord is trying to evict me', 'property_law', 0.4559702098369598, "This might be a property law matter. Navigate the home buying process and legal requirements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:47:52 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 0310ce64-e8d7-4dc7-8321-bd3695a26a48
+2025-07-29 16:47:53 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:47:54 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 568002bc-d9a8-4906-ab9b-08303383db60, domain: LegalDomain.UNKNOWN
+2025-07-29 16:47:56 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('f56afa53-4f07-49f0-bfd8-a1046cc6f712', 'terminal_user', '', '2025-07-29 11:17:54.299614', 'query', 'I was fired unfairly from my job', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:47:56 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction f56afa53-4f07-49f0-bfd8-a1046cc6f712
+2025-07-29 16:48:24 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:48:55 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:49:26 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:49:57 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:50:02 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:50:02 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:50:02 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:50:28 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:50:59 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:51:30 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:52:01 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:54:41 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:54:41 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:54:41 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:54:42 | WARNING  | __main__:start:297 | ⚠️ WARNING: High disk usage 92.4% - 33.6GB free
+2025-07-29 16:54:42 | INFO     | __main__:start:298 | 💡 Consider running: python cleanup_disk.py
+2025-07-29 16:54:42 | INFO     | __main__:start_monitoring:138 | 🔍 System health monitoring started
+2025-07-29 16:54:42 | INFO     | __main__:start:327 | 🚀 Starting server on 0.0.0.0:8000
+2025-07-29 16:54:43 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:55:14 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:55:45 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:55:53 | INFO     | law_agent.core.agent:create_session:53 | Created session 60896eb6-5daa-4b47-be7c-bc0c2257c52e for user terminal_user
+2025-07-29 16:55:55 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 60896eb6-5daa-4b47-be7c-bc0c2257c52e, domain: LegalDomain.FAMILY_LAW
+2025-07-29 16:55:57 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('04d95aae-bfc2-42e2-acfe-d3f1b2a6d6ce', 'terminal_user', '', '2025-07-29 11:25:55.266387', 'query', 'I need help with divorce proceedings', 'family_law', 0.5278237233559291, "This might be a family law matter. Guide through divorce process including asset division and custody arrangements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:55:57 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 04d95aae-bfc2-42e2-acfe-d3f1b2a6d6ce
+2025-07-29 16:55:59 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 60896eb6-5daa-4b47-be7c-bc0c2257c52e, domain: LegalDomain.CRIMINAL_LAW
+2025-07-29 16:56:01 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('289a5126-89d8-4bb0-9fe1-d566c629d5ec', 'terminal_user', '', '2025-07-29 11:25:59.416929', 'query', 'I was arrested for DUI, what are my rights?', 'criminal_law', 0.44029500633478164, "This might be a criminal law matter. Navigate criminal charges from arrest through trial or plea. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:56:01 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 289a5126-89d8-4bb0-9fe1-d566c629d5ec
+2025-07-29 16:56:03 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 60896eb6-5daa-4b47-be7c-bc0c2257c52e, domain: LegalDomain.UNKNOWN
+2025-07-29 16:56:05 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('24b732a8-a042-4b8a-b39b-e9e81444aac8', 'terminal_user', '', '2025-07-29 11:26:03.556056', 'query', 'How do I start a business?', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:56:05 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 24b732a8-a042-4b8a-b39b-e9e81444aac8
+2025-07-29 16:56:07 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 60896eb6-5daa-4b47-be7c-bc0c2257c52e, domain: LegalDomain.PROPERTY_LAW
+2025-07-29 16:56:09 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('761a7e1b-e8c8-4481-ab51-7d8e1c21cb0d', 'terminal_user', '', '2025-07-29 11:26:07.690826', 'query', 'My landlord is trying to evict me', 'property_law', 0.4559702098369598, "This might be a property law matter. Navigate the home buying process and legal requirements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:56:09 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 761a7e1b-e8c8-4481-ab51-7d8e1c21cb0d
+2025-07-29 16:56:11 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session 60896eb6-5daa-4b47-be7c-bc0c2257c52e, domain: LegalDomain.UNKNOWN
+2025-07-29 16:56:13 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('21517f92-92bc-4563-ae7d-f9997d144b2a', 'terminal_user', '', '2025-07-29 11:26:11.854564', 'query', 'I was fired unfairly from my job', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 16:56:13 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 21517f92-92bc-4563-ae7d-f9997d144b2a
+2025-07-29 16:56:16 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:56:47 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:57:18 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:57:49 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:59:02 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 16:59:02 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 16:59:02 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 16:59:02 | WARNING  | __main__:start:294 | ⚠️ WARNING: High disk usage 92.4% - 33.6GB free
+2025-07-29 16:59:02 | INFO     | __main__:start:295 | 💡 Consider running: python cleanup_disk.py
+2025-07-29 16:59:02 | INFO     | __main__:start_monitoring:138 | 🔍 System health monitoring started
+2025-07-29 16:59:02 | INFO     | __main__:start:324 | 🚀 Starting server on 0.0.0.0:8000
+2025-07-29 16:59:03 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 16:59:34 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 17:00:05 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 17:00:15 | INFO     | law_agent.core.agent:create_session:53 | Created session a68c7486-a7da-4296-9fc5-e933a098a0fc for user terminal_user
+2025-07-29 17:00:17 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session a68c7486-a7da-4296-9fc5-e933a098a0fc, domain: LegalDomain.FAMILY_LAW
+2025-07-29 17:00:19 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('a01d3c10-f21e-4e93-83c6-eb8f9ba00616', 'terminal_user', '', '2025-07-29 11:30:17.635471', 'query', 'I need help with divorce proceedings', 'family_law', 0.5278237233559291, "This might be a family law matter. Guide through divorce process including asset division and custody arrangements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 17:00:19 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction a01d3c10-f21e-4e93-83c6-eb8f9ba00616
+2025-07-29 17:00:21 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session a68c7486-a7da-4296-9fc5-e933a098a0fc, domain: LegalDomain.CRIMINAL_LAW
+2025-07-29 17:00:23 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('abffc7d8-b0be-46d8-9a4a-992223521386', 'terminal_user', '', '2025-07-29 11:30:21.767947', 'query', 'I was arrested for DUI, what are my rights?', 'criminal_law', 0.44029500633478164, "This might be a criminal law matter. Navigate criminal charges from arrest through trial or plea. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 17:00:23 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction abffc7d8-b0be-46d8-9a4a-992223521386
+2025-07-29 17:00:25 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session a68c7486-a7da-4296-9fc5-e933a098a0fc, domain: LegalDomain.UNKNOWN
+2025-07-29 17:00:27 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('4a0a798c-5fea-4e9c-87b6-30709bd7f83c', 'terminal_user', '', '2025-07-29 11:30:25.904371', 'query', 'How do I start a business?', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 17:00:27 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 4a0a798c-5fea-4e9c-87b6-30709bd7f83c
+2025-07-29 17:00:30 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session a68c7486-a7da-4296-9fc5-e933a098a0fc, domain: LegalDomain.PROPERTY_LAW
+2025-07-29 17:00:32 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('9fcf1ab2-5a49-4850-80d9-9332b6fd9cdc', 'terminal_user', '', '2025-07-29 11:30:30.027888', 'query', 'My landlord is trying to evict me', 'property_law', 0.4559702098369598, "This might be a property law matter. Navigate the home buying process and legal requirements. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 17:00:32 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 9fcf1ab2-5a49-4850-80d9-9332b6fd9cdc
+2025-07-29 17:00:34 | INFO     | law_agent.core.agent:process_query:126 | Processed query for session a68c7486-a7da-4296-9fc5-e933a098a0fc, domain: LegalDomain.UNKNOWN
+2025-07-29 17:00:36 | ERROR    | law_agent.core.memory:store_interaction:354 | Failed to store interaction: (sqlite3.IntegrityError) UNIQUE constraint failed: interactions.interaction_id
+[SQL: INSERT INTO interactions (interaction_id, user_id, session_id, timestamp, interaction_type, "query", predicted_domain, confidence_score, response, feedback, time_spent, interaction_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('4abe7479-9c6f-4ee3-837e-5ed78f2ffbed', 'terminal_user', '', '2025-07-29 11:30:34.168387', 'query', 'I was fired unfairly from my job', 'unknown', 0.5, "This might be a unknown matter. General information and next steps for unknown matters. Here's what you need to know in simple terms: ", 'upvote', 30.0, '{}')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-29 17:00:36 | INFO     | law_agent.core.agent:submit_feedback:196 | Received feedback FeedbackType.UPVOTE for interaction 4abe7479-9c6f-4ee3-837e-5ed78f2ffbed
+2025-07-29 17:00:36 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 17:01:07 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 17:01:38 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 17:02:08 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 17:02:08 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 17:02:08 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 17:02:09 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 17:02:40 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 17:03:11 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 17:03:42 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 17:04:13 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 17:04:44 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 17:05:15 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-07-29 17:05:23 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-07-29 17:05:23 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-07-29 17:05:23 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-07-29 17:05:46 | WARNING  | __main__:_monitor_loop:166 | ⚠️ High disk usage: 92.4% - Consider running cleanup_disk.py
+2025-08-01 10:06:58 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 10:06:58 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 10:06:58 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
