@@ -1,0 +1,60 @@
+config:
+  target: 'http://localhost:8000'
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: "Warm up"
+    - duration: 120
+      arrivalRate: 10
+      name: "Ramp up load"
+    - duration: 300
+      arrivalRate: 15
+      name: "Sustained load"
+  processor: "./load-test-functions.js"
+
+scenarios:
+  - name: "Health Check"
+    weight: 20
+    flow:
+      - get:
+          url: "/health"
+          expect:
+            - statusCode: 200
+
+  - name: "API Info"
+    weight: 15
+    flow:
+      - get:
+          url: "/api/v1/system/info"
+          expect:
+            - statusCode: 200
+
+  - name: "Create Session and Query"
+    weight: 40
+    flow:
+      - post:
+          url: "/api/v1/sessions"
+          json:
+            user_id: "load_test_user_{{ $randomString() }}"
+            user_type: "common_person"
+          capture:
+            - json: "$.session_id"
+              as: "sessionId"
+      - post:
+          url: "/api/v1/query"
+          json:
+            session_id: "{{ sessionId }}"
+            query: "What is a contract?"
+          expect:
+            - statusCode: 200
+
+  - name: "Glossary Search"
+    weight: 25
+    flow:
+      - post:
+          url: "/api/v1/glossary/search"
+          json:
+            query: "legal terms"
+            max_terms: 5
+          expect:
+            - statusCode: 200
