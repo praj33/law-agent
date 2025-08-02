@@ -1,0 +1,15 @@
+
+    RESIDENTIAL LEASE AGREEMENT
+    
+    This lease agreement is made between John Smith (Landlord) and Jane Doe (Tenant).
+    
+    Property Address: 123 Main Street, Anytown, ST 12345
+    Monthly Rent: $1,200 due on the 1st of each month
+    Security Deposit: $1,200
+    Lease Term: 12 months beginning January 1, 2024
+    
+    The tenant agrees to pay rent monthly and maintain the property.
+    The landlord agrees to provide a habitable dwelling.
+    
+    Either party may terminate this lease with 30 days written notice.
+    

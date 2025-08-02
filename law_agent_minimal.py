@@ -10,6 +10,7 @@ import uuid
 import time
 from datetime import datetime
 from typing import Dict, List, Optional, Any
+from pathlib import Path
 
 # Suppress warnings
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
@@ -43,17 +44,119 @@ class FeedbackRequest(BaseModel):
 class GlossaryRequest(BaseModel):
     query: str
 
-# Redis storage setup
+# Redis storage setup with auto-connection
+def setup_redis():
+    """Setup Redis with automatic connection and fallback"""
+    global redis_client, USE_REDIS, sessions, interactions
+
+    try:
+        import redis
+
+        # Try to connect to Redis
+        redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True, socket_timeout=5)
+        redis_client.ping()
+        print("✅ Connected to real Redis")
+        USE_REDIS = True
+        return True
+
+    except redis.ConnectionError:
+        print("🔄 Redis not running, attempting to start...")
+
+        # Try to start Redis automatically
+        try:
+            import subprocess
+            import platform
+            import time
+
+            system = platform.system()
+            if system == "Windows":
+                # Try local Redis installations first
+                local_redis_paths = [
+                    "redis/redis-server.exe",
+                    "redis_server/redis-server.exe"
+                ]
+
+                redis_started = False
+                for redis_path in local_redis_paths:
+                    if Path(redis_path).exists():
+                        try:
+                            subprocess.Popen([redis_path], creationflags=subprocess.CREATE_NEW_CONSOLE)
+                            print(f"✅ Started Redis from {redis_path}")
+                            redis_started = True
+                            break
+                        except Exception as e:
+                            print(f"⚠️ Failed to start Redis from {redis_path}: {e}")
+
+                if not redis_started:
+                    # Try to start Redis service on Windows
+                    try:
+                        subprocess.run(["net", "start", "redis"], check=True, capture_output=True)
+                        print("✅ Started Redis service")
+                        redis_started = True
+                    except:
+                        # Try to start Redis server directly
+                        try:
+                            subprocess.Popen(["redis-server"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+                            print("✅ Started Redis server")
+                            redis_started = True
+                        except FileNotFoundError:
+                            print("❌ Redis not found. Please run: python auto_start_redis.py")
+                            raise
+
+                if not redis_started:
+                    raise Exception("Could not start Redis")
+            else:
+                # Try to start Redis on Linux/Mac
+                try:
+                    subprocess.run(["sudo", "systemctl", "start", "redis"], check=True)
+                    print("✅ Started Redis service")
+                except:
+                    subprocess.Popen(["redis-server"])
+                    print("✅ Started Redis server")
+
+            # Wait for Redis to start
+            for i in range(10):
+                try:
+                    time.sleep(1)
+                    redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True, socket_timeout=5)
+                    redis_client.ping()
+                    print("✅ Connected to Redis after auto-start")
+                    USE_REDIS = True
+                    return True
+                except:
+                    continue
+
+            raise Exception("Redis failed to start")
+
+        except Exception as start_error:
+            print(f"❌ Could not start Redis: {start_error}")
+            raise
+
+    except ImportError:
+        print("❌ Redis package not installed. Installing...")
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "redis"])
+            print("✅ Redis package installed, please restart the application")
+            sys.exit(0)
+        except Exception as install_error:
+            print(f"❌ Could not install Redis package: {install_error}")
+            raise
+
+    except Exception as e:
+        print(f"⚠️ Redis connection failed: {e}")
+        print("🔄 Using in-memory storage as fallback")
+        USE_REDIS = False
+        # Fallback to in-memory storage
+        sessions = {}
+        interactions = {}
+        return False
+
+# Initialize Redis connection
 try:
-    import redis
-    redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True)
-    redis_client.ping()
-    print("✅ Connected to real Redis")
-    USE_REDIS = True
+    setup_redis()
 except Exception as e:
-    print(f"⚠️ Redis not available, using in-memory storage: {e}")
+    print(f"⚠️ Redis setup failed, using in-memory storage: {e}")
     USE_REDIS = False
-    # Fallback to in-memory storage
     sessions = {}
     interactions = {}
 legal_domains = [

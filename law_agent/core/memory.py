@@ -98,22 +98,94 @@ class RedisMemoryStore(MemoryStore):
         self.redis_url = redis_url or settings.redis_url
         self.memory_store = {}
 
+        # Try multiple Redis connection methods
+        self.redis_client = self._setup_redis_connection()
+
+    def _setup_redis_connection(self):
+        """Setup Redis connection with multiple fallback options."""
+
+        # Method 1: Try standard Redis connection
         try:
-            self.redis_client = redis.from_url(self.redis_url, decode_responses=True)
-            # Test connection
-            self.redis_client.ping()
-            logger.info("✅ Redis connected successfully")
+            client = redis.from_url(self.redis_url, decode_responses=True, socket_connect_timeout=5)
+            client.ping()
+            logger.info("✅ Connected to real Redis successfully")
+            return client
         except Exception as e:
-            logger.warning(f"Redis not available, trying FakeRedis: {e}")
-            try:
-                if FAKEREDIS_AVAILABLE:
-                    self.redis_client = fakeredis.FakeRedis(decode_responses=True)
-                    logger.info("✅ FakeRedis initialized successfully")
-                else:
-                    raise ImportError("FakeRedis not available")
-            except Exception as fake_e:
-                logger.warning(f"FakeRedis also failed, using in-memory storage: {fake_e}")
-                self.redis_client = None
+            logger.warning(f"Standard Redis connection failed: {e}")
+
+        # Method 2: Try Redis with different connection parameters
+        try:
+            client = redis.Redis(
+                host='localhost',
+                port=6379,
+                decode_responses=True,
+                socket_connect_timeout=5,
+                socket_timeout=5,
+                retry_on_timeout=True,
+                health_check_interval=30
+            )
+            client.ping()
+            logger.info("✅ Connected to Redis with custom parameters")
+            return client
+        except Exception as e:
+            logger.warning(f"Custom Redis connection failed: {e}")
+
+        # Method 3: Try to start embedded Redis (if available)
+        embedded_client = self._try_embedded_redis()
+        if embedded_client:
+            return embedded_client
+
+        # Method 4: Fallback to FakeRedis (but log it clearly)
+        try:
+            if FAKEREDIS_AVAILABLE:
+                client = fakeredis.FakeRedis(decode_responses=True)
+                logger.warning("⚠️ Using FakeRedis as fallback - data will not persist between restarts")
+                logger.warning("💡 For production use, please install and start a real Redis server")
+                return client
+            else:
+                raise ImportError("FakeRedis not available")
+        except Exception as fake_e:
+            logger.error(f"FakeRedis also failed: {fake_e}")
+            logger.error("❌ All Redis options failed, using in-memory storage")
+            return None
+
+    def _try_embedded_redis(self):
+        """Try to start an embedded Redis server."""
+        try:
+            # Try to import and use redis-py-cluster's embedded server
+            import subprocess
+            import time
+            import os
+
+            # Check if we have a Redis executable
+            redis_exe = "redis/redis-server.exe"
+            if os.path.exists(redis_exe):
+                logger.info("🚀 Attempting to start embedded Redis server...")
+
+                # Start Redis in background
+                process = subprocess.Popen([
+                    redis_exe,
+                    "--port", "6379",
+                    "--bind", "127.0.0.1",
+                    "--save", "",
+                    "--appendonly", "no",
+                    "--daemonize", "no"
+                ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+                # Wait for Redis to start
+                time.sleep(3)
+
+                # Test connection
+                client = redis.Redis(host='localhost', port=6379, decode_responses=True)
+                client.ping()
+
+                logger.info("✅ Embedded Redis server started successfully")
+                return client
+
+        except Exception as e:
+            logger.debug(f"Embedded Redis startup failed: {e}")
+
+        return None
         
     async def store_state(self, state: AgentState) -> None:
         """Store agent state in Redis or memory."""

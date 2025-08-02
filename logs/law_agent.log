@@ -802,3 +802,377 @@
 2025-08-01 10:06:58 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
 2025-08-01 10:06:58 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
 2025-08-01 10:06:58 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 13:12:29 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 13:12:29 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 13:12:29 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 13:14:51 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 13:14:51 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 13:14:51 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 13:17:28 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 13:17:28 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 13:17:28 | INFO     | law_agent.api.main:create_app:81 | Law Agent API initialized successfully
+2025-08-01 13:17:52 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 13:17:52 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 13:17:52 | INFO     | law_agent.api.main:create_app:81 | Law Agent API initialized successfully
+2025-08-01 13:19:19 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:19:19 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:19:19 | INFO     | law_agent.api.middleware:dispatch:51 | Request: OPTIONS http://localhost:8000/api/v1/sessions
+2025-08-01 13:19:19 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:19:19 | INFO     | law_agent.api.middleware:dispatch:51 | Request: OPTIONS http://localhost:8000/api/v1/sessions
+2025-08-01 13:19:19 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/v1/sessions
+2025-08-01 13:19:19 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:19:19 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:19:19 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:19:19 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:19:19 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:19:19 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.000s Path: /api/v1/sessions
+2025-08-01 13:19:41 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:19:41 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:19:41 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:19:41 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:19:41 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:19:41 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:19:41 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 13:19:41 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:21:35 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:35 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:35 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:35 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:35 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:35 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 13:21:35 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:35 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:36 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:36 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:36 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:36 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.002s Path: /health
+2025-08-01 13:21:36 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:36 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:21:36 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:36 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:37 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.005s Path: /api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:38 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.002s Path: /health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.005s Path: /api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:21:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /health
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /health
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:11 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.002s Path: /health
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:29 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /health
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:22:39 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:25:18 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:25:18 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:25:18 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:25:18 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:25:18 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:25:18 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:25:18 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:25:18 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:25:47 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:25:47 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:25:47 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:25:47 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /health
+2025-08-01 13:25:47 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:25:47 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.004s Path: /api/v1/sessions
+2025-08-01 13:25:47 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:25:47 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:25:48 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:25:48 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:25:48 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:25:48 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:25:48 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:25:48 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:25:48 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:25:48 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /health
+2025-08-01 13:25:49 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:25:49 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:25:49 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:25:49 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:25:49 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:25:49 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.003s Path: /api/v1/sessions
+2025-08-01 13:25:49 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:25:49 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:26:33 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:26:33 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:26:33 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:26:33 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.000s Path: /api/v1/sessions
+2025-08-01 13:26:33 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:26:33 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.000s Path: /api/v1/sessions
+2025-08-01 13:26:33 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:26:33 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:27:31 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:27:31 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /health
+2025-08-01 13:27:31 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:27:31 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:27:31 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:27:31 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 13:27:31 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:27:31 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:33:26 | INFO     | law_agent.api.middleware:dispatch:51 | Request: OPTIONS http://localhost:8000/api/v1/sessions
+2025-08-01 13:33:26 | INFO     | law_agent.api.middleware:dispatch:51 | Request: OPTIONS http://localhost:8000/api/v1/sessions
+2025-08-01 13:33:26 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:33:26 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:33:26 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:33:26 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:33:26 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 13:33:26 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:44:55 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:44:55 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.002s Path: /health
+2025-08-01 13:44:55 | INFO     | law_agent.api.middleware:dispatch:51 | Request: OPTIONS http://localhost:8000/api/v1/sessions
+2025-08-01 13:44:55 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:44:55 | INFO     | law_agent.api.middleware:dispatch:51 | Request: OPTIONS http://localhost:8000/api/v1/sessions
+2025-08-01 13:44:55 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /api/v1/sessions
+2025-08-01 13:44:55 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:44:55 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:44:55 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:44:55 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 13:44:55 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:44:55 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.001s Path: /api/v1/sessions
+2025-08-01 13:45:36 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:45:36 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:45:36 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 13:45:36 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 13:45:36 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:45:36 | INFO     | law_agent.api.middleware:dispatch:51 | Request: POST http://localhost:8000/api/v1/sessions
+2025-08-01 13:45:36 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 13:45:36 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 422 Duration: 0.002s Path: /api/v1/sessions
+2025-08-01 14:18:37 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:18:37 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:18:37 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 14:18:59 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:18:59 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:18:59 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 14:34:58 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:34:58 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:34:58 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 14:35:20 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:35:20 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:35:20 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 14:35:45 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/docs
+2025-08-01 14:35:45 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.000s Path: /docs
+2025-08-01 14:35:45 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/openapi.json
+2025-08-01 14:35:45 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.009s Path: /openapi.json
+2025-08-01 14:35:55 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/chat
+2025-08-01 14:35:55 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 404 Duration: 0.000s Path: /chat
+2025-08-01 14:35:55 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/favicon.ico
+2025-08-01 14:35:55 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 404 Duration: 0.000s Path: /favicon.ico
+2025-08-01 14:36:03 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/dashboard
+2025-08-01 14:36:03 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 404 Duration: 0.001s Path: /dashboard
+2025-08-01 14:36:12 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/dashboard
+2025-08-01 14:36:12 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 404 Duration: 0.001s Path: /dashboard
+2025-08-01 14:36:20 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/chat
+2025-08-01 14:36:20 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 404 Duration: 0.002s Path: /chat
+2025-08-01 14:36:28 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/docs
+2025-08-01 14:36:28 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.002s Path: /docs
+2025-08-01 14:36:28 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/openapi.json
+2025-08-01 14:36:28 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /openapi.json
+2025-08-01 14:37:01 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/docs
+2025-08-01 14:37:01 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /docs
+2025-08-01 14:37:02 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/openapi.json
+2025-08-01 14:37:02 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.003s Path: /openapi.json
+2025-08-01 14:37:23 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/docs
+2025-08-01 14:37:23 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /docs
+2025-08-01 14:37:23 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/openapi.json
+2025-08-01 14:37:23 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /openapi.json
+2025-08-01 14:40:12 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:40:12 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:40:12 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 14:40:32 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:40:32 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:40:32 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 14:41:40 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/
+2025-08-01 14:41:40 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 404 Duration: 0.001s Path: /
+2025-08-01 14:41:45 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/chat
+2025-08-01 14:41:45 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 404 Duration: 0.001s Path: /chat
+2025-08-01 14:41:51 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/dashboard
+2025-08-01 14:41:51 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 404 Duration: 0.001s Path: /dashboard
+2025-08-01 14:41:58 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/docs
+2025-08-01 14:41:58 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /docs
+2025-08-01 14:41:58 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/openapi.json
+2025-08-01 14:41:58 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.008s Path: /openapi.json
+2025-08-01 14:42:28 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:42:28 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:42:28 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 14:42:46 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:42:46 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:42:47 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 14:45:50 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:45:50 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:45:50 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 14:46:09 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:46:09 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:46:09 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 14:54:02 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:54:02 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:54:02 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 14:59:09 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:59:09 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:59:10 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 14:59:28 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-01 14:59:28 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-01 14:59:28 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully
+2025-08-01 15:01:30 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 15:01:30 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/api/v1/system/info
+2025-08-01 15:01:30 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.003s Path: /health
+2025-08-01 15:01:30 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /api/v1/system/info
+2025-08-01 15:01:30 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/health
+2025-08-01 15:01:30 | INFO     | law_agent.api.middleware:dispatch:51 | Request: GET http://localhost:8000/api/v1/system/info
+2025-08-01 15:01:30 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /health
+2025-08-01 15:01:30 | INFO     | law_agent.api.middleware:dispatch:60 | Response: 200 Duration: 0.001s Path: /api/v1/system/info
+2025-08-02 13:57:23 | INFO     | law_agent.api.middleware:setup_logging:133 | Logging middleware configured
+2025-08-02 13:57:23 | INFO     | law_agent.api.middleware:setup_metrics:151 | Metrics middleware configured
+2025-08-02 13:57:23 | INFO     | law_agent.api.main:create_app:58 | Law Agent API initialized successfully

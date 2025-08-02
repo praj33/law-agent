@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Agent - AI Legal Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-button {
+            transition: all 0.3s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+        }
+        .nav-button.active {
+            transform: scale(1.05);
+        }
+        .message-bubble {
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .typing-indicator {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="flex items-center justify-center mb-4">
+                <span class="text-5xl mr-4">⚖️</span>
+                <h1 class="text-5xl font-bold text-white gradient-text">Law Agent</h1>
+            </div>
+            <p class="text-xl text-gray-300">AI-Powered Legal Assistant</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+            <button onclick="switchView('chat')" class="nav-button px-6 py-3 rounded-lg font-medium bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg active" id="nav-chat">
+                💬 Chat
+            </button>
+            <button onclick="switchView('court')" class="nav-button px-6 py-3 rounded-lg font-medium bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white" id="nav-court">
+                ⚖️ Court
+            </button>
+            <button onclick="switchView('map')" class="nav-button px-6 py-3 rounded-lg font-medium bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white" id="nav-map">
+                🗺️ Map
+            </button>
+            <button onclick="switchView('timeline')" class="nav-button px-6 py-3 rounded-lg font-medium bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white" id="nav-timeline">
+                📅 Timeline
+            </button>
+            <button onclick="switchView('glossary')" class="nav-button px-6 py-3 rounded-lg font-medium bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white" id="nav-glossary">
+                📚 Glossary
+            </button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="glass-card rounded-xl overflow-hidden">
+            <!-- Chat View -->
+            <div id="chat-view" class="h-96 flex flex-col">
+                <!-- Messages -->
+                <div id="messages" class="flex-1 p-6 overflow-y-auto space-y-4">
+                    <div class="message-bubble flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                            <span class="text-white text-sm">🤖</span>
+                        </div>
+                        <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-gray-700 text-gray-100">
+                            <p class="text-sm">Welcome to Law Agent! I'm your AI legal assistant. How can I help you today?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input -->
+                <div class="p-6 border-t border-white/10">
+                    <div class="flex space-x-4">
+                        <input 
+                            type="text" 
+                            id="message-input"
+                            placeholder="Ask a legal question..."
+                            class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none"
+                            onkeypress="handleKeyPress(event)"
+                        />
+                        <button 
+                            onclick="sendMessage()"
+                            class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg transition-all duration-200"
+                        >
+                            Send
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Views -->
+            <div id="other-views" class="h-96 flex items-center justify-center hidden">
+                <div class="text-center">
+                    <div id="view-icon" class="text-6xl mb-4">⚖️</div>
+                    <h2 id="view-title" class="text-2xl font-bold text-white mb-2">Court Module</h2>
+                    <p id="view-description" class="text-gray-300 mb-6">Interactive 3D court system visualization</p>
+                    <div class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg">
+                        Coming Soon
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 text-gray-400">
+            <p>Law Agent - Your AI Legal Assistant</p>
+        </div>
+    </div>
+
+    <script>
+        let currentView = 'chat';
+        let messageId = 1;
+
+        function switchView(view) {
+            currentView = view;
+            
+            // Update navigation
+            document.querySelectorAll('.nav-button').forEach(btn => {
+                btn.className = 'nav-button px-6 py-3 rounded-lg font-medium bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white';
+            });
+            
+            const activeBtn = document.getElementById(`nav-${view}`);
+            if (view === 'chat') {
+                activeBtn.className = 'nav-button px-6 py-3 rounded-lg font-medium bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg active';
+                document.getElementById('chat-view').classList.remove('hidden');
+                document.getElementById('other-views').classList.add('hidden');
+            } else {
+                activeBtn.className = 'nav-button px-6 py-3 rounded-lg font-medium bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg active';
+                document.getElementById('chat-view').classList.add('hidden');
+                document.getElementById('other-views').classList.remove('hidden');
+                
+                // Update other view content
+                const viewData = {
+                    court: { icon: '⚖️', title: 'Court Module', description: 'Interactive 3D court system visualization' },
+                    map: { icon: '🗺️', title: 'Map Module', description: 'Jurisdictional mapping and boundaries' },
+                    timeline: { icon: '📅', title: 'Timeline Module', description: 'Legal case timeline tracking' },
+                    glossary: { icon: '📚', title: 'Glossary Module', description: 'Comprehensive legal terminology' }
+                };
+                
+                const data = viewData[view];
+                document.getElementById('view-icon').textContent = data.icon;
+                document.getElementById('view-title').textContent = data.title;
+                document.getElementById('view-description').textContent = data.description;
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addMessage('user', message);
+            input.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            // Simulate AI response
+            setTimeout(() => {
+                hideTypingIndicator();
+                const aiResponse = `I understand you're asking about: "${message}". This is a legal matter that requires careful consideration. Let me help you understand the key aspects and potential next steps.`;
+                addMessage('ai', aiResponse);
+            }, 1500);
+        }
+
+        function addMessage(type, content) {
+            const messagesContainer = document.getElementById('messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message-bubble flex items-start space-x-3';
+            
+            if (type === 'user') {
+                messageDiv.className += ' justify-end';
+                messageDiv.innerHTML = `
+                    <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                        <p class="text-sm">${content}</p>
+                    </div>
+                    <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center">
+                        <span class="text-white text-sm">👤</span>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                        <span class="text-white text-sm">🤖</span>
+                    </div>
+                    <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-gray-700 text-gray-100">
+                        <p class="text-sm">${content}</p>
+                    </div>
+                `;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const messagesContainer = document.getElementById('messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typing-indicator';
+            typingDiv.className = 'message-bubble flex items-start space-x-3';
+            typingDiv.innerHTML = `
+                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                    <span class="text-white text-sm">🤖</span>
+                </div>
+                <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-gray-700 text-gray-100">
+                    <p class="text-sm typing-indicator">Thinking...</p>
+                </div>
+            `;
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+{
+  "version": 2,
+  "name": "law-agent-frontend",
+  "framework": "create-react-app",
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "installCommand": "npm install",
+  "devCommand": "npm start",
+  "env": {
+    "REACT_APP_API_URL": "@law_agent_api_url",
+    "REACT_APP_ANALYTICS_URL": "@law_agent_analytics_url", 
+    "REACT_APP_DOCUMENT_URL": "@law_agent_document_url",
+    "REACT_APP_SUPABASE_URL": "@supabase_url",
+    "REACT_APP_SUPABASE_ANON_KEY": "@supabase_anon_key",
+    "REACT_APP_ENVIRONMENT": "@environment",
+    "REACT_APP_ENABLE_ANALYTICS": "@enable_analytics",
+    "REACT_APP_ENABLE_DOCUMENT_UPLOAD": "@enable_document_upload",
+    "REACT_APP_ENABLE_3D_COURT": "@enable_3d_court"
+  },
+  "build": {
+    "env": {
+      "REACT_APP_API_URL": "@law_agent_api_url",
+      "REACT_APP_ANALYTICS_URL": "@law_agent_analytics_url",
+      "REACT_APP_DOCUMENT_URL": "@law_agent_document_url", 
+      "REACT_APP_SUPABASE_URL": "@supabase_url",
+      "REACT_APP_SUPABASE_ANON_KEY": "@supabase_anon_key",
+      "REACT_APP_ENVIRONMENT": "@environment",
+      "REACT_APP_ENABLE_ANALYTICS": "@enable_analytics",
+      "REACT_APP_ENABLE_DOCUMENT_UPLOAD": "@enable_document_upload",
+      "REACT_APP_ENABLE_3D_COURT": "@enable_3d_court"
+    }
+  },
+  "functions": {
+    "src/api/*.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options", 
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        }
+      ]
+    },
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/dashboard",
+      "destination": "/?view=analytics",
+      "permanent": false
+    },
+    {
+      "source": "/admin",
+      "destination": "/?view=analytics", 
+      "permanent": false
+    },
+    {
+      "source": "/docs",
+      "destination": "https://docs.law-agent.com",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ],
+  "regions": ["iad1", "sfo1", "lhr1"],
+  "github": {
+    "enabled": true,
+    "autoAlias": true,
+    "autoJobCancelation": true
+  }
+}

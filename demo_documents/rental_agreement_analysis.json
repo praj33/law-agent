@@ -1,0 +1,58 @@
+{
+  "classification": {
+    "document_type": "rental_agreement",
+    "confidence": 83.33,
+    "all_scores": {
+      "rental_agreement": {
+        "score": 40,
+        "matched_keywords": [
+          "rent",
+          "lease",
+          "tenant",
+          "landlord",
+          "property",
+          "monthly",
+          "deposit"
+        ]
+      },
+      "employment_contract": {
+        "score": 0,
+        "matched_keywords": []
+      },
+      "legal_notice": {
+        "score": 2,
+        "matched_keywords": [
+          "notice"
+        ]
+      },
+      "contract": {
+        "score": 6,
+        "matched_keywords": [
+          "agreement",
+          "party"
+        ]
+      }
+    }
+  },
+  "key_information": {
+    "dates": [],
+    "amounts": [
+      "$1,200",
+      "$1,200"
+    ],
+    "parties": [
+      "John Smith (Landlord)",
+      "Jane Doe (Tenant).",
+      "agrees to pay rent monthly and maintain the property.",
+      "agrees to provide a habitable dwelling."
+    ]
+  },
+  "complexity": {
+    "word_count": 75,
+    "sentence_count": 4,
+    "avg_words_per_sentence": 18.75,
+    "legal_term_density": 0.0,
+    "complexity_level": "Moderate"
+  },
+  "timestamp": "2025-08-02T13:23:41.705937"
+}

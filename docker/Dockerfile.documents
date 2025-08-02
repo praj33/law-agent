@@ -1,0 +1,52 @@
+# Law Agent Document Processing API Dockerfile
+FROM python:3.11-slim
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Set work directory
+WORKDIR /app
+
+# Install system dependencies including Tesseract OCR
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    software-properties-common \
+    git \
+    tesseract-ocr \
+    tesseract-ocr-eng \
+    poppler-utils \
+    libmagic1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+COPY requirements.txt .
+COPY requirements_document_processing.txt .
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir -r requirements_document_processing.txt
+
+# Copy application code
+COPY document_api.py .
+COPY document_processor.py .
+COPY analytics_collector.py .
+COPY analytics_database.py .
+
+# Create necessary directories
+RUN mkdir -p /app/uploads /app/processed /app/logs
+
+# Create non-root user
+RUN adduser --disabled-password --gecos '' appuser && \
+    chown -R appuser:appuser /app
+USER appuser
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8001/health || exit 1
+
+# Expose port
+EXPOSE 8001
+
+# Run the application
+CMD ["python", "-m", "uvicorn", "document_api:app", "--host", "0.0.0.0", "--port", "8001", "--workers", "2"]
