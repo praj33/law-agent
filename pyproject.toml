@@ -7,7 +7,7 @@ name = "law-agent"
 version = "1.0.0"
 description = "Robust, scalable law agent with reinforcement learning and dynamic interfaces"
 authors = [
-    {name = "Raj & Aditya", email = "team@lawagent.com"}
+    {name = "Raj Prajapati", email = "rajprajapati8286@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.9"
