@@ -1,5 +1,59 @@
 /* Enhanced animations for Law Agent App */
 
+/* Perfect typography for Law Agent heading */
+.law-agent-title {
+  font-family: 'Playfair Display', 'Inter', 'Segoe UI', 'Roboto', serif;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.law-agent-title span {
+  display: inline-block;
+  font-kerning: auto;
+  position: relative;
+}
+
+/* Enhanced gradient animation for title */
+.law-agent-title {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #e0f2fe 25%,
+    #bbdefb 50%,
+    #e1bee7 75%,
+    #f3e5f5 100%
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 3s ease-in-out infinite;
+}
+
+@keyframes gradient-flow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Smaller Law Agent title for welcome section */
+.law-agent-welcome {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;

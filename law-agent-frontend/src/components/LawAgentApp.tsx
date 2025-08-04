@@ -134,8 +134,9 @@ const LawAgentApp: React.FC = () => {
               <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-400 rounded-full" />
             </div>
           </div>
-          <h1 className="text-6xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent mb-4">
-            Law Agent
+          <h1 className="law-agent-title text-6xl mb-4 tracking-wide">
+            <span className="inline-block">Law</span>{' '}
+            <span className="inline-block">Agent</span>
           </h1>
           <div className="flex items-center justify-center space-x-3 mb-4">
             <Sparkles className="h-5 w-5 text-yellow-400 animate-pulse" />
@@ -447,8 +448,8 @@ const LawAgentApp: React.FC = () => {
           <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl">
             <div className="flex items-center justify-center space-x-3 mb-6">
               <Sparkles className="h-6 w-6 text-yellow-400 animate-pulse" />
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-                Welcome to Law Agent
+              <h3 className="law-agent-welcome text-2xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent tracking-wide">
+                Welcome to <span className="inline-block">Law</span>{' '}<span className="inline-block">Agent</span>
               </h3>
               <Crown className="h-6 w-6 text-yellow-400 animate-bounce" />
             </div>
