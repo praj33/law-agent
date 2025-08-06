@@ -1,0 +1,422 @@
+[
+  {
+    "text": "my landlord won't return my security deposit after I moved out",
+    "domain": "tenant_rights"
+  },
+  {
+    "text": "landlord is trying to evict me without proper notice",
+    "domain": "tenant_rights"
+  },
+  {
+    "text": "rent increase is too high and unreasonable",
+    "domain": "tenant_rights"
+  },
+  {
+    "text": "apartment has mold and landlord refuses to fix it",
+    "domain": "tenant_rights"
+  },
+  {
+    "text": "landlord entered my apartment without permission",
+    "domain": "tenant_rights"
+  },
+  {
+    "text": "housing conditions are unsafe and unhealthy",
+    "domain": "tenant_rights"
+  },
+  {
+    "text": "landlord discriminating against me due to my background",
+    "domain": "tenant_rights"
+  },
+  {
+    "text": "lease agreement has unfair terms and conditions",
+    "domain": "tenant_rights"
+  },
+  {
+    "text": "landlord not providing basic amenities like water electricity",
+    "domain": "tenant_rights"
+  },
+  {
+    "text": "forced eviction without court order",
+    "domain": "tenant_rights"
+  },
+  {
+    "text": "bought defective product and company refuses refund",
+    "domain": "consumer_complaint"
+  },
+  {
+    "text": "warranty claim denied for faulty electronics",
+    "domain": "consumer_complaint"
+  },
+  {
+    "text": "online shopping fraud and fake products received",
+    "domain": "consumer_complaint"
+  },
+  {
+    "text": "service provider charged extra fees without consent",
+    "domain": "consumer_complaint"
+  },
+  {
+    "text": "restaurant served contaminated food causing illness",
+    "domain": "consumer_complaint"
+  },
+  {
+    "text": "bank charged unauthorized fees on my account",
+    "domain": "consumer_complaint"
+  },
+  {
+    "text": "insurance company denying legitimate claim",
+    "domain": "consumer_complaint"
+  },
+  {
+    "text": "mobile service provider poor network quality",
+    "domain": "consumer_complaint"
+  },
+  {
+    "text": "airline cancelled flight without proper compensation",
+    "domain": "consumer_complaint"
+  },
+  {
+    "text": "e-commerce platform not delivering ordered items",
+    "domain": "consumer_complaint"
+  },
+  {
+    "text": "want to file for divorce from my spouse",
+    "domain": "family_law"
+  },
+  {
+    "text": "child custody battle with ex-husband",
+    "domain": "family_law"
+  },
+  {
+    "text": "domestic violence and need protection order",
+    "domain": "family_law"
+  },
+  {
+    "text": "alimony and child support payment issues",
+    "domain": "family_law"
+  },
+  {
+    "text": "adoption process and legal requirements",
+    "domain": "family_law"
+  },
+  {
+    "text": "prenuptial agreement before marriage",
+    "domain": "family_law"
+  },
+  {
+    "text": "property division during divorce proceedings",
+    "domain": "family_law"
+  },
+  {
+    "text": "grandparents visitation rights for grandchildren",
+    "domain": "family_law"
+  },
+  {
+    "text": "paternity test and father's rights",
+    "domain": "family_law"
+  },
+  {
+    "text": "marriage registration and legal documentation",
+    "domain": "family_law"
+  },
+  {
+    "text": "wrongfully terminated from my job without cause",
+    "domain": "employment_law"
+  },
+  {
+    "text": "workplace harassment by supervisor and colleagues",
+    "domain": "employment_law"
+  },
+  {
+    "text": "discrimination based on gender race religion",
+    "domain": "employment_law"
+  },
+  {
+    "text": "not receiving overtime pay for extra hours",
+    "domain": "employment_law"
+  },
+  {
+    "text": "unsafe working conditions and health hazards",
+    "domain": "employment_law"
+  },
+  {
+    "text": "employer not providing promised benefits",
+    "domain": "employment_law"
+  },
+  {
+    "text": "whistleblower retaliation for reporting violations",
+    "domain": "employment_law"
+  },
+  {
+    "text": "pregnancy discrimination and maternity leave",
+    "domain": "employment_law"
+  },
+  {
+    "text": "wage theft and unpaid salary issues",
+    "domain": "employment_law"
+  },
+  {
+    "text": "non-compete agreement restricting job opportunities",
+    "domain": "employment_law"
+  },
+  {
+    "text": "other party breached our business contract agreement",
+    "domain": "contract_dispute"
+  },
+  {
+    "text": "contractor didn't complete work as specified",
+    "domain": "contract_dispute"
+  },
+  {
+    "text": "supplier delivered goods different from contract",
+    "domain": "contract_dispute"
+  },
+  {
+    "text": "partnership agreement violation by business partner",
+    "domain": "contract_dispute"
+  },
+  {
+    "text": "service provider not meeting contract obligations",
+    "domain": "contract_dispute"
+  },
+  {
+    "text": "breach of confidentiality agreement by employee",
+    "domain": "contract_dispute"
+  },
+  {
+    "text": "vendor payment terms dispute and delays",
+    "domain": "contract_dispute"
+  },
+  {
+    "text": "construction contract delays and cost overruns",
+    "domain": "contract_dispute"
+  },
+  {
+    "text": "software licensing agreement violation",
+    "domain": "contract_dispute"
+  },
+  {
+    "text": "franchise agreement terms not being honored",
+    "domain": "contract_dispute"
+  },
+  {
+    "text": "injured in car accident need compensation",
+    "domain": "personal_injury"
+  },
+  {
+    "text": "slip and fall accident at shopping mall",
+    "domain": "personal_injury"
+  },
+  {
+    "text": "medical malpractice caused permanent damage",
+    "domain": "personal_injury"
+  },
+  {
+    "text": "workplace injury due to unsafe conditions",
+    "domain": "personal_injury"
+  },
+  {
+    "text": "defective product caused serious injury",
+    "domain": "personal_injury"
+  },
+  {
+    "text": "dog bite incident in public place",
+    "domain": "personal_injury"
+  },
+  {
+    "text": "motorcycle accident with severe injuries",
+    "domain": "personal_injury"
+  },
+  {
+    "text": "construction site accident and liability",
+    "domain": "personal_injury"
+  },
+  {
+    "text": "food poisoning from restaurant meal",
+    "domain": "personal_injury"
+  },
+  {
+    "text": "sports injury due to negligent supervision",
+    "domain": "personal_injury"
+  },
+  {
+    "text": "arrested and charged with crime need defense",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "false accusations and need to prove innocence",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "police violated my rights during arrest",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "bail hearing and release procedures",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "plea bargain negotiation with prosecutor",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "witness intimidation in criminal case",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "expungement of criminal record",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "victim of crime need legal protection",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "juvenile criminal charges for minor",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "appeal criminal conviction to higher court",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "visa application denied need legal help",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "green card process and permanent residency",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "citizenship application and naturalization",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "deportation proceedings and defense",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "family reunification and spouse visa",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "work permit and employment authorization",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "asylum application for political persecution",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "student visa and educational immigration",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "immigration court hearing and representation",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "overstayed visa and legal consequences",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "elderly parent being abused in nursing home",
+    "domain": "elder_abuse"
+  },
+  {
+    "text": "financial exploitation of senior citizen",
+    "domain": "elder_abuse"
+  },
+  {
+    "text": "neglect and mistreatment of elderly relative",
+    "domain": "elder_abuse"
+  },
+  {
+    "text": "caregiver stealing from elderly person",
+    "domain": "elder_abuse"
+  },
+  {
+    "text": "physical abuse of senior in care facility",
+    "domain": "elder_abuse"
+  },
+  {
+    "text": "emotional abuse and isolation of elderly",
+    "domain": "elder_abuse"
+  },
+  {
+    "text": "medical neglect of senior citizen",
+    "domain": "elder_abuse"
+  },
+  {
+    "text": "power of attorney abuse by family member",
+    "domain": "elder_abuse"
+  },
+  {
+    "text": "elder fraud and scam targeting seniors",
+    "domain": "elder_abuse"
+  },
+  {
+    "text": "unsafe living conditions for elderly person",
+    "domain": "elder_abuse"
+  },
+  {
+    "text": "phone being hacked and privacy violated",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "identity theft and online fraud",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "cyberbullying and online harassment",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "computer virus and malware attack",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "social media stalking and threats",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "email account compromised and hacked",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "online dating scam and financial fraud",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "data breach and personal information stolen",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "fake website and phishing attack",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "online impersonation and fake profiles",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "someone is stalking me online",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "my computer has malware",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "cybersecurity breach at work",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "online banking fraud and theft",
+    "domain": "cyber_crime"
+  },
+  {
+    "text": "revenge porn and image abuse",
+    "domain": "cyber_crime"
+  }
+]

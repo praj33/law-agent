@@ -25,7 +25,27 @@ class Settings(BaseSettings):
     
     # AI/ML Configuration
     huggingface_token: Optional[str] = Field(default=None, env="HUGGINGFACE_TOKEN")
-    openai_api_key: Optional[str] = Field(default=None, env="OPENAI_API_KEY")
+    openai_api_key: Optional[str] = Field(default="sk-proj-dummy-key-for-development", env="OPENAI_API_KEY")
+    openai_model: str = Field(default="gpt-4", env="OPENAI_MODEL")
+    openai_temperature: float = Field(default=0.3, env="OPENAI_TEMPERATURE")
+    openai_max_tokens: int = Field(default=2000, env="OPENAI_MAX_TOKENS")
+
+    # Grok AI Configuration
+    grok_api_key: Optional[str] = Field(default=None, env="GROK_API_KEY")
+    grok_model: str = Field(default="grok-beta", env="GROK_MODEL")
+    grok_temperature: float = Field(default=0.3, env="GROK_TEMPERATURE")
+    grok_max_tokens: int = Field(default=2000, env="GROK_MAX_TOKENS")
+    use_grok_ai: bool = Field(default=True, env="USE_GROK_AI")
+
+    # Free Hugging Face AI Configuration
+    huggingface_api_key: Optional[str] = Field(default=None, env="HUGGINGFACE_API_KEY")
+    huggingface_model: str = Field(default="microsoft/DialoGPT-large", env="HUGGINGFACE_MODEL")
+
+    # Advanced AI Configuration
+    use_advanced_ai: bool = Field(default=True, env="USE_ADVANCED_AI")
+    legal_reasoning_model: str = Field(default="gpt-4", env="LEGAL_REASONING_MODEL")
+    case_law_analysis: bool = Field(default=True, env="CASE_LAW_ANALYSIS")
+    document_analysis: bool = Field(default=True, env="DOCUMENT_ANALYSIS")
     
     # Legal Data Sources
     legal_api_key: Optional[str] = Field(default=None, env="LEGAL_API_KEY")

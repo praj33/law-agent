@@ -1,20 +1,13 @@
 {
   "extends": [
     "react-app",
-    "react-app/jest",
-    "@typescript-eslint/recommended",
-    "prettier"
+    "react-app/jest"
   ],
   "plugins": [
-    "@typescript-eslint",
     "react",
-    "react-hooks",
-    "prettier"
+    "react-hooks"
   ],
   "rules": {
-    "prettier/prettier": "error",
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-uses-react": "off",

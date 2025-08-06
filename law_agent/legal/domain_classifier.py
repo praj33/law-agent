@@ -200,13 +200,13 @@ class LegalDomainClassifier:
         domain = top_domain[0]
         confidence = top_domain[1]
         
-        # If confidence is too low, mark as unknown
-        if confidence < 0.3:
-            domain = LegalDomain.UNKNOWN
-            confidence = 0.5
+        # If confidence is too low, try basic keyword matching
+        if confidence < 0.2:
+            domain = self._basic_keyword_classification(query_lower)
+            confidence = 0.4 if domain != LegalDomain.UNKNOWN else 0.1
         
         logger.debug(f"Classified query '{query[:50]}...' as {domain} with confidence {confidence:.3f}")
-        
+
         return {
             "domain": domain,
             "confidence": confidence,
@@ -342,3 +342,51 @@ class LegalDomainClassifier:
             explanation += "- User's previous interaction history\n"
         
         return explanation
+
+    def _basic_keyword_classification(self, query: str) -> LegalDomain:
+        """Basic keyword-based classification for low-confidence queries."""
+
+        # Enhanced keyword mapping with more variations
+        basic_keywords = {
+            LegalDomain.FAMILY_LAW: [
+                "divorce", "marriage", "custody", "child", "spouse", "alimony",
+                "separation", "family", "wife", "husband", "children", "adopt",
+                "married", "wedding", "relationship", "domestic", "parent"
+            ],
+            LegalDomain.CRIMINAL_LAW: [
+                "arrest", "police", "crime", "criminal", "bail", "court", "charges",
+                "theft", "assault", "murder", "fraud", "fir", "case", "arrested",
+                "jail", "prison", "cop", "officer", "investigation", "accused"
+            ],
+            LegalDomain.EMPLOYMENT_LAW: [
+                "job", "work", "fired", "terminated", "salary", "employer", "workplace",
+                "employee", "boss", "company", "office", "resignation", "promotion",
+                "working", "employment", "hire", "hiring", "payroll", "wage"
+            ],
+            LegalDomain.PROPERTY_LAW: [
+                "property", "house", "land", "rent", "lease", "tenant", "landlord",
+                "real estate", "building", "apartment", "ownership", "title",
+                "home", "rental", "renting", "eviction", "mortgage"
+            ]
+        }
+
+        # Count matches for each domain (case insensitive)
+        query_lower = query.lower()
+        domain_matches = {}
+
+        for domain, keywords in basic_keywords.items():
+            matches = sum(1 for keyword in keywords if keyword in query_lower)
+            if matches > 0:
+                domain_matches[domain] = matches
+
+        # Return domain with most matches, or try fallback
+        if domain_matches:
+            best_domain = max(domain_matches.items(), key=lambda x: x[1])[0]
+            return best_domain
+
+        # Final fallback - if query contains legal terms, default to family law
+        legal_indicators = ["legal", "law", "lawyer", "attorney", "court", "help", "advice", "issue", "problem"]
+        if any(indicator in query_lower for indicator in legal_indicators):
+            return LegalDomain.FAMILY_LAW  # Most common legal queries are family-related
+
+        return LegalDomain.UNKNOWN

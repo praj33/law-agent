@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import LawAgentApp from './components/LawAgentApp';
 import './App.css';
 

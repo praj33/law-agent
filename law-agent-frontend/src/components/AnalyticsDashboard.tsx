@@ -8,37 +8,23 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  LineChart,
-  Line,
   PieChart,
   Pie,
-  Cell,
-  AreaChart,
-  Area
+  Cell
 } from 'recharts';
 import {
   TrendingUp,
   TrendingDown,
   Users,
-  MessageSquare,
   BookOpen,
   Clock,
-  CheckCircle,
-  XCircle,
-  AlertTriangle,
   Activity,
   BarChart3,
-  PieChart as PieChartIcon,
-  Settings,
   Download,
   RefreshCw,
-  Filter,
-  Calendar,
-  Eye,
   Target,
   Zap,
-  Award,
-  Shield
+  Award
 } from 'lucide-react';
 
 interface AnalyticsData {

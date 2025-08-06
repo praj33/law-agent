@@ -28,6 +28,7 @@ class LegalDomain(str, Enum):
     TORT_LAW = "tort_law"
     BANKRUPTCY_LAW = "bankruptcy_law"
     ENVIRONMENTAL_LAW = "environmental_law"
+    CONSUMER_LAW = "consumer_law"
     HEALTHCARE_LAW = "healthcare_law"
     UNKNOWN = "unknown"
 

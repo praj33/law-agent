@@ -1,0 +1,8 @@
+{
+  "feedback_threshold": 10,
+  "retraining_interval": 50,
+  "performance_window": 100,
+  "improvement_threshold": 0.1,
+  "reward_decay": 0.95,
+  "learning_rate": 0.01
+}

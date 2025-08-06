@@ -22,9 +22,13 @@ const LawAgentInterface: React.FC = () => {
 
   const initializeSession = async () => {
     try {
-      const response = await fetch('http://localhost:8000/chat/session', {
+      const response = await fetch('http://localhost:8000/api/v1/sessions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_id: 'web_user_' + Date.now(),
+          user_type: 'common_person'
+        })
       });
       const data = await response.json();
       setSessionId(data.session_id);
@@ -49,26 +53,27 @@ const LawAgentInterface: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/chat/message', {
+      const response = await fetch('http://localhost:8000/api/v1/query', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           session_id: sessionId,
-          message: content,
+          query: content,
+          interaction_type: 'query'
         }),
       });
 
       const data = await response.json();
-      
+
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'ai',
-        content: data.response,
+        content: data.response?.content || data.response?.message || 'I received your query and am processing it.',
         timestamp: new Date(),
-        steps: data.steps || [],
-        timeline: data.timeline || [],
+        steps: data.response?.steps || [],
+        timeline: data.response?.timeline || [],
         glossaryTerms: data.glossary_terms || [],
-        visualData: data.visual_data || null,
+        visualData: data.response?.visual_data || null,
       };
 
       setMessages(prev => [...prev, aiMessage]);

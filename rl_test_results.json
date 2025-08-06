@@ -1,0 +1,135 @@
+{
+  "total_tests": 21,
+  "passed_tests": 17,
+  "success_rate": 80.95238095238095,
+  "detailed_results": [
+    {
+      "test": "API Health Check",
+      "passed": true,
+      "details": "Status: healthy",
+      "timestamp": "2025-08-04T12:01:16.746815"
+    },
+    {
+      "test": "Session Creation",
+      "passed": true,
+      "details": "Session ID: ed38d258-bdb6-42d5-8b82-ac4af95f212f",
+      "timestamp": "2025-08-04T12:01:18.809450"
+    },
+    {
+      "test": "Query Processing: 'I need help with my divorce...'",
+      "passed": true,
+      "details": "Domain: family_law, Confidence: 0.800, Time: 2.058s",
+      "timestamp": "2025-08-04T12:01:20.867633"
+    },
+    {
+      "test": "Feedback Submission (upvote)",
+      "passed": true,
+      "details": "Reward: 0.000, Satisfaction: 0.000",
+      "timestamp": "2025-08-04T12:01:22.929289"
+    },
+    {
+      "test": "Query Processing: 'My employer fired me unfairly...'",
+      "passed": true,
+      "details": "Domain: employment_law, Confidence: 0.800, Time: 2.042s",
+      "timestamp": "2025-08-04T12:01:25.972736"
+    },
+    {
+      "test": "Feedback Submission (upvote)",
+      "passed": true,
+      "details": "Reward: 0.000, Satisfaction: 0.000",
+      "timestamp": "2025-08-04T12:01:28.021468"
+    },
+    {
+      "test": "Query Processing: 'I want to write a will...'",
+      "passed": false,
+      "details": "Domain: unknown, Confidence: 0.500, Time: 2.056s (Expected: property_law)",
+      "timestamp": "2025-08-04T12:01:31.079093"
+    },
+    {
+      "test": "Feedback Submission (downvote)",
+      "passed": true,
+      "details": "Reward: 0.000, Satisfaction: 0.000",
+      "timestamp": "2025-08-04T12:01:33.132962"
+    },
+    {
+      "test": "Query Processing: 'Someone hit my car...'",
+      "passed": false,
+      "details": "Domain: unknown, Confidence: 0.500, Time: 2.066s (Expected: tort_law)",
+      "timestamp": "2025-08-04T12:01:36.199741"
+    },
+    {
+      "test": "Feedback Submission (downvote)",
+      "passed": true,
+      "details": "Reward: 0.000, Satisfaction: 0.000",
+      "timestamp": "2025-08-04T12:01:38.254892"
+    },
+    {
+      "test": "Query Processing: 'I need to review a contract...'",
+      "passed": true,
+      "details": "Domain: contract_law, Confidence: 0.800, Time: 2.069s",
+      "timestamp": "2025-08-04T12:01:41.325500"
+    },
+    {
+      "test": "Feedback Submission (upvote)",
+      "passed": true,
+      "details": "Reward: 0.000, Satisfaction: 0.000",
+      "timestamp": "2025-08-04T12:01:43.367653"
+    },
+    {
+      "test": "RL Learning Progression",
+      "passed": true,
+      "details": "Successful feedbacks: 5/5, Correct domains: 3/5",
+      "timestamp": "2025-08-04T12:01:44.370703"
+    },
+    {
+      "test": "Session Memory",
+      "passed": false,
+      "details": "Status: 500",
+      "timestamp": "2025-08-04T12:01:46.387668"
+    },
+    {
+      "test": "Query Processing: 'I have a contract dispute with...'",
+      "passed": true,
+      "details": "Domain: contract_law, Confidence: 0.800, Time: 2.041s",
+      "timestamp": "2025-08-04T12:01:48.429289"
+    },
+    {
+      "test": "Feedback Submission (upvote)",
+      "passed": true,
+      "details": "Reward: 0.000, Satisfaction: 0.000",
+      "timestamp": "2025-08-04T12:01:50.493030"
+    },
+    {
+      "test": "Query Processing: 'I have a contract dispute with...'",
+      "passed": true,
+      "details": "Domain: contract_law, Confidence: 0.800, Time: 2.056s",
+      "timestamp": "2025-08-04T12:01:53.550131"
+    },
+    {
+      "test": "Feedback Submission (downvote)",
+      "passed": true,
+      "details": "Reward: 0.000, Satisfaction: 0.000",
+      "timestamp": "2025-08-04T12:01:55.605133"
+    },
+    {
+      "test": "Query Processing: 'I have a contract dispute with...'",
+      "passed": true,
+      "details": "Domain: contract_law, Confidence: 0.800, Time: 2.033s",
+      "timestamp": "2025-08-04T12:01:58.640566"
+    },
+    {
+      "test": "Feedback Submission (upvote)",
+      "passed": true,
+      "details": "Reward: 0.000, Satisfaction: 0.000",
+      "timestamp": "2025-08-04T12:02:00.725863"
+    },
+    {
+      "test": "Q-table Learning",
+      "passed": false,
+      "details": "Confidence variations detected: False",
+      "timestamp": "2025-08-04T12:02:01.727516"
+    }
+  ],
+  "interactions_tested": 8,
+  "session_id": "ed38d258-bdb6-42d5-8b82-ac4af95f212f"
+}

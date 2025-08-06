@@ -38,6 +38,14 @@ def create_app() -> FastAPI:
     
     # Include routers
     app.include_router(router, prefix="/api/v1")
+
+    # Include perfect RL feedback router
+    try:
+        from law_agent.api.perfect_feedback_api import router as perfect_feedback_router
+        app.include_router(perfect_feedback_router, prefix="/api/v1")
+        logger.info("✅ Perfect RL Feedback API included")
+    except Exception as e:
+        logger.warning(f"Perfect RL Feedback API not available: {e}")
     
     # Health check endpoint
     @app.get("/health")

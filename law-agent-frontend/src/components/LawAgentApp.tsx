@@ -20,12 +20,18 @@ import {
   Upload,
   BarChart3
 } from 'lucide-react';
+import { Canvas } from '@react-three/fiber';
 import './LawAgentApp.css';
 import DocumentUpload from './DocumentUpload';
 import AnalyticsDashboard from './AnalyticsDashboard';
+import JurisdictionalMap3D from './3D/JurisdictionalMap3D';
 
 const LawAgentApp: React.FC = () => {
   const [currentView, setCurrentView] = useState('court');
+  const [selectedJurisdiction, setSelectedJurisdiction] = useState<string | null>(null);
+  const [selectedRegion, setSelectedRegion] = useState('india');
+  const [showCourts, setShowCourts] = useState(true);
+  const [showCaseLoad, setShowCaseLoad] = useState(true);
   const [messages, setMessages] = useState([
     {
       id: '1',
@@ -123,20 +129,23 @@ const LawAgentApp: React.FC = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Enhanced Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rounded-3xl blur-3xl"></div>
           <div className="flex items-center justify-center mb-6">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-lg opacity-75 animate-pulse" />
-              <div className="relative p-4 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 rounded-full shadow-2xl">
-                <Scale className="h-16 w-16 text-white" />
+              <div className="relative p-6 bg-gradient-to-br from-blue-400 via-purple-500 to-indigo-600 rounded-full shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-full"></div>
+                <Scale className="h-20 w-20 text-white relative z-10 drop-shadow-lg" />
               </div>
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-400 rounded-full animate-ping" />
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-400 rounded-full" />
+              <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-ping shadow-lg" />
+              <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full shadow-lg" />
+              <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-yellow-400 rounded-full animate-pulse" />
             </div>
           </div>
-          <h1 className="law-agent-title text-6xl mb-4 tracking-wide">
-            <span className="inline-block">Law</span>{' '}
-            <span className="inline-block">Agent</span>
+          <h1 className="law-agent-title text-7xl mb-6 tracking-wide font-black">
+            <span className="inline-block transform hover:scale-110 transition-transform duration-300">Law</span>{' '}
+            <span className="inline-block transform hover:scale-110 transition-transform duration-300">Agent</span>
           </h1>
           <div className="flex items-center justify-center space-x-3 mb-4">
             <Sparkles className="h-5 w-5 text-yellow-400 animate-pulse" />
@@ -427,12 +436,201 @@ const LawAgentApp: React.FC = () => {
             </div>
           )}
 
-          {currentView !== 'chat' && currentView !== 'court' && (
+          {currentView === 'map' && (
+            <div className="min-h-[600px] w-full">
+              <div className="bg-gradient-to-br from-slate-900/90 to-blue-900/90 backdrop-blur-sm rounded-2xl border border-white/10 p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold text-white mb-2">Legal Jurisdiction Map</h2>
+                    <p className="text-gray-300">Interactive 3D visualization of court systems and legal jurisdictions</p>
+                  </div>
+                  <div className="flex space-x-2">
+                    <div className="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm border border-red-500/30">
+                      Federal
+                    </div>
+                    <div className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm border border-blue-500/30">
+                      State
+                    </div>
+                    <div className="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm border border-green-500/30">
+                      County
+                    </div>
+                    <div className="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm border border-yellow-500/30">
+                      Municipal
+                    </div>
+                  </div>
+                </div>
+
+                {/* Controls */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex space-x-4">
+                    <select
+                      value={selectedRegion}
+                      onChange={(e) => setSelectedRegion(e.target.value)}
+                      className="bg-slate-800/80 text-white px-4 py-2 rounded-lg border border-white/20 focus:border-blue-500 focus:outline-none"
+                    >
+                      <option value="india">India</option>
+                      <option value="usa">United States</option>
+                      <option value="california">California</option>
+                      <option value="texas">Texas</option>
+                      <option value="newyork">New York</option>
+                      <option value="florida">Florida</option>
+                    </select>
+                    <button
+                      onClick={() => setShowCourts(!showCourts)}
+                      className={`px-4 py-2 ${showCourts ? 'bg-blue-600' : 'bg-blue-600/50'} hover:bg-blue-600 text-white rounded-lg transition-colors border border-blue-500/30`}
+                    >
+                      {showCourts ? 'Hide Courts' : 'Show Courts'}
+                    </button>
+                    <button
+                      onClick={() => setShowCaseLoad(!showCaseLoad)}
+                      className={`px-4 py-2 ${showCaseLoad ? 'bg-green-600' : 'bg-green-600/50'} hover:bg-green-600 text-white rounded-lg transition-colors border border-green-500/30`}
+                    >
+                      {showCaseLoad ? 'Hide Case Load' : 'Show Case Load'}
+                    </button>
+                  </div>
+                  <div className="text-sm text-gray-400">
+                    Click on jurisdictions to explore • Drag to rotate • Scroll to zoom
+                  </div>
+                </div>
+
+                <div className="h-[500px] rounded-xl overflow-hidden border border-white/10 relative">
+                  <Canvas
+                    camera={{ position: [0, 5, 10], fov: 60 }}
+                    style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)' }}
+                  >
+                    <JurisdictionalMap3D
+                      region={selectedRegion as any}
+                      focusJurisdiction={selectedJurisdiction || undefined}
+                      showCourts={showCourts}
+                      showCaseLoad={showCaseLoad}
+                      onJurisdictionClick={(jurisdictionId) => {
+                        setSelectedJurisdiction(jurisdictionId === selectedJurisdiction ? null : jurisdictionId);
+                        console.log('Jurisdiction clicked:', jurisdictionId);
+                      }}
+                    />
+                  </Canvas>
+
+                  {/* Legend */}
+                  <div className="absolute bottom-4 left-4 bg-black/80 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                    <h4 className="text-white font-semibold mb-2">Legend</h4>
+                    <div className="space-y-1 text-sm">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-3 h-3 bg-red-500 rounded"></div>
+                        <span className="text-gray-300">Federal Courts</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-3 h-3 bg-blue-500 rounded"></div>
+                        <span className="text-gray-300">State Courts</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-3 h-3 bg-green-500 rounded"></div>
+                        <span className="text-gray-300">County Courts</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-3 h-3 bg-yellow-500 rounded"></div>
+                        <span className="text-gray-300">Municipal Courts</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Jurisdiction Info Panel */}
+                  <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm rounded-lg p-4 border border-blue-500/30 max-w-sm">
+                    <h3 className="text-white font-bold mb-3">Jurisdiction Overview</h3>
+                    {selectedJurisdiction ? (
+                      <div className="text-sm text-gray-300">
+                        <div className="space-y-2">
+                          <div className="text-blue-400 font-semibold">{selectedJurisdiction}</div>
+                          <div className="text-xs text-gray-400">
+                            Click on jurisdictions to explore detailed information
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-sm text-gray-400">
+                        Click on a jurisdiction to view details
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Controls Panel */}
+                  <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-sm rounded-lg p-3 border border-blue-500/30">
+                    <div className="text-white text-sm space-y-2">
+                      <div className="font-semibold">Controls:</div>
+                      <div className="text-xs text-gray-300">
+                        <div>• Mouse: Rotate view</div>
+                        <div>• Scroll: Zoom in/out</div>
+                        <div>• Click: Select jurisdiction</div>
+                        <div>• Hover: View details</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Old Jurisdiction Info Panel */}
+                  {selectedJurisdiction && false && (
+                    <div className="absolute top-4 right-4 bg-black/90 backdrop-blur-sm rounded-lg p-4 border border-blue-500/30 max-w-sm">
+                      <div className="flex items-center justify-between mb-3">
+                        <h4 className="text-white font-semibold">Jurisdiction Details</h4>
+                        <button
+                          onClick={() => setSelectedJurisdiction(null)}
+                          className="text-gray-400 hover:text-white transition-colors"
+                        >
+                          ✕
+                        </button>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <div className="text-blue-400 font-semibold capitalize">{selectedJurisdiction.replace('_', ' ')}</div>
+                        <div className="text-gray-300">
+                          <div className="flex justify-between">
+                            <span>Type:</span>
+                            <span className="text-white capitalize">{selectedJurisdiction.includes('federal') ? 'Federal' : 'State'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Status:</span>
+                            <span className="text-green-400">Active</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Courts:</span>
+                            <span className="text-white">Multiple</span>
+                          </div>
+                        </div>
+                        <div className="pt-2 border-t border-gray-600">
+                          <div className="text-xs text-gray-400">
+                            Click and drag to explore the 3D jurisdiction map. Each jurisdiction represents different levels of the legal system.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Quick Stats */}
+                <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <div className="bg-slate-800/50 rounded-lg p-4 border border-white/10">
+                    <div className="text-2xl font-bold text-blue-400">94</div>
+                    <div className="text-sm text-gray-300">Federal Districts</div>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-4 border border-white/10">
+                    <div className="text-2xl font-bold text-green-400">50</div>
+                    <div className="text-sm text-gray-300">State Systems</div>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-4 border border-white/10">
+                    <div className="text-2xl font-bold text-yellow-400">3,143</div>
+                    <div className="text-sm text-gray-300">County Courts</div>
+                  </div>
+                  <div className="bg-slate-800/50 rounded-lg p-4 border border-white/10">
+                    <div className="text-2xl font-bold text-purple-400">13,000+</div>
+                    <div className="text-sm text-gray-300">Municipal Courts</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {currentView !== 'chat' && currentView !== 'court' && currentView !== 'map' && (
             <div className="h-96 flex items-center justify-center">
               <div className="text-center">
                 <div className="text-6xl mb-4">
-                  {currentView === 'map' ? '🗺️' : 
-                   currentView === 'timeline' ? '📅' : '📚'}
+                  {currentView === 'timeline' ? '📅' : '📚'}
                 </div>
                 <p className="text-white text-xl">
                   {currentView.charAt(0).toUpperCase() + currentView.slice(1)} Module

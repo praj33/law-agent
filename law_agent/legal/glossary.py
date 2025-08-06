@@ -469,3 +469,23 @@ class LegalGlossary:
         domain_terms.sort(key=lambda x: complexity_order.get(x["complexity"], 3))
         
         return domain_terms
+
+    def get_all_terms(self) -> List[Dict[str, Any]]:
+        """Get all terms in the glossary."""
+        all_terms = []
+
+        for term_obj in self.terms.values():
+            all_terms.append({
+                "term": term_obj.term,
+                "definition": term_obj.common_usage,
+                "domain": term_obj.domain.value,
+                "complexity": term_obj.complexity,
+                "related_terms": term_obj.related_terms,
+                "examples": term_obj.examples[:2] if term_obj.examples else [],
+                "synonyms": term_obj.synonyms
+            })
+
+        # Sort alphabetically by term
+        all_terms.sort(key=lambda x: x["term"].lower())
+
+        return all_terms

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Bot, User, Sparkles, Mic, MicOff, Paperclip, MoreVertical, Scale } from 'lucide-react';
+import { Send, Bot, User, Sparkles, Mic, MicOff, Paperclip, MoreVertical, Scale, Box } from 'lucide-react';
+import Perfect3DLegalVisualization from './3D/Perfect3DLegalVisualization';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -17,6 +18,7 @@ const ChatInterface = forwardRef<HTMLDivElement, ChatInterfaceProps>(
     const [inputValue, setInputValue] = useState('');
     const [isRecording, setIsRecording] = useState(false);
     const [showSuggestions, setShowSuggestions] = useState(true);
+    const [show3DVisualization, setShow3DVisualization] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -327,6 +329,22 @@ const ChatInterface = forwardRef<HTMLDivElement, ChatInterfaceProps>(
               </div>
             </div>
             
+            {/* 3D Visualization Toggle */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShow3DVisualization(!show3DVisualization)}
+              className={`p-3 rounded-xl transition-all duration-300 flex items-center space-x-2 ${
+                show3DVisualization
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'glass hover:bg-white/10 text-gray-300 hover:text-white'
+              }`}
+              title="Toggle 3D Legal Visualization"
+            >
+              <Box className="h-5 w-5" />
+              <span className="hidden sm:inline">3D</span>
+            </motion.button>
+
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -343,6 +361,40 @@ const ChatInterface = forwardRef<HTMLDivElement, ChatInterfaceProps>(
             Press Enter to send, Shift+Enter for new line
           </p>
         </motion.div>
+
+        {/* Perfect 3D Legal Visualization Overlay */}
+        <AnimatePresence>
+          {show3DVisualization && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm"
+            >
+              <div className="relative w-full h-full">
+                {/* Close Button */}
+                <button
+                  onClick={() => setShow3DVisualization(false)}
+                  className="absolute top-4 right-4 z-10 bg-red-600 hover:bg-red-700 text-white p-3 rounded-full transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                {/* Perfect 3D Visualization */}
+                <Perfect3DLegalVisualization
+                  initialView="3d-process"
+                  legalDomain={messages.length > 0 ? 'criminal_law' : 'criminal_law'}
+                  userLocation="usa"
+                  onVisualizationChange={(view, data) => {
+                    console.log('3D Visualization:', view, data);
+                  }}
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     );
   }

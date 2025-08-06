@@ -1,0 +1,282 @@
+[
+  {
+    "text": "I want to file for divorce from my spouse",
+    "domain": "family_law"
+  },
+  {
+    "text": "Child custody dispute with my ex-husband",
+    "domain": "family_law"
+  },
+  {
+    "text": "My wife is asking for alimony after separation",
+    "domain": "family_law"
+  },
+  {
+    "text": "Domestic violence case against my partner",
+    "domain": "family_law"
+  },
+  {
+    "text": "Adoption process for my stepchild",
+    "domain": "family_law"
+  },
+  {
+    "text": "Marriage annulment due to fraud",
+    "domain": "family_law"
+  },
+  {
+    "text": "Prenuptial agreement before wedding",
+    "domain": "family_law"
+  },
+  {
+    "text": "I was arrested for theft charges",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "DUI case and license suspension",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "Assault charges filed against me",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "Drug possession arrest last night",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "Fraud allegations by my employer",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "Bail hearing for my brother",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "Criminal defense for robbery case",
+    "domain": "criminal_law"
+  },
+  {
+    "text": "Breach of contract by my business partner",
+    "domain": "contract_law"
+  },
+  {
+    "text": "Vendor not delivering goods as agreed",
+    "domain": "contract_law"
+  },
+  {
+    "text": "Employment contract dispute with company",
+    "domain": "contract_law"
+  },
+  {
+    "text": "Real estate purchase agreement issues",
+    "domain": "contract_law"
+  },
+  {
+    "text": "Service provider violated our contract",
+    "domain": "contract_law"
+  },
+  {
+    "text": "Non-disclosure agreement enforcement",
+    "domain": "contract_law"
+  },
+  {
+    "text": "Construction contract delays and penalties",
+    "domain": "contract_law"
+  },
+  {
+    "text": "Wrongful termination from my job",
+    "domain": "employment_law"
+  },
+  {
+    "text": "Workplace discrimination based on gender",
+    "domain": "employment_law"
+  },
+  {
+    "text": "Unpaid overtime wages by employer",
+    "domain": "employment_law"
+  },
+  {
+    "text": "Sexual harassment at workplace",
+    "domain": "employment_law"
+  },
+  {
+    "text": "Workers compensation claim denied",
+    "domain": "employment_law"
+  },
+  {
+    "text": "Non-compete clause in employment contract",
+    "domain": "employment_law"
+  },
+  {
+    "text": "Whistleblower protection after reporting",
+    "domain": "employment_law"
+  },
+  {
+    "text": "Landlord won't return my security deposit",
+    "domain": "property_law"
+  },
+  {
+    "text": "Property boundary dispute with neighbor",
+    "domain": "property_law"
+  },
+  {
+    "text": "Eviction notice from my landlord",
+    "domain": "property_law"
+  },
+  {
+    "text": "Real estate transaction gone wrong",
+    "domain": "property_law"
+  },
+  {
+    "text": "Zoning violation notice from city",
+    "domain": "property_law"
+  },
+  {
+    "text": "Property inheritance dispute with siblings",
+    "domain": "property_law"
+  },
+  {
+    "text": "Homeowners association fee dispute",
+    "domain": "property_law"
+  },
+  {
+    "text": "Green card application status",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "Deportation proceedings against me",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "Visa denial for my spouse",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "Citizenship test preparation help",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "Work permit extension request",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "Asylum application process",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "Immigration court hearing scheduled",
+    "domain": "immigration_law"
+  },
+  {
+    "text": "IRS audit of my tax returns",
+    "domain": "tax_law"
+  },
+  {
+    "text": "Tax debt settlement with government",
+    "domain": "tax_law"
+  },
+  {
+    "text": "Business tax deduction questions",
+    "domain": "tax_law"
+  },
+  {
+    "text": "Property tax assessment appeal",
+    "domain": "tax_law"
+  },
+  {
+    "text": "Tax lien on my property",
+    "domain": "tax_law"
+  },
+  {
+    "text": "Estate tax planning for inheritance",
+    "domain": "tax_law"
+  },
+  {
+    "text": "Sales tax compliance for business",
+    "domain": "tax_law"
+  },
+  {
+    "text": "Patent application for my invention",
+    "domain": "intellectual_property"
+  },
+  {
+    "text": "Trademark infringement by competitor",
+    "domain": "intellectual_property"
+  },
+  {
+    "text": "Copyright violation of my artwork",
+    "domain": "intellectual_property"
+  },
+  {
+    "text": "Trade secret theft by former employee",
+    "domain": "intellectual_property"
+  },
+  {
+    "text": "Software licensing agreement dispute",
+    "domain": "intellectual_property"
+  },
+  {
+    "text": "Domain name cybersquatting case",
+    "domain": "intellectual_property"
+  },
+  {
+    "text": "DMCA takedown notice received",
+    "domain": "intellectual_property"
+  },
+  {
+    "text": "Defective product warranty claim",
+    "domain": "consumer_law"
+  },
+  {
+    "text": "Credit card fraud charges",
+    "domain": "consumer_law"
+  },
+  {
+    "text": "Debt collection harassment",
+    "domain": "consumer_law"
+  },
+  {
+    "text": "False advertising by company",
+    "domain": "consumer_law"
+  },
+  {
+    "text": "Identity theft protection needed",
+    "domain": "consumer_law"
+  },
+  {
+    "text": "Lemon law claim for defective car",
+    "domain": "consumer_law"
+  },
+  {
+    "text": "Telemarketing calls violation",
+    "domain": "consumer_law"
+  },
+  {
+    "text": "First Amendment free speech violation",
+    "domain": "constitutional_law"
+  },
+  {
+    "text": "Fourth Amendment search and seizure",
+    "domain": "constitutional_law"
+  },
+  {
+    "text": "Due process rights violation",
+    "domain": "constitutional_law"
+  },
+  {
+    "text": "Equal protection under law",
+    "domain": "constitutional_law"
+  },
+  {
+    "text": "Religious freedom exercise",
+    "domain": "constitutional_law"
+  },
+  {
+    "text": "Government overreach complaint",
+    "domain": "constitutional_law"
+  },
+  {
+    "text": "Civil rights violation by police",
+    "domain": "constitutional_law"
+  }
+]

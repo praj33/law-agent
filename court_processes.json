@@ -1,0 +1,231 @@
+{
+  "civil_court": [
+    {
+      "step_number": 1,
+      "title": "File Complaint/Petition",
+      "description": "Submit formal complaint with court registry along with required documents and fees",
+      "court_type": "civil_court",
+      "estimated_duration": "1-2 days",
+      "required_documents": [
+        "complaint",
+        "affidavit",
+        "supporting_documents"
+      ],
+      "cost_estimate": "₹5,000-₹15,000",
+      "tips": [
+        "Ensure all documents are properly notarized",
+        "Keep multiple copies"
+      ]
+    },
+    {
+      "step_number": 2,
+      "title": "Service of Summons",
+      "description": "Court issues summons to defendant, who must respond within specified time",
+      "court_type": "civil_court",
+      "estimated_duration": "15-30 days",
+      "required_documents": [
+        "summons",
+        "copy_of_complaint"
+      ],
+      "tips": [
+        "Ensure proper service address",
+        "Track service status"
+      ]
+    },
+    {
+      "step_number": 3,
+      "title": "Written Statement/Defense",
+      "description": "Defendant files written statement responding to allegations",
+      "court_type": "civil_court",
+      "estimated_duration": "30 days from service",
+      "required_documents": [
+        "written_statement",
+        "counter_affidavit"
+      ],
+      "tips": [
+        "File within time limit",
+        "Address all allegations"
+      ]
+    },
+    {
+      "step_number": 4,
+      "title": "Evidence and Arguments",
+      "description": "Both parties present evidence and legal arguments before the court",
+      "court_type": "civil_court",
+      "estimated_duration": "3-12 months",
+      "required_documents": [
+        "evidence",
+        "witness_statements",
+        "expert_reports"
+      ],
+      "tips": [
+        "Organize evidence systematically",
+        "Prepare witness testimony"
+      ]
+    },
+    {
+      "step_number": 5,
+      "title": "Judgment and Decree",
+      "description": "Court delivers judgment and issues decree for enforcement",
+      "court_type": "civil_court",
+      "estimated_duration": "1-2 months after arguments",
+      "required_documents": [
+        "judgment_copy",
+        "decree"
+      ],
+      "tips": [
+        "Understand judgment implications",
+        "Plan for enforcement if needed"
+      ]
+    }
+  ],
+  "family_court": [
+    {
+      "step_number": 1,
+      "title": "File Petition",
+      "description": "Submit family court petition with marriage certificate and supporting documents",
+      "court_type": "family_court",
+      "estimated_duration": "1-2 days",
+      "required_documents": [
+        "petition",
+        "marriage_certificate",
+        "financial_documents"
+      ],
+      "cost_estimate": "₹3,000-₹10,000",
+      "tips": [
+        "Include all relevant family details",
+        "Attach financial disclosures"
+      ]
+    },
+    {
+      "step_number": 2,
+      "title": "Mediation/Counseling",
+      "description": "Court-mandated mediation to explore reconciliation possibilities",
+      "court_type": "family_court",
+      "estimated_duration": "2-6 months",
+      "required_documents": [
+        "mediation_report"
+      ],
+      "tips": [
+        "Participate in good faith",
+        "Consider family welfare"
+      ]
+    },
+    {
+      "step_number": 3,
+      "title": "Evidence Recording",
+      "description": "Recording of evidence including financial records and custody evaluations",
+      "court_type": "family_court",
+      "estimated_duration": "6-12 months",
+      "required_documents": [
+        "financial_records",
+        "custody_evaluation",
+        "character_references"
+      ],
+      "tips": [
+        "Maintain detailed financial records",
+        "Focus on child welfare"
+      ]
+    }
+  ],
+  "consumer_forum": [
+    {
+      "step_number": 1,
+      "title": "File Consumer Complaint",
+      "description": "Submit complaint with consumer forum along with purchase proof and defect evidence",
+      "court_type": "consumer_forum",
+      "estimated_duration": "1 day",
+      "required_documents": [
+        "complaint",
+        "purchase_receipt",
+        "warranty_card",
+        "defect_evidence"
+      ],
+      "cost_estimate": "₹1,000-₹5,000",
+      "tips": [
+        "Include all purchase details",
+        "Document defects with photos"
+      ]
+    },
+    {
+      "step_number": 2,
+      "title": "Notice to Opposite Party",
+      "description": "Forum issues notice to company/service provider to respond",
+      "court_type": "consumer_forum",
+      "estimated_duration": "15-30 days",
+      "required_documents": [
+        "notice",
+        "complaint_copy"
+      ],
+      "tips": [
+        "Ensure correct company address",
+        "Track notice delivery"
+      ]
+    },
+    {
+      "step_number": 3,
+      "title": "Hearing and Evidence",
+      "description": "Both parties present their case with evidence and arguments",
+      "court_type": "consumer_forum",
+      "estimated_duration": "3-6 months",
+      "required_documents": [
+        "evidence",
+        "expert_reports",
+        "witness_statements"
+      ],
+      "tips": [
+        "Bring original documents",
+        "Prepare clear arguments"
+      ]
+    }
+  ],
+  "labor_court": [
+    {
+      "step_number": 1,
+      "title": "File Labor Complaint",
+      "description": "Submit complaint with labor court or tribunal with employment records",
+      "court_type": "labor_court",
+      "estimated_duration": "1-2 days",
+      "required_documents": [
+        "complaint",
+        "employment_contract",
+        "salary_records"
+      ],
+      "cost_estimate": "₹2,000-₹8,000",
+      "tips": [
+        "Include complete employment history",
+        "Document workplace incidents"
+      ]
+    },
+    {
+      "step_number": 2,
+      "title": "Conciliation Process",
+      "description": "Mandatory conciliation attempt between employee and employer",
+      "court_type": "labor_court",
+      "estimated_duration": "1-3 months",
+      "required_documents": [
+        "conciliation_report"
+      ],
+      "tips": [
+        "Participate constructively",
+        "Document all discussions"
+      ]
+    },
+    {
+      "step_number": 3,
+      "title": "Tribunal Hearing",
+      "description": "Formal hearing before labor tribunal with evidence presentation",
+      "court_type": "labor_court",
+      "estimated_duration": "6-18 months",
+      "required_documents": [
+        "evidence",
+        "witness_statements",
+        "employment_records"
+      ],
+      "tips": [
+        "Organize employment documentation",
+        "Prepare witness testimony"
+      ]
+    }
+  ]
+}

@@ -6,8 +6,6 @@ import {
   Image,
   CheckCircle,
   XCircle,
-  AlertCircle,
-  Download,
   Eye,
   Trash2,
   Clock,

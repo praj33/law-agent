@@ -252,6 +252,39 @@ class RedisMemoryStore(MemoryStore):
         except Exception as e:
             logger.error(f"Failed to retrieve user profile: {e}")
             return None
+
+    def get_session(self, session_id: str) -> Optional[Dict[str, Any]]:
+        """Get session data by session ID."""
+        try:
+            key = f"session:{session_id}"
+
+            if self.redis_client:
+                data = self.redis_client.get(key)
+                if data:
+                    import json
+                    return json.loads(data)
+            else:
+                return self.memory_store.get(key)
+
+            return None
+        except Exception as e:
+            logger.error(f"Failed to get session {session_id}: {e}")
+            return None
+
+    def store_session(self, session_id: str, session_data: Dict[str, Any]) -> None:
+        """Store session data."""
+        try:
+            key = f"session:{session_id}"
+
+            if self.redis_client:
+                import json
+                self.redis_client.set(key, json.dumps(session_data))
+            else:
+                self.memory_store[key] = session_data
+
+            logger.debug(f"Stored session data for {session_id}")
+        except Exception as e:
+            logger.error(f"Failed to store session {session_id}: {e}")
     
     async def store_interaction(self, interaction: UserInteraction) -> None:
         """Store interaction in Redis list or memory."""
@@ -403,23 +436,39 @@ class SQLMemoryStore(MemoryStore):
         try:
             db = self.get_db()
             try:
-                db_interaction = InteractionDB(
-                    interaction_id=interaction.interaction_id,
-                    user_id=interaction.user_id,
-                    session_id=getattr(interaction, 'session_id', ''),
-                    timestamp=interaction.timestamp,
-                    interaction_type=interaction.interaction_type.value,
-                    query=interaction.query,
-                    predicted_domain=interaction.predicted_domain.value if interaction.predicted_domain else None,
-                    confidence_score=interaction.confidence_score,
-                    response=interaction.response,
-                    feedback=interaction.feedback.value if interaction.feedback else None,
-                    time_spent=interaction.time_spent,
-                    interaction_metadata=json.dumps(interaction.metadata)
-                )
-                db.add(db_interaction)
+                # Check if interaction already exists
+                existing = db.query(InteractionDB).filter(
+                    InteractionDB.interaction_id == interaction.interaction_id
+                ).first()
+
+                if existing:
+                    # Update existing interaction with new feedback
+                    if interaction.feedback:
+                        existing.feedback = interaction.feedback.value
+                    if interaction.time_spent:
+                        existing.time_spent = interaction.time_spent
+                    existing.interaction_metadata = json.dumps(interaction.metadata)
+                    logger.debug(f"Updated existing interaction {interaction.interaction_id}")
+                else:
+                    # Create new interaction
+                    db_interaction = InteractionDB(
+                        interaction_id=interaction.interaction_id,
+                        user_id=interaction.user_id,
+                        session_id=getattr(interaction, 'session_id', ''),
+                        timestamp=interaction.timestamp,
+                        interaction_type=interaction.interaction_type.value,
+                        query=interaction.query,
+                        predicted_domain=interaction.predicted_domain.value if interaction.predicted_domain else None,
+                        confidence_score=interaction.confidence_score,
+                        response=interaction.response,
+                        feedback=interaction.feedback.value if interaction.feedback else None,
+                        time_spent=interaction.time_spent,
+                        interaction_metadata=json.dumps(interaction.metadata)
+                    )
+                    db.add(db_interaction)
+                    logger.debug(f"Stored new interaction for user {interaction.user_id}")
+
                 db.commit()
-                logger.debug(f"Stored interaction for user {interaction.user_id}")
             finally:
                 db.close()
         except Exception as e:
@@ -504,3 +553,11 @@ class AgentMemory:
         if not interactions:
             interactions = await self.sql_store.get_user_interactions(user_id, limit)
         return interactions
+
+    def get_session(self, session_id: str) -> Optional[Dict[str, Any]]:
+        """Get session data by session ID."""
+        return self.redis_store.get_session(session_id)
+
+    def store_session(self, session_id: str, session_data: Dict[str, Any]) -> None:
+        """Store session data."""
+        return self.redis_store.store_session(session_id, session_data)

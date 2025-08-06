@@ -15,8 +15,8 @@ def main():
     print("=" * 40)
     
     try:
-        # Run the law agent minimal server
-        subprocess.run([sys.executable, "law_agent_minimal.py"], check=True)
+        # Run the full integrated law agent API server
+        subprocess.run([sys.executable, "-m", "law_agent.api.main"], check=True)
     except KeyboardInterrupt:
         print("\n👋 Law Agent API stopped by user")
     except Exception as e:
