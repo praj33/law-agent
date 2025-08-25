@@ -94,7 +94,7 @@
       "destination": "/api/$1"
     }
   ],
-  "regions": ["iad1", "sfo1", "lhr1"],
+  "regions": ["iad1"],
   "github": {
     "enabled": true,
     "autoAlias": true,
