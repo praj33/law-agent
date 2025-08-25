@@ -150,7 +150,7 @@ async def submit_perfect_feedback(
         if feedback_history_length % 10 == 0:
             agent.perfect_rl_policy.save_policy()
         
-        logger.info(f"✅ Perfect RL updated - Reward: {final_reward:.3f}, History: {feedback_history_length}")
+        logger.info(f"Perfect RL updated - Reward: {final_reward:.3f}, History: {feedback_history_length}")
         
         return PerfectFeedbackResponse(
             success=True,
@@ -275,7 +275,7 @@ async def reset_perfect_rl_learning(
         agent.perfect_rl_policy.feedback_history = {}
         agent.perfect_rl_policy.domain_expertise = {}
         
-        logger.info("✅ Perfect RL learning reset")
+        logger.info("Perfect RL learning reset")
         
         return {
             "success": True,

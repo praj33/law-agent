@@ -8,7 +8,7 @@ import threading
 import time
 import os
 
-PORT = 3000
+PORT = 3002
 
 class CORSHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     """HTTP request handler with CORS support."""
@@ -28,15 +28,15 @@ def start_server():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     
     with socketserver.TCPServer(("", PORT), CORSHTTPRequestHandler) as httpd:
-        print(f"🌐 Demo server running at http://localhost:{PORT}")
-        print(f"📁 Serving files from: {os.getcwd()}")
-        print(f"🎯 Open http://localhost:{PORT}/rl_demo.html to see the interface")
+        print(f"Demo server running at http://localhost:{PORT}")
+        print(f"Serving files from: {os.getcwd()}")
+        print(f"Open http://localhost:{PORT}/rl_demo.html to see the interface")
         print("Press Ctrl+C to stop the server")
         
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
-            print("\n👋 Demo server stopped")
+            print("\nDemo server stopped")
 
 def open_browser_delayed():
     """Open browser after a short delay."""

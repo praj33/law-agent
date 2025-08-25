@@ -58,7 +58,7 @@ class AdvancedLegalRLPolicy(RLPolicy):
         if SKLEARN_AVAILABLE:
             self._initialize_ml_models()
         
-        logger.info("🚀 Advanced Legal RL Policy initialized with ML capabilities")
+        logger.info("Advanced Legal RL Policy initialized with ML capabilities")
     
     def _initialize_ml_models(self):
         """Initialize machine learning models with pre-trained models if available."""
@@ -76,7 +76,7 @@ class AdvancedLegalRLPolicy(RLPolicy):
                 # Load pre-trained reward predictor
                 with open(reward_model_path, 'rb') as f:
                     self.reward_predictor = pickle.load(f)
-                logger.info("✅ Loaded pre-trained reward predictor")
+                logger.info("Loaded pre-trained reward predictor")
             else:
                 # Train models if not available
                 logger.info("🔄 Training RL models (first time setup)...")
@@ -104,7 +104,7 @@ class AdvancedLegalRLPolicy(RLPolicy):
             random_state=42
         )
 
-        logger.info("✅ ML models initialized for advanced RL")
+        logger.info("ML models initialized for advanced RL")
     
     def _create_advanced_state(self, raw_state: Dict[str, Any]) -> AdvancedState:
         """Create advanced state representation from raw state."""
@@ -268,7 +268,7 @@ class AdvancedLegalRLPolicy(RLPolicy):
         self.last_advanced_state = advanced_state
         self.last_action = enhanced_action
 
-        logger.info(f"🎯 Action Selected: {enhanced_action['action']} for {advanced_state.current_domain} (confidence: {enhanced_action.get('confidence', 0):.3f})")
+        logger.info(f"Action Selected: {enhanced_action['action']} for {advanced_state.current_domain} (confidence: {enhanced_action.get('confidence', 0):.3f})")
         logger.debug(f"   Selection methods: memory={bool(memory_action)}, ml={bool(ml_action)}, bandit=True, similar_exp={len(similar_experiences)}")
 
         return enhanced_action
@@ -279,7 +279,16 @@ class AdvancedLegalRLPolicy(RLPolicy):
             return None
 
         try:
-            state_vector = state.to_vector().reshape(1, -1)
+            # Create state vector with same features as training data (7 features)
+            state_vector = np.array([
+                {"common_person": 0, "law_firm": 1, "legal_student": 2}.get(state.user_type, 0),
+                state.user_satisfaction,
+                state.user_expertise_level,
+                state.session_length / 100.0,  # Normalize
+                {domain.value: i for i, domain in enumerate(LegalDomain)}.get(state.current_domain, 0) if hasattr(state, 'current_domain') else 0,
+                state.domain_confidence,
+                state.query_complexity
+            ]).reshape(1, -1)
 
             # Predict rewards for different actions
             actions = ["simple", "balanced", "detailed", "professional"]
@@ -287,10 +296,10 @@ class AdvancedLegalRLPolicy(RLPolicy):
             best_reward = -float('inf')
 
             for action in actions:
-                # Create action vector with 2 features to match training
+                # Create action vector with 2 features to match training (same as training)
                 action_features = np.array([
-                    hash(action) % 100 / 100.0,
-                    hash(f"{action}_style") % 100 / 100.0
+                    {"simple": 0.25, "balanced": 0.5, "detailed": 0.75, "professional": 1.0}.get(action, 0.5),
+                    {"simple": 0.2, "balanced": 0.5, "detailed": 0.8, "professional": 1.0}.get(action, 0.5)
                 ]).reshape(1, -1)
                 combined_vector = np.hstack([state_vector, action_features])
 
@@ -468,7 +477,7 @@ class AdvancedLegalRLPolicy(RLPolicy):
             self.action_rewards[state_key][action_name] = new_avg
             self.action_counts[state_key][action_name] += 1
 
-            logger.debug(f"📊 Q-table updated: {state_key[:20]}... -> {action_name}: {new_avg:.3f} (count: {self.action_counts[state_key][action_name]})")
+            logger.debug(f"Q-table updated: {state_key[:20]}... -> {action_name}: {new_avg:.3f} (count: {self.action_counts[state_key][action_name]})")
         
         # Update ML models if enough data
         if SKLEARN_AVAILABLE and len(self.memory.episodic_memory) > 50:
@@ -484,7 +493,7 @@ class AdvancedLegalRLPolicy(RLPolicy):
             self.exploration_rate * self.exploration_decay
         )
 
-        logger.info(f"🧠 RL Policy Updated: domain={self.last_advanced_state.current_domain}, reward={advanced_reward.total_reward():.3f}, exploration={self.exploration_rate:.3f}")
+        logger.info(f"RL Policy Updated: domain={self.last_advanced_state.current_domain}, reward={advanced_reward.total_reward():.3f}, exploration={self.exploration_rate:.3f}")
         logger.debug(f"   Action: {self.last_action.get('action', 'unknown')}, Bandit rewards updated: {len(self.action_rewards)} states")
     
     def _create_advanced_reward(

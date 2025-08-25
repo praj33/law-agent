@@ -181,7 +181,7 @@ async def submit_feedback(request: FeedbackRequest):
             time_spent=request.time_spent
         )
 
-        logger.info(f"📊 Feedback result from agent: {result}")
+        logger.info(f"Feedback result from agent: {result}")
 
         # Ensure we have the required fields
         if not isinstance(result, dict):

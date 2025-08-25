@@ -117,7 +117,7 @@ class AdvancedAgentMemory:
         self.domain_performance = defaultdict(lambda: {"successes": 0, "total": 0, "avg_reward": 0.0})
         self.temporal_patterns = defaultdict(list)
         
-        logger.info("✅ Advanced Agent Memory initialized")
+        logger.info("Advanced Agent Memory initialized")
     
     def store_experience(
         self,

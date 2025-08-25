@@ -88,7 +88,7 @@ class PerfectQLearningPolicy:
         self.last_state: Optional[PerfectRLState] = None
         self.last_action: Optional[PerfectRLAction] = None
         
-        logger.info("✅ Perfect Q-Learning Policy initialized")
+        logger.info("Perfect Q-Learning Policy initialized")
     
     def _initialize_action_space(self) -> List[PerfectRLAction]:
         """Initialize action space: legal domain → legal route → glossary"""
@@ -135,7 +135,7 @@ class PerfectQLearningPolicy:
                         response_style=style
                     ))
         
-        logger.info(f"✅ Initialized {len(actions)} perfect RL actions")
+        logger.info(f"Initialized {len(actions)} perfect RL actions")
         return actions
     
     def get_user_state(self, user_id: str, current_domain: str, user_type: str, session_length: int) -> PerfectRLState:
@@ -183,7 +183,7 @@ class PerfectQLearningPolicy:
             
             # Find action object by key
             action = next(a for a in self.available_actions if a.to_key() == best_action_key)
-            logger.debug(f"🎯 Exploiting with action: {action.legal_domain} → {action.legal_route}")
+            logger.debug(f"Exploiting with action: {action.legal_domain} → {action.legal_route}")
         
         # Store for later update
         self.last_state = state
@@ -240,7 +240,7 @@ class PerfectQLearningPolicy:
         
         self.q_table[old_state_key][action_key] = new_q_value
         
-        logger.info(f"✅ Updated Q-value: {old_q_value:.3f} → {new_q_value:.3f} (reward: {perfect_reward:.3f})")
+        logger.info(f"Updated Q-value: {old_q_value:.3f} → {new_q_value:.3f} (reward: {perfect_reward:.3f})")
     
     def _calculate_perfect_reward(self, base_reward: float, upvote: Optional[bool], time_spent: float) -> float:
         """Calculate perfect reward: upvote/downvote or time spent"""
@@ -297,7 +297,7 @@ class PerfectQLearningPolicy:
         with open(filepath, 'wb') as f:
             pickle.dump(policy_data, f)
         
-        logger.info(f"✅ Saved perfect RL policy to {filepath}")
+        logger.info(f"Saved perfect RL policy to {filepath}")
     
     def load_policy(self, filepath: str = "law_agent/models/perfect_rl_policy.pkl"):
         """Load perfect RL policy"""
@@ -320,7 +320,7 @@ class PerfectQLearningPolicy:
                     FeedbackHistoryEntry(**f) for f in feedback_list
                 ]
             
-            logger.info(f"✅ Loaded perfect RL policy from {filepath}")
+            logger.info(f"Loaded perfect RL policy from {filepath}")
             
         except Exception as e:
             logger.error(f"Failed to load perfect RL policy: {e}")

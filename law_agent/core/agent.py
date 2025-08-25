@@ -42,14 +42,14 @@ class LawAgent:
                 self.domain_classifier = MLDomainClassifier()
                 self.enhanced_classification = True
                 self.grok_ml_enabled = True
-                logger.info("✅ Advanced Grok ML Domain Classifier initialized")
+                logger.info("Advanced Grok ML Domain Classifier initialized")
             except Exception as e:
                 logger.warning(f"Grok ML classifier failed, trying enhanced: {e}")
                 try:
                     self.domain_classifier = EnhancedMLDomainClassifier()
                     self.enhanced_classification = True
                     self.grok_ml_enabled = False
-                    logger.info("✅ Enhanced ML Domain Classifier initialized")
+                    logger.info("Enhanced ML Domain Classifier initialized")
                 except Exception as e2:
                     logger.warning(f"Enhanced classifier failed, using basic: {e2}")
                     self.domain_classifier = LegalDomainClassifier()
@@ -65,14 +65,14 @@ class LawAgent:
             self.constitutional_advisor = ConstitutionalAdvisor()
             self.constitutional_support = True
             self.advanced_constitutional = True
-            logger.info("✅ Advanced Constitutional Advisor initialized")
+            logger.info("Advanced Constitutional Advisor initialized")
         except Exception as e:
             logger.warning(f"Advanced constitutional advisor failed, trying basic: {e}")
             try:
                 self.constitutional_advisor = IntegratedConstitutionalAdvisor()
                 self.constitutional_support = True
                 self.advanced_constitutional = False
-                logger.info("✅ Basic Constitutional Advisor initialized")
+                logger.info("Basic Constitutional Advisor initialized")
             except Exception as e2:
                 logger.warning(f"Constitutional advisor failed: {e2}")
                 self.constitutional_advisor = None
@@ -83,7 +83,7 @@ class LawAgent:
         try:
             self.route_mapper = DatasetDrivenRouteEngine()
             self.advanced_routes = True
-            logger.info("✅ Advanced Dataset-Driven Route Engine initialized")
+            logger.info("Advanced Dataset-Driven Route Engine initialized")
         except Exception as e:
             logger.warning(f"Advanced route engine failed, using basic: {e}")
             self.route_mapper = LegalRouteMapper()
@@ -92,7 +92,7 @@ class LawAgent:
         try:
             self.glossary = DynamicGlossaryEngine()
             self.dynamic_glossary = True
-            logger.info("✅ Dynamic Glossary Engine initialized")
+            logger.info("Dynamic Glossary Engine initialized")
         except Exception as e:
             logger.warning(f"Dynamic glossary failed, using basic: {e}")
             self.glossary = LegalGlossary()
@@ -109,7 +109,7 @@ class LawAgent:
         try:
             from law_agent.ai.free_huggingface_engine import FreeHuggingFaceEngine
             self.free_ai_engine = FreeHuggingFaceEngine()
-            logger.info("✅ Free Hugging Face AI Engine initialized")
+            logger.info("Free Hugging Face AI Engine initialized")
         except Exception as e:
             logger.warning(f"Free AI engine not available: {e}")
             self.free_ai_engine = None
@@ -119,7 +119,7 @@ class LawAgent:
             from law_agent.rl.perfect_rl_system import PerfectQLearningPolicy
             self.perfect_rl_policy = PerfectQLearningPolicy()
             self.perfect_rl_policy.load_policy()
-            logger.info("✅ Perfect RL System initialized (state: user domain + feedback history)")
+            logger.info("Perfect RL System initialized (state: user domain + feedback history)")
         except Exception as e:
             logger.warning(f"Perfect RL system not available: {e}")
             self.perfect_rl_policy = None
@@ -128,7 +128,7 @@ class LawAgent:
         try:
             self.feedback_system = EnhancedFeedbackSystem()
             self.advanced_feedback = True
-            logger.info("✅ Advanced Feedback System initialized")
+            logger.info("Advanced Feedback System initialized")
         except Exception as e:
             logger.warning(f"Advanced feedback system failed: {e}")
             self.feedback_system = None
@@ -449,7 +449,7 @@ class LawAgent:
         await self.memory.store_interaction(target_interaction)
         await self.memory.store_user_profile(agent_state.user_profile)
 
-        logger.info(f"✅ Feedback processed: {feedback}, reward={reward:.3f}, satisfaction={agent_state.user_profile.satisfaction_score:.3f}")
+        logger.info(f"Feedback processed: {feedback}, reward={reward:.3f}, satisfaction={agent_state.user_profile.satisfaction_score:.3f}")
 
         return {
             "status": "feedback_recorded",
@@ -530,7 +530,7 @@ class LawAgent:
                     "precedents": precedent_analysis
                 }
             )
-            logger.info(f"✅ Grok AI generated response for {domain.value}")
+            logger.info(f"Grok AI generated response for {domain.value}")
         except Exception as e:
             logger.warning(f"Grok AI failed: {e}")
             ai_analysis = None
@@ -548,7 +548,7 @@ class LawAgent:
                         "precedents": precedent_analysis
                     }
                 )
-                logger.info(f"✅ Free AI generated response for {domain.value}")
+                logger.info(f"Free AI generated response for {domain.value}")
             except Exception as e:
                 logger.warning(f"Free AI failed: {e}")
                 ai_analysis = None
@@ -614,7 +614,7 @@ class LawAgent:
         elif user_profile.user_type == UserType.LAW_FIRM:
             response["disclaimer"] = "This analysis is for informational purposes. Verify all legal authorities and consider jurisdiction-specific variations."
 
-        logger.info(f"✅ Generated AI-powered legal response for {domain.value} query with {len(relevant_cases)} relevant cases")
+        logger.info(f"Generated AI-powered legal response for {domain.value} query with {len(relevant_cases)} relevant cases")
         return response
 
     async def get_session_summary(self, session_id: str) -> Dict[str, Any]:
