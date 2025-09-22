@@ -1,0 +1,45 @@
+{
+  "classification": {
+    "document_type": "legal_notice",
+    "confidence": 91.67,
+    "all_scores": {
+      "rental_agreement": {
+        "score": 2,
+        "matched_keywords": [
+          "property"
+        ]
+      },
+      "employment_contract": {
+        "score": 0,
+        "matched_keywords": []
+      },
+      "legal_notice": {
+        "score": 22,
+        "matched_keywords": [
+          "notice",
+          "cease",
+          "desist"
+        ]
+      },
+      "contract": {
+        "score": 0,
+        "matched_keywords": []
+      }
+    }
+  },
+  "key_information": {
+    "dates": [],
+    "amounts": [
+      "$50,000."
+    ],
+    "parties": []
+  },
+  "complexity": {
+    "word_count": 58,
+    "sentence_count": 4,
+    "avg_words_per_sentence": 14.5,
+    "legal_term_density": 0.0,
+    "complexity_level": "Simple"
+  },
+  "timestamp": "2025-08-02T13:23:41.698186"
+}

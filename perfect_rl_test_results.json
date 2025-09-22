@@ -1,0 +1,32 @@
+{
+  "total_tests": 5,
+  "passed_tests": 0,
+  "success_rate": 0.0,
+  "results": [
+    {
+      "test": "RL System Status",
+      "passed": false,
+      "details": "HTTP 404"
+    },
+    {
+      "test": "Reward Calculation",
+      "passed": false,
+      "details": "Reward: None, Satisfaction: None"
+    },
+    {
+      "test": "Q-table Learning",
+      "passed": false,
+      "details": "Rewards: [0, 0, 0], Variation: False"
+    },
+    {
+      "test": "Session Memory",
+      "passed": false,
+      "details": "HTTP 500"
+    },
+    {
+      "test": "Advanced Feedback",
+      "passed": false,
+      "details": "HTTP 404"
+    }
+  ]
+}

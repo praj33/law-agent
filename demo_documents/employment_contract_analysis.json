@@ -1,0 +1,53 @@
+{
+  "classification": {
+    "document_type": "employment_contract",
+    "confidence": 78.95,
+    "all_scores": {
+      "rental_agreement": {
+        "score": 0,
+        "matched_keywords": []
+      },
+      "employment_contract": {
+        "score": 30,
+        "matched_keywords": [
+          "employment",
+          "employee",
+          "employer",
+          "salary",
+          "benefits"
+        ]
+      },
+      "legal_notice": {
+        "score": 2,
+        "matched_keywords": [
+          "notice"
+        ]
+      },
+      "contract": {
+        "score": 6,
+        "matched_keywords": [
+          "agreement",
+          "party"
+        ]
+      }
+    }
+  },
+  "key_information": {
+    "dates": [],
+    "amounts": [
+      "$75,000"
+    ],
+    "parties": [
+      "Tech Corp (Employer)",
+      "Alice Johnson (Employee)."
+    ]
+  },
+  "complexity": {
+    "word_count": 56,
+    "sentence_count": 4,
+    "avg_words_per_sentence": 14.0,
+    "legal_term_density": 0.0,
+    "complexity_level": "Simple"
+  },
+  "timestamp": "2025-08-02T13:23:41.691181"
+}

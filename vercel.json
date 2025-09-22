@@ -1,0 +1,91 @@
+{
+  "version": 2,
+  "name": "law-agent-frontend",
+  "builds": [
+    {
+      "src": "law-agent-frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/law-agent-frontend/$1"
+    }
+  ],
+  "env": {
+    "REACT_APP_API_URL": "@law_agent_api_url",
+    "REACT_APP_ANALYTICS_URL": "@law_agent_analytics_url",
+    "REACT_APP_DOCUMENT_URL": "@law_agent_document_url",
+    "REACT_APP_SUPABASE_URL": "@supabase_url",
+    "REACT_APP_SUPABASE_ANON_KEY": "@supabase_anon_key",
+    "REACT_APP_ENVIRONMENT": "@environment"
+  },
+  "build": {
+    "env": {
+      "REACT_APP_API_URL": "@law_agent_api_url",
+      "REACT_APP_ANALYTICS_URL": "@law_agent_analytics_url",
+      "REACT_APP_DOCUMENT_URL": "@law_agent_document_url",
+      "REACT_APP_SUPABASE_URL": "@supabase_url",
+      "REACT_APP_SUPABASE_ANON_KEY": "@supabase_anon_key",
+      "REACT_APP_ENVIRONMENT": "@environment"
+    }
+  },
+  "functions": {
+    "law-agent-frontend/src/api/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.law-agent.com https://analytics.law-agent.com https://documents.law-agent.com wss://analytics.law-agent.com https://*.supabase.co wss://*.supabase.co;"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/dashboard",
+      "destination": "/?view=analytics",
+      "permanent": false
+    },
+    {
+      "source": "/admin",
+      "destination": "/?view=analytics",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/health",
+      "destination": "/api/health.js"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "civil_court": {
+    "filing_fee": 5000,
+    "average_timeline": 180,
+    "success_rate": 0.65,
+    "required_documents": [
+      "petition",
+      "evidence",
+      "affidavit"
+    ]
+  },
+  "family_court": {
+    "filing_fee": 3000,
+    "average_timeline": 300,
+    "success_rate": 0.6,
+    "required_documents": [
+      "petition",
+      "marriage_certificate",
+      "financial_records"
+    ]
+  },
+  "consumer_forum": {
+    "filing_fee": 1000,
+    "average_timeline": 150,
+    "success_rate": 0.75,
+    "required_documents": [
+      "complaint",
+      "purchase_receipt",
+      "evidence"
+    ]
+  },
+  "labor_court": {
+    "filing_fee": 2000,
+    "average_timeline": 240,
+    "success_rate": 0.55,
+    "required_documents": [
+      "complaint",
+      "employment_records",
+      "evidence"
+    ]
+  }
+}
