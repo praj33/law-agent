@@ -1,0 +1,130 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "law-agent"
+version = "1.0.0"
+description = "Robust, scalable law agent with reinforcement learning and dynamic interfaces"
+authors = [
+    {name = "Raj Prajapati", email = "rajprajapati8286@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Legal Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+dependencies = [
+    "fastapi>=0.104.1",
+    "uvicorn>=0.24.0",
+    "pydantic>=2.5.0",
+    "torch>=2.1.0",
+    "transformers>=4.35.0",
+    "sentence-transformers>=2.2.2",
+    "scikit-learn>=1.3.0",
+    "stable-baselines3>=2.1.0",
+    "sqlalchemy>=2.0.23",
+    "redis>=5.0.1",
+    "chromadb>=0.4.15",
+    "spacy>=3.7.2",
+    "loguru>=0.7.2",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.3",
+    "pytest-asyncio>=0.21.1",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.11.0",
+    "pytest-xdist>=3.3.0",
+    "black>=23.10.1",
+    "isort>=5.12.0",
+    "flake8>=6.1.0",
+    "mypy>=1.7.0",
+    "bandit>=1.7.5",
+    "safety>=2.3.0",
+    "pre-commit>=3.5.0",
+]
+
+document_processing = [
+    "PyPDF2>=3.0.1",
+    "python-docx>=0.8.11",
+    "openpyxl>=3.1.2",
+    "Pillow>=10.0.1",
+    "pytesseract>=0.3.10",
+    "pdf2image>=1.16.3",
+    "pdfplumber>=0.9.0",
+]
+
+analytics = [
+    "plotly>=5.17.0",
+    "dash>=2.14.0",
+    "dash-bootstrap-components>=1.5.0",
+    "seaborn>=0.12.0",
+    "matplotlib>=3.8.0",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+include = '\.pyi?$'
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["law_agent"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers --strict-config --cov=law_agent --cov-report=xml --cov-report=html --cov-report=term-missing"
+testpaths = [
+    "law_agent/tests",
+    "tests",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+[tool.coverage.run]
+source = ["law_agent"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__pycache__/*",
+    "*/migrations/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.bandit]
+exclude_dirs = ["tests", "law_agent/tests"]
+skips = ["B101", "B601"]

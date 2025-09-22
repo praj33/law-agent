@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Agent - Legal AI Chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chat-container {
+            width: 90%;
+            max-width: 800px;
+            height: 80vh;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .chat-header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        
+        .status {
+            background: rgba(46, 204, 113, 0.2);
+            padding: 5px 15px;
+            border-radius: 15px;
+            display: inline-block;
+            font-size: 0.9em;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 15px;
+            max-width: 80%;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        .user-message {
+            background: #3498db;
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .bot-message {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-bottom-left-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .domain-tag {
+            background: #e74c3c;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        
+        .confidence {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .feedback-buttons {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .feedback-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        
+        .upvote {
+            background: #2ecc71;
+            color: white;
+        }
+        
+        .downvote {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .feedback-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .feedback-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .chat-input {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        #messageInput {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        #messageInput:focus {
+            border-color: #3498db;
+        }
+        
+        #sendButton {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        #sendButton:hover {
+            background: #2980b9;
+        }
+        
+        #sendButton:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            display: none;
+        }
+        
+        .loading.show {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .redis-status {
+            background: #f39c12;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 15px;
+            margin-top: 10px;
+            font-size: 0.8em;
+            display: inline-block;
+        }
+        
+        .redis-status.connected {
+            background: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>🏛️ Law Agent Chat</h1>
+            <div class="status">✅ Ready to Help</div>
+            <div class="redis-status" id="redisStatus">🔄 Checking Redis...</div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="domain-tag">Welcome</div>
+                <div><strong>Hello! I'm your Legal AI Assistant.</strong></div>
+                <div>I can help you with legal questions across 14+ domains including:</div>
+                <div style="margin-top: 10px;">
+                    • Family Law (divorce, custody)<br>
+                    • Criminal Law (charges, rights)<br>
+                    • Property Law (landlord, tenant)<br>
+                    • Employment Law (workplace issues)<br>
+                    • And much more!
+                </div>
+                <div style="margin-top: 10px; font-weight: bold;">
+                    💬 Type your legal question below to get started!
+                </div>
+            </div>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div>🤔 Analyzing your legal question...</div>
+        </div>
+        
+        <div class="chat-input">
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="Type your legal question here... (e.g., 'I need help with divorce')"
+                    maxlength="500"
+                >
+                <button id="sendButton" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let sessionId = null;
+        
+        // Initialize session and check Redis
+        async function initialize() {
+            try {
+                // Check Redis status
+                const healthResponse = await fetch('/health');
+                const healthData = await healthResponse.json();
+                const redisStatus = document.getElementById('redisStatus');
+                
+                if (healthData.services && healthData.services.redis === 'connected') {
+                    redisStatus.innerHTML = '✅ Redis Connected';
+                    redisStatus.className = 'redis-status connected';
+                } else {
+                    redisStatus.innerHTML = '⚠️ Using FakeRedis';
+                    redisStatus.className = 'redis-status';
+                }
+
+                // Create session
+                const sessionResponse = await fetch('/api/v1/sessions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_id: 'chat_user_' + Date.now() })
+                });
+                
+                if (sessionResponse.ok) {
+                    const sessionData = await sessionResponse.json();
+                    sessionId = sessionData.session_id;
+                    console.log('Session created:', sessionId);
+                }
+            } catch (error) {
+                console.error('Initialization error:', error);
+                document.getElementById('redisStatus').innerHTML = '❌ Connection Error';
+            }
+        }
+
+        // Send message
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message || !sessionId) {
+                if (!message) {
+                    alert('Please type a legal question first!');
+                }
+                return;
+            }
+            
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Show loading
+            document.getElementById('loading').classList.add('show');
+            document.getElementById('sendButton').disabled = true;
+            
+            try {
+                const response = await fetch('/api/v1/query', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ session_id: sessionId, query: message })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    addBotMessage(data);
+                } else {
+                    addMessage('Sorry, I encountered an error processing your request. Please try again.', 'bot');
+                }
+            } catch (error) {
+                addMessage('Sorry, I encountered a connection error. Please check your connection and try again.', 'bot');
+                console.error('Query error:', error);
+            } finally {
+                document.getElementById('loading').classList.remove('show');
+                document.getElementById('sendButton').disabled = false;
+                input.focus();
+            }
+        }
+
+        // Add simple message
+        function addMessage(text, type) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}-message`;
+            messageDiv.innerHTML = text;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Add bot message with feedback
+        function addBotMessage(data) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot-message';
+            
+            const domainColor = getDomainColor(data.domain);
+            
+            messageDiv.innerHTML = `
+                <div class="domain-tag" style="background: ${domainColor}">
+                    ${formatDomain(data.domain)} (${Math.round(data.confidence * 100)}% confidence)
+                </div>
+                <div>${data.response}</div>
+                <div class="confidence">Interaction ID: ${data.interaction_id.substring(0, 8)}...</div>
+                <div class="feedback-buttons">
+                    <button class="feedback-btn upvote" onclick="submitFeedback('${data.interaction_id}', 'upvote', this)">
+                        👍 Helpful
+                    </button>
+                    <button class="feedback-btn downvote" onclick="submitFeedback('${data.interaction_id}', 'downvote', this)">
+                        👎 Not Helpful
+                    </button>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Submit feedback
+        async function submitFeedback(interactionId, feedback, button) {
+            try {
+                const response = await fetch('/api/v1/feedback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        session_id: sessionId,
+                        interaction_id: interactionId,
+                        feedback: feedback
+                    })
+                });
+                
+                if (response.ok) {
+                    // Update button to show feedback was submitted
+                    button.innerHTML = feedback === 'upvote' ? '✅ Thank you!' : '📝 Noted';
+                    button.disabled = true;
+                    
+                    // Disable other feedback button
+                    const buttons = button.parentNode.querySelectorAll('.feedback-btn');
+                    buttons.forEach(btn => btn.disabled = true);
+                }
+            } catch (error) {
+                console.error('Feedback error:', error);
+            }
+        }
+
+        // Helper functions
+        function formatDomain(domain) {
+            return domain.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
+
+        function getDomainColor(domain) {
+            const colors = {
+                'family_law': '#e74c3c',
+                'criminal_law': '#8e44ad',
+                'corporate_law': '#2980b9',
+                'property_law': '#27ae60',
+                'employment_law': '#f39c12',
+                'immigration_law': '#16a085',
+                'intellectual_property': '#9b59b6',
+                'tax_law': '#e67e22',
+                'constitutional_law': '#34495e',
+                'contract_law': '#3498db',
+                'tort_law': '#e74c3c',
+                'bankruptcy_law': '#95a5a6',
+                'environmental_law': '#2ecc71',
+                'healthcare_law': '#1abc9c'
+            };
+            return colors[domain] || '#7f8c8d';
+        }
+
+        // Enter key support
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Initialize on page load
+        window.onload = function() {
+            initialize();
+            document.getElementById('messageInput').focus();
+        };
+    </script>
+</body>
+</html>

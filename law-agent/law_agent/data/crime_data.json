@@ -1,0 +1,332 @@
+{
+  "table_6A.1_crime_against_senior_citizens_state_ut_wise_2020_2022": {
+    "STATES": [
+      {
+        "State/UT": "Andhra Pradesh",
+        "2020": 1860,
+        "2021": 1818,
+        "2022": 2112,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 48.3,
+        "Rate of Total Crime against Senior Citizen (2022)": 43.7,
+        "Chargesheeting Rate (2022)": 96.6
+      },
+      {
+        "State/UT": "Arunachal Pradesh",
+        "2020": 0,
+        "2021": 8,
+        "2022": 8,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 0.6,
+        "Rate of Total Crime against Senior Citizen (2022)": 12.6,
+        "Chargesheeting Rate (2022)": 71.4
+      },
+      {
+        "State/UT": "Assam",
+        "2020": 6,
+        "2021": 5,
+        "2022": 1,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 20.8,
+        "Rate of Total Crime against Senior Citizen (2022)": 0.0,
+        "Chargesheeting Rate (2022)": 100.0
+      },
+      {
+        "State/UT": "Bihar",
+        "2020": 322,
+        "2021": 150,
+        "2022": 218,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 77.1,
+        "Rate of Total Crime against Senior Citizen (2022)": 2.8,
+        "Chargesheeting Rate (2022)": 94.6
+      },
+      {
+        "State/UT": "Chhattisgarh",
+        "2020": 1533,
+        "2021": 1408,
+        "2022": 1605,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 20.0,
+        "Rate of Total Crime against Senior Citizen (2022)": 80.1,
+        "Chargesheeting Rate (2022)": 92.2
+      },
+      {
+        "State/UT": "Goa",
+        "2020": 31,
+        "2021": 50,
+        "2022": 39,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 1.6,
+        "Rate of Total Crime against Senior Citizen (2022)": 24.1,
+        "Chargesheeting Rate (2022)": 96.0
+      },
+      {
+        "State/UT": "Gujarat",
+        "2020": 2785,
+        "2021": 872,
+        "2022": 1251,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 47.9,
+        "Rate of Total Crime against Senior Citizen (2022)": 26.1,
+        "Chargesheeting Rate (2022)": 91.5
+      },
+      {
+        "State/UT": "Haryana",
+        "2020": 650,
+        "2021": 1056,
+        "2022": 1297,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 21.9,
+        "Rate of Total Crime against Senior Citizen (2022)": 59.1,
+        "Chargesheeting Rate (2022)": 48.0
+      },
+      {
+        "State/UT": "Himachal Pradesh",
+        "2020": 394,
+        "2021": 419,
+        "2022": 454,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 7.0,
+        "Rate of Total Crime against Senior Citizen (2022)": 64.6,
+        "Chargesheeting Rate (2022)": 92.5
+      },
+      {
+        "State/UT": "Jharkhand",
+        "2020": 2,
+        "2021": 32,
+        "2022": 10,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 23.6,
+        "Rate of Total Crime against Senior Citizen (2022)": 0.4,
+        "Chargesheeting Rate (2022)": 88.9
+      },
+      {
+        "State/UT": "Karnataka",
+        "2020": 853,
+        "2021": 1442,
+        "2022": 1797,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 57.9,
+        "Rate of Total Crime against Senior Citizen (2022)": 31.0,
+        "Chargesheeting Rate (2022)": 87.0
+      },
+      {
+        "State/UT": "Kerala",
+        "2020": 699,
+        "2021": 671,
+        "2022": 932,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 41.9,
+        "Rate of Total Crime against Senior Citizen (2022)": 22.2,
+        "Chargesheeting Rate (2022)": 85.0
+      },
+      {
+        "State/UT": "Madhya Pradesh",
+        "2020": 4602,
+        "2021": 5273,
+        "2022": 6378,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 57.1,
+        "Rate of Total Crime against Senior Citizen (2022)": 111.6,
+        "Chargesheeting Rate (2022)": 96.0
+      },
+      {
+        "State/UT": "Maharashtra",
+        "2020": 4909,
+        "2021": 6190,
+        "2022": 7916,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 111.1,
+        "Rate of Total Crime against Senior Citizen (2022)": 71.2,
+        "Chargesheeting Rate (2022)": 76.5
+      },
+      {
+        "State/UT": "Manipur",
+        "2020": 7,
+        "2021": 8,
+        "2022": 8,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 2.0,
+        "Rate of Total Crime against Senior Citizen (2022)": 4.0,
+        "Chargesheeting Rate (2022)": 20.0
+      },
+      {
+        "State/UT": "Meghalaya",
+        "2020": 3,
+        "2021": 3,
+        "2022": 6,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 1.4,
+        "Rate of Total Crime against Senior Citizen (2022)": 4.4,
+        "Chargesheeting Rate (2022)": 50.0
+      },
+      {
+        "State/UT": "Mizoram",
+        "2020": 8,
+        "2021": 5,
+        "2022": 1,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 0.7,
+        "Rate of Total Crime against Senior Citizen (2022)": 1.5,
+        "Chargesheeting Rate (2022)": 100.0
+      },
+      {
+        "State/UT": "Nagaland",
+        "2020": 11,
+        "2021": 8,
+        "2022": 10,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 1.0,
+        "Rate of Total Crime against Senior Citizen (2022)": 9.8,
+        "Chargesheeting Rate (2022)": 33.3
+      },
+      {
+        "State/UT": "Odisha",
+        "2020": 326,
+        "2021": 210,
+        "2022": 269,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 39.8,
+        "Rate of Total Crime against Senior Citizen (2022)": 6.8,
+        "Chargesheeting Rate (2022)": 79.7
+      },
+      {
+        "State/UT": "Punjab",
+        "2020": 289,
+        "2021": 335,
+        "2022": 398,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 28.7,
+        "Rate of Total Crime against Senior Citizen (2022)": 13.9,
+        "Chargesheeting Rate (2022)": 77.8
+      },
+      {
+        "State/UT": "Rajasthan",
+        "2020": 648,
+        "2021": 363,
+        "2022": 526,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 51.1,
+        "Rate of Total Crime against Senior Citizen (2022)": 10.3,
+        "Chargesheeting Rate (2022)": 49.3
+      },
+      {
+        "State/UT": "Sikkim",
+        "2020": 2,
+        "2021": 2,
+        "2022": 2,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 0.4,
+        "Rate of Total Crime against Senior Citizen (2022)": 4.9,
+        "Chargesheeting Rate (2022)": 100.0
+      },
+      {
+        "State/UT": "Tamil Nadu",
+        "2020": 1581,
+        "2021": 1841,
+        "2022": 2505,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 75.1,
+        "Rate of Total Crime against Senior Citizen (2022)": 33.3,
+        "Chargesheeting Rate (2022)": 89.2
+      },
+      {
+        "State/UT": "Telangana",
+        "2020": 1575,
+        "2021": 1952,
+        "2022": 2636,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 34.4,
+        "Rate of Total Crime against Senior Citizen (2022)": 76.6,
+        "Chargesheeting Rate (2022)": 80.7
+      },
+      {
+        "State/UT": "Tripura",
+        "2020": 13,
+        "2021": 8,
+        "2022": 15,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 2.9,
+        "Rate of Total Crime against Senior Citizen (2022)": 5.2,
+        "Chargesheeting Rate (2022)": 69.2
+      },
+      {
+        "State/UT": "Uttar Pradesh",
+        "2020": 353,
+        "2021": 423,
+        "2022": 588,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 154.4,
+        "Rate of Total Crime against Senior Citizen (2022)": 3.8,
+        "Chargesheeting Rate (2022)": 84.8
+      },
+      {
+        "State/UT": "Uttarakhand",
+        "2020": 4,
+        "2021": 7,
+        "2022": 9,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 9.0,
+        "Rate of Total Crime against Senior Citizen (2022)": 1.0,
+        "Chargesheeting Rate (2022)": 100.0
+      },
+      {
+        "State/UT": "West Bengal",
+        "2020": 344,
+        "2021": 304,
+        "2022": 450,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 77.4,
+        "Rate of Total Crime against Senior Citizen (2022)": 5.8,
+        "Chargesheeting Rate (2022)": 88.0
+      }
+    ],
+    "UNION TERRITORIES": [
+      {
+        "State/UT": "A&N Islands",
+        "2020": 17,
+        "2021": 14,
+        "2022": 13,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 0.3,
+        "Rate of Total Crime against Senior Citizen (2022)": 51.2,
+        "Chargesheeting Rate (2022)": 92.3
+      },
+      {
+        "State/UT": "Chandigarh",
+        "2020": 43,
+        "2021": 22,
+        "2022": 44,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 0.7,
+        "Rate of Total Crime against Senior Citizen (2022)": 66.1,
+        "Chargesheeting Rate (2022)": 69.0
+      },
+      {
+        "State/UT": "D&N Haveli and Daman & Diu",
+        "2020": 0,
+        "2021": 4,
+        "2022": 4,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 0.3,
+        "Rate of Total Crime against Senior Citizen (2022)": 15.8,
+        "Chargesheeting Rate (2022)": 100.0
+      },
+      {
+        "State/UT": "Delhi",
+        "2020": 919,
+        "2021": 1167,
+        "2022": 1332,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 11.5,
+        "Rate of Total Crime against Senior Citizen (2022)": 116.1,
+        "Chargesheeting Rate (2022)": 39.4
+      },
+      {
+        "State/UT": "Jammu & Kashmir",
+        "2020": 5,
+        "2021": 40,
+        "2022": 39,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 9.0,
+        "Rate of Total Crime against Senior Citizen (2022)": 4.3,
+        "Chargesheeting Rate (2022)": 87.5
+      },
+      {
+        "State/UT": "Ladakh",
+        "2020": 0,
+        "2021": 0,
+        "2022": 0,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 0.2,
+        "Rate of Total Crime against Senior Citizen (2022)": 0.0,
+        "Chargesheeting Rate (2022)": null
+      },
+      {
+        "State/UT": "Lakshadweep",
+        "2020": 0,
+        "2021": 0,
+        "2022": 0,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 0.1,
+        "Rate of Total Crime against Senior Citizen (2022)": 0.0,
+        "Chargesheeting Rate (2022)": null
+      },
+      {
+        "State/UT": "Puducherry",
+        "2020": 0,
+        "2021": 0,
+        "2022": 4,
+        "Actual Senior Citizen Population (in Lakhs) (2011)": 1.2,
+        "Rate of Total Crime against Senior Citizen (2022)": 3.4,
+        "Chargesheeting Rate (2022)": 100.0
+      }
+    ]
+  }
+}

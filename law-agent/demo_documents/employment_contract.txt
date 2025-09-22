@@ -1,0 +1,15 @@
+
+    EMPLOYMENT AGREEMENT
+    
+    This employment agreement is between Tech Corp (Employer) and Alice Johnson (Employee).
+    
+    Position: Software Developer
+    Salary: $75,000 per year
+    Benefits: Health insurance, 401k, vacation time
+    Start Date: January 15, 2024
+    
+    The employee agrees to perform duties diligently.
+    The employer agrees to provide compensation and benefits.
+    
+    Either party may terminate employment with two weeks notice.
+    

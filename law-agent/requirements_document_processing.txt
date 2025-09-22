@@ -1,0 +1,40 @@
+# Document Processing Dependencies for Law Agent
+# Install with: pip install -r requirements_document_processing.txt
+
+# Core document processing
+PyMuPDF==1.23.14
+python-docx==1.1.0
+pytesseract==0.3.10
+Pillow==10.1.0
+
+# Text analysis and readability
+textstat==0.7.3
+nltk==3.8.1
+
+# Data handling
+pandas==2.1.4
+numpy==1.24.4
+
+# Web framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Additional utilities
+python-magic==0.4.27
+pathlib2==2.3.7
+uuid==1.30
+
+# Optional: Advanced NLP (uncomment if needed)
+# spacy==3.7.2
+# transformers==4.36.2
+# torch==2.1.2
+
+# Development and testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+
+# Note: You may also need to install Tesseract OCR system package:
+# Ubuntu/Debian: sudo apt-get install tesseract-ocr
+# macOS: brew install tesseract
+# Windows: Download from https://github.com/UB-Mannheim/tesseract/wiki

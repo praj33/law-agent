@@ -1,0 +1,338 @@
+[
+  {
+    "term": "Affidavit",
+    "definition": "A written statement confirmed by oath or affirmation, for use as evidence in court",
+    "category": "legal_document",
+    "context": [
+      "court_filing",
+      "evidence",
+      "sworn_statement"
+    ],
+    "synonyms": [
+      "sworn statement",
+      "declaration"
+    ],
+    "related_terms": [
+      "oath",
+      "testimony",
+      "evidence"
+    ],
+    "complexity_level": 3,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Plaintiff",
+    "definition": "The person who brings a case against another in a court of law",
+    "category": "court_party",
+    "context": [
+      "civil_case",
+      "lawsuit",
+      "litigation"
+    ],
+    "synonyms": [
+      "complainant",
+      "petitioner"
+    ],
+    "related_terms": [
+      "defendant",
+      "lawsuit",
+      "civil_case"
+    ],
+    "complexity_level": 2,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Defendant",
+    "definition": "An individual, company, or institution sued or accused in a court of law",
+    "category": "court_party",
+    "context": [
+      "civil_case",
+      "criminal_case",
+      "lawsuit"
+    ],
+    "synonyms": [
+      "respondent",
+      "accused"
+    ],
+    "related_terms": [
+      "plaintiff",
+      "lawsuit",
+      "charges"
+    ],
+    "complexity_level": 2,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Security Deposit",
+    "definition": "Money paid by a tenant to a landlord to cover potential damages or unpaid rent",
+    "category": "tenant_rights",
+    "context": [
+      "rental_agreement",
+      "lease",
+      "housing"
+    ],
+    "synonyms": [
+      "damage deposit",
+      "rental deposit"
+    ],
+    "related_terms": [
+      "lease",
+      "landlord",
+      "tenant"
+    ],
+    "complexity_level": 1,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Eviction Notice",
+    "definition": "Legal notice given by landlord to tenant to vacate the rental property",
+    "category": "tenant_rights",
+    "context": [
+      "housing",
+      "rental_termination",
+      "landlord_tenant"
+    ],
+    "synonyms": [
+      "notice to quit",
+      "termination notice"
+    ],
+    "related_terms": [
+      "eviction",
+      "landlord",
+      "lease_termination"
+    ],
+    "complexity_level": 2,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Warranty",
+    "definition": "A written guarantee promising to repair or replace a product if necessary within a specified period",
+    "category": "consumer_law",
+    "context": [
+      "product_purchase",
+      "consumer_protection",
+      "defective_goods"
+    ],
+    "synonyms": [
+      "guarantee",
+      "assurance"
+    ],
+    "related_terms": [
+      "consumer_rights",
+      "defective_product",
+      "refund"
+    ],
+    "complexity_level": 1,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Consumer Forum",
+    "definition": "Quasi-judicial body established to resolve consumer disputes quickly and inexpensively",
+    "category": "consumer_law",
+    "context": [
+      "consumer_complaint",
+      "dispute_resolution",
+      "consumer_protection"
+    ],
+    "synonyms": [
+      "consumer court",
+      "consumer commission"
+    ],
+    "related_terms": [
+      "consumer_rights",
+      "complaint",
+      "redressal"
+    ],
+    "complexity_level": 3,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Alimony",
+    "definition": "Financial support paid by one spouse to another after separation or divorce",
+    "category": "family_law",
+    "context": [
+      "divorce",
+      "separation",
+      "spousal_support"
+    ],
+    "synonyms": [
+      "spousal support",
+      "maintenance"
+    ],
+    "related_terms": [
+      "divorce",
+      "child_support",
+      "separation"
+    ],
+    "complexity_level": 2,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Custody",
+    "definition": "The legal right to care for and make decisions about a child",
+    "category": "family_law",
+    "context": [
+      "child_custody",
+      "divorce",
+      "parental_rights"
+    ],
+    "synonyms": [
+      "guardianship",
+      "parental_custody"
+    ],
+    "related_terms": [
+      "visitation",
+      "child_support",
+      "parental_rights"
+    ],
+    "complexity_level": 2,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Wrongful Termination",
+    "definition": "Illegal dismissal of an employee in violation of employment laws or contracts",
+    "category": "employment_law",
+    "context": [
+      "employment",
+      "job_termination",
+      "workplace_rights"
+    ],
+    "synonyms": [
+      "unlawful dismissal",
+      "illegal firing"
+    ],
+    "related_terms": [
+      "employment_contract",
+      "severance",
+      "labor_rights"
+    ],
+    "complexity_level": 3,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Sexual Harassment",
+    "definition": "Unwelcome sexual advances, requests for sexual favors, or other verbal/physical conduct of sexual nature",
+    "category": "employment_law",
+    "context": [
+      "workplace",
+      "discrimination",
+      "employee_rights"
+    ],
+    "synonyms": [
+      "workplace harassment",
+      "sexual misconduct"
+    ],
+    "related_terms": [
+      "discrimination",
+      "hostile_work_environment",
+      "POSH_Act"
+    ],
+    "complexity_level": 2,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Bail",
+    "definition": "Money or property given as security to ensure an accused person returns for trial",
+    "category": "criminal_law",
+    "context": [
+      "arrest",
+      "criminal_case",
+      "court_proceedings"
+    ],
+    "synonyms": [
+      "bond",
+      "surety"
+    ],
+    "related_terms": [
+      "arrest",
+      "custody",
+      "trial"
+    ],
+    "complexity_level": 2,
+    "usage_frequency": 0
+  },
+  {
+    "term": "FIR",
+    "definition": "First Information Report - initial complaint filed with police about a cognizable offense",
+    "category": "criminal_law",
+    "context": [
+      "police_complaint",
+      "criminal_case",
+      "investigation"
+    ],
+    "synonyms": [
+      "First Information Report",
+      "police_complaint"
+    ],
+    "related_terms": [
+      "police",
+      "investigation",
+      "criminal_case"
+    ],
+    "complexity_level": 2,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Breach of Contract",
+    "definition": "Failure to perform any duty or obligation specified in a contract",
+    "category": "contract_law",
+    "context": [
+      "contract_dispute",
+      "business_agreement",
+      "legal_obligation"
+    ],
+    "synonyms": [
+      "contract_violation",
+      "default"
+    ],
+    "related_terms": [
+      "contract",
+      "damages",
+      "remedy"
+    ],
+    "complexity_level": 3,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Fundamental Rights",
+    "definition": "Basic human rights guaranteed by the Constitution that cannot be taken away",
+    "category": "constitutional_law",
+    "context": [
+      "constitution",
+      "civil_rights",
+      "legal_protection"
+    ],
+    "synonyms": [
+      "constitutional_rights",
+      "basic_rights"
+    ],
+    "related_terms": [
+      "constitution",
+      "civil_liberties",
+      "legal_protection"
+    ],
+    "complexity_level": 3,
+    "usage_frequency": 0
+  },
+  {
+    "term": "Identity Theft",
+    "definition": "Fraudulent acquisition and use of someone's personal information for financial gain",
+    "category": "cyber_crime",
+    "context": [
+      "online_fraud",
+      "cybercrime",
+      "personal_data"
+    ],
+    "synonyms": [
+      "identity_fraud",
+      "personal_data_theft"
+    ],
+    "related_terms": [
+      "cybercrime",
+      "fraud",
+      "personal_data"
+    ],
+    "complexity_level": 2,
+    "usage_frequency": 0
+  }
+]
