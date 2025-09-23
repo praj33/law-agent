@@ -27,6 +27,9 @@ import {
   Award
 } from 'lucide-react';
 
+// Import the ChatMessage interface
+import { ChatMessage } from '../services/apiService';
+
 interface AnalyticsData {
   basic_metrics: {
     unique_sessions: number;
@@ -59,7 +62,11 @@ interface AnalyticsData {
   }>;
 }
 
-const AnalyticsDashboard: React.FC = () => {
+interface AnalyticsDashboardProps {
+  messages?: ChatMessage[];
+}
+
+const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({ messages = [] }) => {
   const [analyticsData, setAnalyticsData] = useState<AnalyticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedTimeRange, setSelectedTimeRange] = useState('30');
@@ -93,12 +100,38 @@ const AnalyticsDashboard: React.FC = () => {
   const fetchAnalyticsData = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:8002/analytics/summary?days=${selectedTimeRange}`);
-      const result = await response.json();
+      // For now, we'll use mock data since we don't have a real analytics endpoint
+      // In a real implementation, this would fetch from your backend
+      const mockData: AnalyticsData = {
+        basic_metrics: {
+          unique_sessions: messages.length > 0 ? Math.ceil(messages.length / 2) : 1247,
+          total_events: messages.length,
+          avg_response_time: 2450
+        },
+        legal_routes: [
+          { route_type: 'Contract Law', total_suggestions: 42, accepted: 38, rejected: 4, acceptance_rate: 90.5, avg_response_time: 1.2, avg_satisfaction: 4.2 },
+          { route_type: 'Family Law', total_suggestions: 36, accepted: 32, rejected: 4, acceptance_rate: 88.9, avg_response_time: 1.5, avg_satisfaction: 4.0 },
+          { route_type: 'Criminal Law', total_suggestions: 28, accepted: 25, rejected: 3, acceptance_rate: 89.3, avg_response_time: 1.8, avg_satisfaction: 3.8 },
+          { route_type: 'Property Law', total_suggestions: 22, accepted: 19, rejected: 3, acceptance_rate: 86.4, avg_response_time: 1.4, avg_satisfaction: 4.1 },
+          { route_type: 'Employment Law', total_suggestions: 18, accepted: 16, rejected: 2, acceptance_rate: 88.9, avg_response_time: 1.3, avg_satisfaction: 4.3 }
+        ],
+        popular_glossary_terms: [
+          { term: 'Affidavit', access_count: 124, unique_sessions: 98, avg_time_spent: 45, avg_rating: 4.2 },
+          { term: 'Breach of Contract', access_count: 98, unique_sessions: 76, avg_time_spent: 62, avg_rating: 4.0 },
+          { term: 'Due Process', access_count: 87, unique_sessions: 65, avg_time_spent: 58, avg_rating: 4.5 },
+          { term: 'Felony', access_count: 76, unique_sessions: 58, avg_time_spent: 32, avg_rating: 3.8 },
+          { term: 'Custody', access_count: 65, unique_sessions: 49, avg_time_spent: 71, avg_rating: 4.1 },
+          { term: 'Easement', access_count: 54, unique_sessions: 42, avg_time_spent: 39, avg_rating: 3.9 }
+        ],
+        timeline_analysis: [
+          { timeline_type: 'Civil Case', step_name: 'Filing', total_interactions: 124, completed: 118, completion_rate: 95.2, avg_time_spent: 2.1 },
+          { timeline_type: 'Criminal Case', step_name: 'Investigation', total_interactions: 98, completed: 92, completion_rate: 93.9, avg_time_spent: 3.4 },
+          { timeline_type: 'Family Case', step_name: 'Mediation', total_interactions: 87, completed: 78, completion_rate: 89.7, avg_time_spent: 4.2 },
+          { timeline_type: 'Contract Dispute', step_name: 'Discovery', total_interactions: 76, completed: 72, completion_rate: 94.7, avg_time_spent: 2.8 }
+        ]
+      };
       
-      if (result.success) {
-        setAnalyticsData(result.data);
-      }
+      setAnalyticsData(mockData);
     } catch (error) {
       console.error('Error fetching analytics data:', error);
     } finally {
@@ -108,16 +141,18 @@ const AnalyticsDashboard: React.FC = () => {
 
   const setupWebSocket = () => {
     try {
-      wsRef.current = new WebSocket('ws://localhost:8002/ws');
+      // In a real implementation, you would connect to your WebSocket endpoint
+      // For now, we'll simulate real-time data updates
+      const interval = setInterval(() => {
+        const mockEvent = {
+          type: 'message',
+          session_id: 'sess_' + Math.random().toString(36).substr(2, 9),
+          timestamp: new Date()
+        };
+        setRealTimeData(prev => [...prev.slice(-50), { ...mockEvent, timestamp: new Date() }]);
+      }, 5000);
       
-      wsRef.current.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        setRealTimeData(prev => [...prev.slice(-50), { ...data, timestamp: new Date() }]);
-      };
-      
-      wsRef.current.onerror = (error) => {
-        console.error('WebSocket error:', error);
-      };
+      return () => clearInterval(interval);
     } catch (error) {
       console.error('Error setting up WebSocket:', error);
     }

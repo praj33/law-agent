@@ -18,31 +18,62 @@ import {
   Award,
   Crown,
   Upload,
-  BarChart3
+  BarChart3,
+  ThumbsUp,
+  ThumbsDown
 } from 'lucide-react';
 import { Canvas } from '@react-three/fiber';
 import './LawAgentApp.css';
 import DocumentUpload from './DocumentUpload';
 import AnalyticsDashboard from './AnalyticsDashboard';
 import JurisdictionalMap3D from './3D/JurisdictionalMap3D';
+import LegalTimeline from './LegalTimeline';
+import LegalGlossary from './LegalGlossary';
+import ResponseFormatter from './ResponseFormatter';
+// Import the API service
+import { apiService } from '../services/apiService';
+import { Message, GlossaryTerm, TimelineEvent } from '../types';
+
+// Define message interface
+interface ChatMessage extends Message {
+  userFeedback?: 'positive' | 'negative';
+  originalQuery?: string;
+  domain?: string;
+  confidence?: number;
+  domainConfidencePercentage?: string;
+}
 
 const LawAgentApp: React.FC = () => {
-  const [currentView, setCurrentView] = useState('court');
+  const [currentView, setCurrentView] = useState('chat');
   const [selectedJurisdiction, setSelectedJurisdiction] = useState<string | null>(null);
   const [selectedRegion, setSelectedRegion] = useState('india');
   const [showCourts, setShowCourts] = useState(true);
   const [showCaseLoad, setShowCaseLoad] = useState(true);
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: '1',
       type: 'ai',
-      content: 'Welcome to Law Agent! I\'m your AI legal assistant. Explore the immersive courtroom experience and interact with our advanced legal AI avatar! ⚖️✨',
+      content: `🏛️ Welcome to Law Agent
+
+Your AI-powered legal assistant, providing expert guidance across:
+
+• Contract & Business Law
+• Family & Domestic Matters
+• Criminal Defense
+• Property & Real Estate
+• Employment Issues
+• Intellectual Property
+
+🔐 Confidential • ⚡ Instant • 🎯 Accurate
+
+How can I help with your legal matter today?`,
       timestamp: new Date()
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [backgroundAnimation, setBackgroundAnimation] = useState(0);
+  const [feedbackSubmitting, setFeedbackSubmitting] = useState<{[key: string]: boolean}>({});
 
   // Background animation effect
   useEffect(() => {
@@ -52,38 +83,124 @@ const LawAgentApp: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
 
-    const newMessage = {
+    const userMessage: ChatMessage = {
       id: Date.now().toString(),
       type: 'user',
       content: inputMessage,
       timestamp: new Date()
     };
 
-    setMessages(prev => [...prev, newMessage]);
+    setMessages(prev => [...prev, userMessage]);
     setIsTyping(true);
+    setInputMessage('');
 
-    setTimeout(() => {
-      const responses = [
-        'Thank you for your question! I\'m analyzing your legal query using advanced AI algorithms and will provide you with comprehensive information based on current legal precedents and statutes. ⚖️',
-        'Excellent question! Let me search through thousands of legal documents and case studies to provide you with the most accurate and up-to-date legal guidance. 📚✨',
-        'I\'m processing your legal inquiry with precision. My AI-powered analysis will deliver relevant legal insights, precedents, and actionable advice tailored to your specific situation. 🎯',
-        'Great inquiry! I\'m consulting my extensive legal database to provide you with expert-level guidance. This includes relevant case law, statutes, and practical recommendations. 🏛️'
-      ];
-
-      const aiResponse = {
+    try {
+      // Log the request for debugging
+      console.log('Sending message to backend:', inputMessage);
+      
+      // Call the actual API service instead of using mock responses
+      const response = await apiService.sendMessage(inputMessage);
+      
+      // Log the response for debugging
+      console.log('Received response from backend:', response);
+      console.log('Domain info:', response.domain, response.domain_confidence, response.domain_confidence_percentage);
+      
+      // Use the formatted_response from the backend, with fallbacks
+      const responseContent = response.formatted_response || 
+                             response.response || 
+                             response.result ||
+                             "I'm processing your legal query. Please check back shortly for a detailed response.";
+      
+      // Extract domain information with fallbacks
+      const domain = response.domain || 'unknown';
+      const confidence = response.domain_confidence !== undefined ? response.domain_confidence : 0;
+      const confidencePercentage = response.domain_confidence_percentage || '0%';
+      
+      console.log('Extracted domain info:', { domain, confidence, confidencePercentage });
+      
+      const aiResponse: ChatMessage = {
         id: (Date.now() + 1).toString(),
         type: 'ai',
-        content: responses[Math.floor(Math.random() * responses.length)],
+        content: responseContent,
+        timestamp: new Date(),
+        originalQuery: inputMessage,
+        domain: domain,
+        confidence: confidence,
+        domainConfidencePercentage: confidencePercentage
+      };
+      
+      setMessages(prev => [...prev, aiResponse]);
+    } catch (error: any) {
+      console.error('Error getting AI response:', error);
+      
+      // More detailed error message
+      let errorMessage = 'Sorry, I encountered an error processing your request. Please try again.';
+      
+      if (error.message) {
+        errorMessage = `Error: ${error.message}`;
+      }
+      
+      // Error message in case the API call fails
+      const errorMessageObj: ChatMessage = {
+        id: (Date.now() + 1).toString(),
+        type: 'ai',
+        content: errorMessage,
         timestamp: new Date()
       };
-      setMessages(prev => [...prev, aiResponse]);
+      
+      setMessages(prev => [...prev, errorMessageObj]);
+    } finally {
       setIsTyping(false);
-    }, 2000);
+    }
+  };
 
-    setInputMessage('');
+  // Function to handle feedback submission
+  const handleFeedback = async (message: ChatMessage, feedback: 'positive' | 'negative') => {
+    // Set feedback submitting state
+    setFeedbackSubmitting(prev => ({ ...prev, [message.id]: true }));
+    
+    // Update the message with feedback
+    setMessages(prev => prev.map(msg => {
+      if (msg.id === message.id) {
+        return { ...msg, userFeedback: feedback };
+      }
+      return msg;
+    }));
+
+    try {
+      // Log feedback details for debugging
+      console.log('Submitting feedback:', {
+        messageId: message.id,
+        originalQuery: message.originalQuery,
+        domain: message.domain,
+        confidence: message.confidence,
+        confidencePercentage: message.domainConfidencePercentage,
+        feedback: feedback,
+        rating: feedback === 'positive' ? 5 : 1
+      });
+      
+      // Send feedback to backend with fallbacks for missing data
+      await apiService.submitFeedback(
+        message.originalQuery || 'Unknown query',
+        message.domain || 'unknown',
+        message.confidence !== undefined ? message.confidence : 0,
+        feedback,
+        feedback === 'positive' ? 5 : 1
+      );
+      console.log(`Feedback ${feedback} sent for message ${message.id}`);
+    } catch (error) {
+      console.error('Error sending feedback:', error);
+    } finally {
+      // Reset feedback submitting state
+      setFeedbackSubmitting(prev => {
+        const newState = { ...prev };
+        delete newState[message.id];
+        return newState;
+      });
+    }
   };
 
   const navigationItems = [
@@ -248,17 +365,98 @@ const LawAgentApp: React.FC = () => {
                         <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
                           <Bot className="h-5 w-5 text-white" />
                         </div>
-                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-ping" />
+                        <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-ping" />
                       </div>
                     )}
                     <div
-                      className={`max-w-md px-6 py-4 rounded-2xl shadow-lg relative ${
+                      className={`px-6 py-4 rounded-2xl shadow-lg relative chat-message-container ${
                         message.type === 'user'
                           ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
                           : 'bg-gradient-to-r from-gray-700 to-gray-800 text-gray-100 border border-white/10'
                       }`}
                     >
-                      <p className="text-sm leading-relaxed">{message.content}</p>
+                      {message.type === 'ai' ? (
+                        <div className="max-w-3xl w-full">
+                          <ResponseFormatter content={message.content} />
+                          
+                          {/* Domain information display */}
+                          {message.domain && message.domain !== 'unknown' && (
+                            <div className="mt-3 text-xs text-gray-400 flex items-center">
+                              <span className="bg-blue-900/50 px-2 py-1 rounded mr-2">
+                                Domain: {message.domain}
+                              </span>
+                              {message.domainConfidencePercentage && (
+                                <span className="bg-purple-900/50 px-2 py-1 rounded">
+                                  Confidence: {message.domainConfidencePercentage}
+                                </span>
+                              )}
+                            </div>
+                          )}
+                          
+                          {/* Feedback options for AI messages */}
+                          {!message.userFeedback && (
+                            <div className="feedback-section mt-4 pt-4 border-t border-white/10">
+                              <span className="feedback-text text-sm text-gray-400 mr-3">Was this helpful?</span>
+                              <div className="feedback-buttons flex gap-2">
+                                <button
+                                  onClick={() => handleFeedback(message, 'positive')}
+                                  disabled={feedbackSubmitting[message.id]}
+                                  className={`feedback-button feedback-button-positive flex items-center space-x-1 px-3 py-1 rounded-full text-sm transition-colors cursor-pointer ${
+                                    feedbackSubmitting[message.id] 
+                                      ? 'opacity-50 cursor-not-allowed' 
+                                      : 'hover:bg-green-500/30'
+                                  }`}
+                                  aria-label="Positive feedback"
+                                >
+                                  {feedbackSubmitting[message.id] ? (
+                                    <span className="text-base animate-spin">⏱️</span>
+                                  ) : (
+                                    <span className="text-base">👍</span>
+                                  )}
+                                  <span>Yes</span>
+                                </button>
+                                <button
+                                  onClick={() => handleFeedback(message, 'negative')}
+                                  disabled={feedbackSubmitting[message.id]}
+                                  className={`feedback-button feedback-button-negative flex items-center space-x-1 px-3 py-1 rounded-full text-sm transition-colors cursor-pointer ${
+                                    feedbackSubmitting[message.id] 
+                                      ? 'opacity-50 cursor-not-allowed' 
+                                      : 'hover:bg-red-500/30'
+                                  }`}
+                                  aria-label="Negative feedback"
+                                >
+                                  {feedbackSubmitting[message.id] ? (
+                                    <span className="text-base animate-spin">⏱️</span>
+                                  ) : (
+                                    <span className="text-base">👎</span>
+                                  )}
+                                  <span>No</span>
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                          
+                          {message.userFeedback === 'positive' && (
+                            <div className="feedback-section mt-4 pt-4 border-t border-white/10">
+                              <div className="feedback-confirmation feedback-confirmation-positive flex items-center space-x-2">
+                                <span className="text-base">👍</span>
+                                <span className="text-sm">Thanks for your feedback!</span>
+                              </div>
+                            </div>
+                          )}
+                          
+                          {message.userFeedback === 'negative' && (
+                            <div className="feedback-section mt-4 pt-4 border-t border-white/10">
+                              <div className="feedback-confirmation feedback-confirmation-negative flex items-center space-x-2">
+                                <span className="text-base">👎</span>
+                                <span className="text-sm">Thanks for your feedback. We'll try to improve.</span>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <p className="text-sm leading-relaxed max-w-3xl w-full">{message.content}</p>
+                      )}
                       <div className="mt-2 text-xs opacity-70">
                         {message.timestamp.toLocaleTimeString()}
                       </div>
@@ -275,7 +473,7 @@ const LawAgentApp: React.FC = () => {
                         <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center shadow-lg">
                           <User className="h-5 w-5 text-white" />
                         </div>
-                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-blue-400 rounded-full animate-ping" />
+                        <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-blue-400 rounded-full animate-ping" />
                       </div>
                     )}
                   </div>
@@ -355,7 +553,7 @@ const LawAgentApp: React.FC = () => {
 
           {currentView === 'analytics' && (
             <div className="min-h-[600px]">
-              <AnalyticsDashboard />
+              <AnalyticsDashboard messages={messages} />
             </div>
           )}
 
@@ -626,6 +824,24 @@ const LawAgentApp: React.FC = () => {
             </div>
           )}
 
+          {currentView === 'timeline' && (
+            <div className="h-[600px]">
+              <LegalTimeline 
+                events={extractTimelineEvents(messages)} 
+                title="Case Timeline" 
+              />
+            </div>
+          )}
+
+          {currentView === 'glossary' && (
+            <div className="h-[600px]">
+              <LegalGlossary 
+                terms={extractGlossaryTerms(messages)} 
+                title="Legal Glossary" 
+              />
+            </div>
+          )}
+
           {currentView !== 'chat' && currentView !== 'court' && currentView !== 'map' && (
             <div className="h-96 flex items-center justify-center">
               <div className="text-center">
@@ -691,6 +907,129 @@ const LawAgentApp: React.FC = () => {
       </div>
     </div>
   );
+};
+
+// Helper function to extract glossary terms from AI messages
+const extractGlossaryTerms = (messages: ChatMessage[]): GlossaryTerm[] => {
+  const terms: GlossaryTerm[] = [];
+  const termSet = new Set<string>(); // To avoid duplicates
+  
+  messages.filter(msg => msg.type === 'ai').forEach(msg => {
+    // This is a simplified example - in a real implementation, you would parse
+    // the actual glossary terms from the AI response
+    const mockTerms: GlossaryTerm[] = [
+      {
+        term: 'Contract',
+        definition: 'A legally binding agreement between two or more parties.',
+        category: 'Contract Law',
+        examples: ['Employment contract', 'Sales contract', 'Lease agreement'],
+        relatedTerms: ['Breach', 'Offer', 'Acceptance'],
+        importance: 'basic'
+      },
+      {
+        term: 'Plaintiff',
+        definition: 'The party who brings a lawsuit against another in a court of law.',
+        category: 'Civil Procedure',
+        examples: ['The plaintiff filed a complaint', 'Plaintiff\'s attorney'],
+        relatedTerms: ['Defendant', 'Complaint', 'Lawsuit'],
+        importance: 'basic'
+      },
+      {
+        term: 'Defendant',
+        definition: 'The party being sued or accused in a court of law.',
+        category: 'Civil Procedure',
+        examples: ['The defendant filed a motion', 'Defendant\'s response'],
+        relatedTerms: ['Plaintiff', 'Answer', 'Defense'],
+        importance: 'basic'
+      }
+    ];
+    
+    mockTerms.forEach(term => {
+      if (!termSet.has(term.term)) {
+        termSet.add(term.term);
+        terms.push(term);
+      }
+    });
+  });
+  
+  return terms;
+};
+
+// Helper function to extract timeline events from AI messages
+const extractTimelineEvents = (messages: ChatMessage[]): TimelineEvent[] => {
+  const events: TimelineEvent[] = [];
+  const eventSet = new Set<string>(); // To avoid duplicates
+  
+  messages.filter(msg => msg.type === 'ai').forEach(msg => {
+    // This is a simplified example - in a real implementation, you would parse
+    // the actual timeline events from the AI response
+    const mockEvents: TimelineEvent[] = [
+      {
+        id: '1',
+        title: 'Initial Consultation',
+        description: 'Client seeks legal advice regarding their case',
+        date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+        type: 'filing',
+        status: 'completed',
+        participants: ['Client', 'Attorney'],
+        documents: ['Initial Consultation Notes'],
+        importance: 'high'
+      },
+      {
+        id: '2',
+        title: 'Case Investigation',
+        description: 'Attorney gathers evidence and prepares legal strategy',
+        date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+        type: 'discovery',
+        status: 'completed',
+        participants: ['Attorney', 'Private Investigator'],
+        documents: ['Evidence Report', 'Witness Statements'],
+        importance: 'high'
+      },
+      {
+        id: '3',
+        title: 'Filing of Complaint',
+        description: 'Legal documents filed with the court',
+        date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+        type: 'filing',
+        status: 'completed',
+        participants: ['Attorney', 'Court Clerk'],
+        documents: ['Complaint', 'Summons'],
+        importance: 'critical'
+      },
+      {
+        id: '4',
+        title: 'Discovery Phase',
+        description: 'Exchange of information between parties',
+        date: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(),
+        type: 'discovery',
+        status: 'upcoming',
+        participants: ['Attorney', 'Opposing Counsel'],
+        documents: ['Interrogatories', 'Requests for Production'],
+        importance: 'high'
+      },
+      {
+        id: '5',
+        title: 'Pre-Trial Conference',
+        description: 'Meeting with judge to discuss case progress',
+        date: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
+        type: 'hearing',
+        status: 'upcoming',
+        participants: ['Judge', 'Attorney', 'Opposing Counsel'],
+        documents: ['Pre-Trial Memorandum'],
+        importance: 'medium'
+      }
+    ];
+    
+    mockEvents.forEach(event => {
+      if (!eventSet.has(event.id)) {
+        eventSet.add(event.id);
+        events.push(event);
+      }
+    });
+  });
+  
+  return events;
 };
 
 // Simple 2D Talking Avatar Component
@@ -810,9 +1149,11 @@ const TalkingAvatarComponent: React.FC = () => {
             <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-1.5 h-3 bg-orange-300 rounded-full shadow-sm"></div>
 
             {/* Professional Mouth */}
-            <div className={`absolute top-12 left-1/2 transform -translate-x-1/2 w-5 h-2 rounded-full transition-all duration-300 ${
-              isSpeaking ? 'bg-red-600 animate-pulse scale-110' : 'bg-red-400'
-            }`}>
+            <div
+              className={`absolute top-12 left-1/2 transform -translate-x-1/2 w-5 h-2 rounded-full transition-all duration-300 ${
+                isSpeaking ? 'bg-red-600 animate-pulse scale-110' : 'bg-red-400'
+              }`}
+            >
               {isSpeaking && (
                 <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
               )}

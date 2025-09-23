@@ -375,3 +375,274 @@
     filter: brightness(0.9);
   }
 }
+
+/* Enhanced formatted response styling */
+.formatted-response {
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.formatted-response h1 {
+  font-size: 1.75rem;
+  margin-top: 0;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.formatted-response h2 {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  padding-right: 1.5rem;
+  word-break: break-word;
+}
+
+.formatted-response h2:before {
+  content: "⚖️";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.formatted-response h3 {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  padding-right: 1.5rem;
+  word-break: break-word;
+}
+
+.formatted-response h3:before {
+  content: "📋";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.formatted-response ul, 
+.formatted-response ol {
+  padding-left: 1.5rem;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+}
+
+.formatted-response li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-right: 0.5rem;
+  word-break: break-word;
+}
+
+.formatted-response li:before {
+  content: "•";
+  color: #60a5fa;
+  font-weight: bold;
+  position: absolute;
+  left: -1.5rem;
+}
+
+.formatted-response ol li:before {
+  content: counter(list-item) ".";
+  color: #60a5fa;
+  font-weight: bold;
+  position: absolute;
+  left: -1.5rem;
+}
+
+.formatted-response p {
+  margin-bottom: 1rem;
+  padding-right: 0.5rem;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+/* Welcome message specific styling */
+.formatted-response h1:first-child {
+  font-size: 1.75rem;
+  margin-top: 0;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.formatted-response p:nth-child(2) {
+  text-align: center;
+  color: #94a3b8;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.formatted-response div.flex.justify-center {
+  justify-content: center;
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.formatted-response div.flex.justify-center span {
+  display: flex;
+  align-items: center;
+  background: rgba(30, 41, 59, 0.7);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+}
+
+.formatted-response div.flex.justify-center span:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+/* Chat message container */
+.chat-message-container {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Feedback section styling */
+.feedback-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.feedback-text {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.feedback-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.feedback-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  z-index: 10;
+  position: relative;
+}
+
+.feedback-button-positive {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.feedback-button-positive:hover {
+  background-color: rgba(16, 185, 129, 0.3);
+}
+
+.feedback-button-negative {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.feedback-button-negative:hover {
+  background-color: rgba(239, 68, 68, 0.3);
+}
+
+.feedback-confirmation {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.feedback-confirmation-positive {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.feedback-confirmation-negative {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+/* Responsive feedback section */
+@media (max-width: 768px) {
+  .feedback-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .feedback-text {
+    font-size: 0.8rem;
+  }
+  
+  .feedback-buttons {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .feedback-button {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .feedback-section {
+    gap: 0.25rem;
+  }
+  
+  .feedback-text {
+    font-size: 0.75rem;
+  }
+  
+  .feedback-button {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .feedback-confirmation {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+/* Ensure buttons are always clickable */
+.feedback-button:active {
+  transform: scale(0.95);
+}
+
+.feedback-button:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}

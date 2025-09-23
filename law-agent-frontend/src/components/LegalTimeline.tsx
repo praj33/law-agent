@@ -22,7 +22,6 @@ interface LegalTimelineProps {
 
 const LegalTimeline: React.FC<LegalTimelineProps> = ({ events, title }) => {
   const [filteredEvents, setFilteredEvents] = useState<TimelineEvent[]>(events);
-
   const [filterType, setFilterType] = useState<string>('all');
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
@@ -49,8 +48,8 @@ const LegalTimeline: React.FC<LegalTimelineProps> = ({ events, title }) => {
       );
     }
 
-    // Sort by date
-    filtered.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    // Sort by date (newest first)
+    filtered.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     setFilteredEvents(filtered);
   }, [events, filterType, filterStatus, searchTerm]);
@@ -108,45 +107,6 @@ const LegalTimeline: React.FC<LegalTimelineProps> = ({ events, title }) => {
     });
   };
 
-  // Sample events if none provided
-  const sampleEvents: TimelineEvent[] = [
-    {
-      id: '1',
-      title: 'Initial Complaint Filed',
-      description: 'Plaintiff filed initial complaint against defendant for breach of contract',
-      date: '2024-01-15T09:00:00Z',
-      type: 'filing',
-      status: 'completed',
-      participants: ['Plaintiff Attorney', 'Court Clerk'],
-      documents: ['Complaint.pdf', 'Summons.pdf'],
-      importance: 'high'
-    },
-    {
-      id: '2',
-      title: 'Defendant Response Due',
-      description: 'Deadline for defendant to file answer or motion to dismiss',
-      date: '2024-02-15T17:00:00Z',
-      type: 'deadline',
-      status: 'upcoming',
-      participants: ['Defense Attorney'],
-      documents: [],
-      importance: 'critical'
-    },
-    {
-      id: '3',
-      title: 'Discovery Conference',
-      description: 'Initial discovery conference to establish timeline and scope',
-      date: '2024-03-01T10:00:00Z',
-      type: 'hearing',
-      status: 'upcoming',
-      participants: ['Judge', 'Plaintiff Attorney', 'Defense Attorney'],
-      documents: ['Discovery_Plan.pdf'],
-      importance: 'medium'
-    }
-  ];
-
-  const displayEvents = filteredEvents.length > 0 ? filteredEvents : sampleEvents;
-
   return (
     <div className="h-full flex flex-col bg-gradient-to-br from-slate-900/50 to-blue-900/30 backdrop-blur-sm">
       {/* Header */}
@@ -161,7 +121,7 @@ const LegalTimeline: React.FC<LegalTimelineProps> = ({ events, title }) => {
             <h2 className="text-2xl font-bold text-white">{title}</h2>
           </div>
           <div className="flex items-center space-x-2 text-sm text-gray-400">
-            <span>{displayEvents.length} events</span>
+            <span>{filteredEvents.length} events</span>
           </div>
         </div>
 
@@ -220,7 +180,7 @@ const LegalTimeline: React.FC<LegalTimelineProps> = ({ events, title }) => {
           {/* Events */}
           <div className="space-y-6">
             <AnimatePresence>
-              {displayEvents.map((event, index) => {
+              {filteredEvents.map((event, index) => {
                 const Icon = getEventIcon(event.type);
                 const isExpanded = expandedEvents.has(event.id);
 
@@ -340,7 +300,7 @@ const LegalTimeline: React.FC<LegalTimelineProps> = ({ events, title }) => {
             </AnimatePresence>
           </div>
 
-          {displayEvents.length === 0 && (
+          {filteredEvents.length === 0 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

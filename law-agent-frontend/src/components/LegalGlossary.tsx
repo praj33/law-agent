@@ -29,59 +29,7 @@ const LegalGlossary: React.FC<LegalGlossaryProps> = ({ terms, title }) => {
   const [expandedTerms, setExpandedTerms] = useState<Set<string>>(new Set());
   const [sortBy, setSortBy] = useState<'alphabetical' | 'category' | 'importance'>('alphabetical');
 
-  // Sample terms if none provided
-  const sampleTerms: GlossaryTerm[] = [
-    {
-      term: 'Affidavit',
-      definition: 'A written statement of facts confirmed by the oath of the party making it, before a notary or officer having authority to administer oaths.',
-      category: 'Civil Procedure',
-      examples: ['Affidavit of service', 'Affidavit of identity'],
-      relatedTerms: ['Oath', 'Notary', 'Sworn statement'],
-      importance: 'basic'
-    },
-    {
-      term: 'Breach of Contract',
-      definition: 'Failure to perform any term of a contract, written or oral, without a legitimate legal excuse.',
-      category: 'Contract Law',
-      examples: ['Non-payment of agreed amount', 'Failure to deliver goods on time'],
-      relatedTerms: ['Contract', 'Performance', 'Damages'],
-      importance: 'basic'
-    },
-    {
-      term: 'Custody',
-      definition: 'The care, control, and maintenance of a child awarded by a court to one of the parents in a divorce or separation proceeding.',
-      category: 'Family Law',
-      examples: ['Joint custody', 'Sole custody', 'Physical custody'],
-      relatedTerms: ['Visitation', 'Child support', 'Parental rights'],
-      importance: 'intermediate'
-    },
-    {
-      term: 'Due Process',
-      definition: 'The constitutional requirement that laws and legal proceedings be fair and that individuals be given notice and an opportunity to be heard.',
-      category: 'Constitutional Law',
-      examples: ['Right to counsel', 'Right to fair trial', 'Notice of charges'],
-      relatedTerms: ['Constitutional rights', 'Fair trial', 'Legal procedure'],
-      importance: 'advanced'
-    },
-    {
-      term: 'Easement',
-      definition: 'A right to use another person\'s land for a specific limited purpose.',
-      category: 'Property Law',
-      examples: ['Right of way', 'Utility easement', 'Access easement'],
-      relatedTerms: ['Property rights', 'Land use', 'Servitude'],
-      importance: 'intermediate'
-    },
-    {
-      term: 'Felony',
-      definition: 'A serious crime punishable by imprisonment for more than one year or by death.',
-      category: 'Criminal Law',
-      examples: ['Murder', 'Armed robbery', 'Drug trafficking'],
-      relatedTerms: ['Misdemeanor', 'Criminal offense', 'Sentencing'],
-      importance: 'basic'
-    }
-  ];
-
-  const displayTerms = terms.length > 0 ? terms : sampleTerms;
+  const displayTerms = terms.length > 0 ? terms : [];
 
   const categories = useMemo(() => {
     const cats = Array.from(new Set(displayTerms.map(term => term.category)));

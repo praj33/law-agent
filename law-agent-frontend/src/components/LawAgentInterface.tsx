@@ -22,7 +22,7 @@ const LawAgentInterface: React.FC = () => {
 
   const initializeSession = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/v1/sessions', {
+      const response = await fetch('/api/sessions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -53,7 +53,7 @@ const LawAgentInterface: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/api/v1/query', {
+      const response = await fetch('/api/query', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -62,6 +62,13 @@ const LawAgentInterface: React.FC = () => {
           interaction_type: 'query'
         }),
       });
+
+      // Check if the response is HTML (which indicates an error page)
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('text/html')) {
+        const errorText = await response.text();
+        throw new Error(`Backend returned HTML instead of JSON. This usually means the endpoint was not found. Response: ${errorText.substring(0, 200)}...`);
+      }
 
       const data = await response.json();
 
@@ -80,7 +87,7 @@ const LawAgentInterface: React.FC = () => {
       setSelectedMessage(aiMessage);
     } catch (error) {
       console.error('Error sending message:', error);
-      toast.error('Failed to send message');
+      toast.error('Failed to send message: ' + (error as Error).message);
     } finally {
       setIsLoading(false);
     }
